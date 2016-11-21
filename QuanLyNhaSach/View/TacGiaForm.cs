@@ -132,6 +132,7 @@ namespace QuanLyNhaSach.View
 
         public void showError()
         {
+            errorProvider1.Clear();
             foreach (var err in state) {
                 switch (err.Key)
                 {

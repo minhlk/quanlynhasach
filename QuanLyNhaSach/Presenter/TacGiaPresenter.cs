@@ -42,11 +42,11 @@ namespace QuanLyNhaSach.Presenter
         {
            
             TACGIA tg_moi = view.TacGia;
-            int tg_cu = int.Parse(view.selectedTacGia);
+            int matg_cu = int.Parse(view.selectedTacGia);
 
             if (valid(tg_moi))
             {
-                TACGIA kq = repository.editTacGia(tg_moi,tg_cu);
+                TACGIA kq = repository.editTacGia(tg_moi, matg_cu);
 
                
                 getListTacGia();
@@ -57,8 +57,10 @@ namespace QuanLyNhaSach.Presenter
             state.Clear();
             if (tg.TENTG == "")
                 state.addError("tentg", "Tên tác giả không được để trống");
+          
             if (tg.NAMSINH >= tg.NAMMAT)
                 state.addError("nam", "Năm sinh phải nhỏ hơn năm mất");
+            
             return state.isValid();
 
 
