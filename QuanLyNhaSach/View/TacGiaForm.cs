@@ -67,18 +67,37 @@ namespace QuanLyNhaSach.View
             {
                 
                 tacgia.TENTG = TextField1.Text;
-                tacgia.NAMMAT = DateTime.Parse(dateTimePicker2.Value.ToShortDateString());
-                tacgia.NAMSINH = DateTime.Parse(dateTimePicker1.Value.ToShortDateString());
+                if (!CheckBox2.Checked) { tacgia.NAMMAT = DateTime.Parse(dateTimePicker2.Value.ToShortDateString()); }
+                else tacgia.NAMMAT = null;
+                if (!CheckBox1.Checked) { tacgia.NAMSINH = DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
+                else tacgia.NAMSINH = null;
                 tacgia.QUEQUAN = TextField2.Text;
                 return tacgia;
             }
 
             set
             {
+                TACGIA tacgia = value;
                 TextField1.Text = tacgia.TENTG;
-                //dateTimePicker2.Text = tacgia.NAMMAT;
-                //dateTimePicker1.Text = tacgia.NAMSINH;
+                if (tacgia.NAMSINH == null)
+                    CheckBox1.Checked = true;
+                else
+                {
+                    
+                    dateTimePicker1.Text = tacgia.NAMSINH.ToString();
+                    CheckBox1.Checked = false;
+                }
+                if (tacgia.NAMMAT == null)
+                {
+                    CheckBox2.Checked = true;
+                }
+                else
+                {
+                    dateTimePicker2.Text = tacgia.NAMMAT.ToString();
+                    CheckBox2.Checked = false;
+                }
                 TextField2.Text = tacgia.QUEQUAN;
+                
             }
         }
 
@@ -132,8 +151,25 @@ namespace QuanLyNhaSach.View
         {
             Presenter.deleteTacGia();
 
-            showError();
+            
 
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Presenter.editTacGia();
+
+            showError();
+        }
+
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelected();
+        }
+
+        private void materialFlatButton1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -42,8 +42,9 @@
             this.Button2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.Button3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.materialCheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
-            this.materialCheckBox2 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.CheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.CheckBox2 = new MaterialSkin.Controls.MaterialCheckBox();
+            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(444, 308);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick);
             // 
             // TextField1
             // 
@@ -175,7 +177,7 @@
             this.Button2.AutoSize = true;
             this.Button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Button2.Depth = 0;
-            this.Button2.Location = new System.Drawing.Point(700, 74);
+            this.Button2.Location = new System.Drawing.Point(707, 74);
             this.Button2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Button2.MouseState = MaterialSkin.MouseState.HOVER;
             this.Button2.Name = "Button2";
@@ -184,13 +186,14 @@
             this.Button2.TabIndex = 11;
             this.Button2.Text = "Sửa";
             this.Button2.UseVisualStyleBackColor = true;
+            this.Button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // Button3
             // 
             this.Button3.AutoSize = true;
             this.Button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Button3.Depth = 0;
-            this.Button3.Location = new System.Drawing.Point(679, 118);
+            this.Button3.Location = new System.Drawing.Point(642, 118);
             this.Button3.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.Button3.MouseState = MaterialSkin.MouseState.HOVER;
             this.Button3.Name = "Button3";
@@ -205,45 +208,62 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // materialCheckBox1
+            // CheckBox1
             // 
-            this.materialCheckBox1.AutoSize = true;
-            this.materialCheckBox1.Depth = 0;
-            this.materialCheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox1.Location = new System.Drawing.Point(642, 174);
-            this.materialCheckBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox1.Name = "materialCheckBox1";
-            this.materialCheckBox1.Ripple = true;
-            this.materialCheckBox1.Size = new System.Drawing.Size(79, 30);
-            this.materialCheckBox1.TabIndex = 13;
-            this.materialCheckBox1.Text = "Chưa rõ";
-            this.materialCheckBox1.UseVisualStyleBackColor = true;
+            this.CheckBox1.AutoSize = true;
+            this.CheckBox1.Depth = 0;
+            this.CheckBox1.Font = new System.Drawing.Font("Roboto", 10F);
+            this.CheckBox1.Location = new System.Drawing.Point(642, 174);
+            this.CheckBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox1.Name = "CheckBox1";
+            this.CheckBox1.Ripple = true;
+            this.CheckBox1.Size = new System.Drawing.Size(79, 30);
+            this.CheckBox1.TabIndex = 13;
+            this.CheckBox1.Text = "Chưa rõ ";
+            this.CheckBox1.UseVisualStyleBackColor = true;
             // 
-            // materialCheckBox2
+            // CheckBox2
             // 
-            this.materialCheckBox2.AutoSize = true;
-            this.materialCheckBox2.Depth = 0;
-            this.materialCheckBox2.Font = new System.Drawing.Font("Roboto", 10F);
-            this.materialCheckBox2.Location = new System.Drawing.Point(642, 242);
-            this.materialCheckBox2.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckBox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckBox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckBox2.Name = "materialCheckBox2";
-            this.materialCheckBox2.Ripple = true;
-            this.materialCheckBox2.Size = new System.Drawing.Size(79, 30);
-            this.materialCheckBox2.TabIndex = 14;
-            this.materialCheckBox2.Text = "Chưa rõ";
-            this.materialCheckBox2.UseVisualStyleBackColor = true;
+            this.CheckBox2.AutoSize = true;
+            this.CheckBox2.Depth = 0;
+            this.CheckBox2.Font = new System.Drawing.Font("Roboto", 10F);
+            this.CheckBox2.Location = new System.Drawing.Point(642, 242);
+            this.CheckBox2.Margin = new System.Windows.Forms.Padding(0);
+            this.CheckBox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.CheckBox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.CheckBox2.Name = "CheckBox2";
+            this.CheckBox2.Ripple = true;
+            this.CheckBox2.Size = new System.Drawing.Size(79, 30);
+            this.CheckBox2.TabIndex = 14;
+            this.CheckBox2.Text = "Chưa rõ";
+            this.CheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // materialFlatButton1
+            // 
+            this.materialFlatButton1.AutoSize = true;
+            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialFlatButton1.Depth = 0;
+            this.materialFlatButton1.Location = new System.Drawing.Point(689, 118);
+            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialFlatButton1.Name = "materialFlatButton1";
+            this.materialFlatButton1.Primary = false;
+            this.materialFlatButton1.Size = new System.Drawing.Size(57, 36);
+            this.materialFlatButton1.TabIndex = 15;
+            this.materialFlatButton1.Text = "Thoát";
+            this.materialFlatButton1.UseVisualStyleBackColor = true;
+            this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
             // TacGiaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 394);
-            this.Controls.Add(this.materialCheckBox2);
-            this.Controls.Add(this.materialCheckBox1);
+            this.ClientSize = new System.Drawing.Size(758, 394);
+            this.Controls.Add(this.materialFlatButton1);
+            this.Controls.Add(this.CheckBox2);
+            this.Controls.Add(this.CheckBox1);
             this.Controls.Add(this.Button3);
             this.Controls.Add(this.Button2);
             this.Controls.Add(this.Button1);
@@ -257,7 +277,7 @@
             this.Controls.Add(this.TextField1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "TacGiaForm";
-            this.Text = "TacGiaForm";
+            this.Text = "Thông Tin Tác Giả";
             this.Load += new System.EventHandler(this.TacGiaForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -281,7 +301,8 @@
         private MaterialSkin.Controls.MaterialFlatButton Button2;
         private MaterialSkin.Controls.MaterialFlatButton Button3;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox2;
-        private MaterialSkin.Controls.MaterialCheckBox materialCheckBox1;
+        private MaterialSkin.Controls.MaterialCheckBox CheckBox2;
+        private MaterialSkin.Controls.MaterialCheckBox CheckBox1;
+        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
     }
 }

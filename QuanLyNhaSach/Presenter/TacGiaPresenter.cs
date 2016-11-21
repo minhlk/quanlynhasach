@@ -38,6 +38,20 @@ namespace QuanLyNhaSach.Presenter
                 getListTacGia();
             }
         }
+        public void editTacGia()
+        {
+           
+            TACGIA tg_moi = view.TacGia;
+            int tg_cu = int.Parse(view.selectedTacGia);
+
+            if (valid(tg_moi))
+            {
+                TACGIA kq = repository.editTacGia(tg_moi,tg_cu);
+
+               
+                getListTacGia();
+            }
+        }
         public bool valid(TACGIA tg) {
             //xet null
             state.Clear();
@@ -63,5 +77,13 @@ namespace QuanLyNhaSach.Presenter
                 getListTacGia();
             }
         }
+
+        public void showSelected() {
+            TACGIA tg = repository.getTacGia(int.Parse(view.selectedTacGia));
+            
+            view.TacGia = tg;
+        }
+
+
     }
 }
