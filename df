@@ -1,0 +1,35 @@
+[33mcommit 1353c80628ba48687945c1746f681ec0c7406413[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 20:42:37 2016 +0700
+
+    fix error from errorprovider in table tacgia
+
+[33mcommit fbc84d4b276e0d3988c37e1ec4e994e65abf559b[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 15:52:30 2016 +0700
+
+    hoan thanh table tac gia
+
+[33mcommit 7c298c3727e0b742d21087bc3f86b7ca3dd388d1[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 14:57:26 2016 +0700
+
+    them table tacgia
+
+[33mcommit e8e59211bb57ef7936e3d07b6cd5551bfb4c5496[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 11:21:18 2016 +0700
+
+    first init
+
+[33mcommit 6d87948a9e4aaa86e20638ee22530b5ef4bd9a05[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 11:13:30 2016 +0700
+
+    Add project files.
+
+[33mcommit c0015aaf72e4fa8239608b9a393cbc637a1d5a7e[m
+Author: minhlk <minhmeolavip@gmail.com>
+Date:   Mon Nov 21 11:13:28 2016 +0700
+
+    Add .gitignore and .gitattributes.
