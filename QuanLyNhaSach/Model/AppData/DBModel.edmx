@@ -1,0 +1,679 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NhaSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHITIETHOADONs">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="int" Nullable="false" />
+          <Property Name="MASACH" Type="char" MaxLength="13" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="MUCGIAMGIA" Type="int" />
+        </EntityType>
+        <EntityType Name="HOADONs">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="int" Nullable="false" />
+          <Property Name="TENKHACHHANG" Type="nvarchar" MaxLength="50" />
+          <Property Name="NGAYLAP" Type="datetime" />
+          <Property Name="TONGTIEN" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="KHOes">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="TONGSOLUONG" Type="int" />
+          <Property Name="SOLUONGCON" Type="int" />
+        </EntityType>
+        <EntityType Name="LINHVUCs">
+          <Key>
+            <PropertyRef Name="MALINHVUC" />
+          </Key>
+          <Property Name="MALINHVUC" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TENLINHVUC" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="LOAISACHes">
+          <Key>
+            <PropertyRef Name="MALOAISACH" />
+          </Key>
+          <Property Name="MALOAISACH" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="TENLOAISACH" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="NHATKINHAPSACHes">
+          <Key>
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="MASACH" Type="char" MaxLength="13" />
+          <Property Name="SOLUONG" Type="int" />
+          <Property Name="NGAYNHAP" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SACHes">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="TENSACH" Type="nvarchar" MaxLength="100" />
+          <Property Name="MATG" Type="char" MaxLength="4" />
+          <Property Name="MALOAISACH" Type="char" MaxLength="2" />
+          <Property Name="MALINHVUC" Type="char" MaxLength="2" />
+          <Property Name="GIAMUA" Type="int" />
+        </EntityType>
+        <EntityType Name="SACHKHUYENMAIs">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="MUCGIAMGIA" Type="int" />
+        </EntityType>
+        <EntityType Name="TACGIAs">
+          <Key>
+            <PropertyRef Name="MATG" />
+          </Key>
+          <Property Name="MATG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENTG" Type="nvarchar" MaxLength="40" />
+          <Property Name="NAMSINH" Type="char" MaxLength="4" />
+          <Property Name="NAMMAT" Type="char" MaxLength="4" />
+          <Property Name="QUEQUAN" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TAIKHOANs">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" />
+          <Property Name="TEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="char" MaxLength="8" />
+          <Property Name="NGAYLAMVIEC" Type="datetime" />
+          <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="THONGTINXUATBANs">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
+          <Property Name="LANTAIBAN" Type="char" MaxLength="11" />
+          <Property Name="NAMXUATBAN" Type="char" MaxLength="4" />
+          <Property Name="NHAXUATBAN" Type="nvarchar" MaxLength="50" />
+          <Property Name="GIABIA" Type="int" />
+        </EntityType>
+        <Association Name="FK_CHITIETHOADON_HOADON">
+          <End Role="HOADONs" Type="Self.HOADONs" Multiplicity="1" />
+          <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADONs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONs">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="CHITIETHOADONs">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETHOADON_SACH">
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="0..1" />
+          <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADONs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="CHITIETHOADONs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KHO_SACH">
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="KHOes" Type="Self.KHOes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="KHOes">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHATKINHAPSACH_KHO">
+          <End Role="KHOes" Type="Self.KHOes" Multiplicity="0..1" />
+          <End Role="NHATKINHAPSACHes" Type="Self.NHATKINHAPSACHes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHOes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="NHATKINHAPSACHes">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_LOAISACH">
+          <End Role="LOAISACHes" Type="Self.LOAISACHes" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAISACHes">
+              <PropertyRef Name="MALOAISACH" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MALOAISACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_TACGIA">
+          <End Role="TACGIAs" Type="Self.TACGIAs" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TACGIAs">
+              <PropertyRef Name="MATG" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MATG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACHes_LINHVUCs">
+          <End Role="LINHVUCs" Type="Self.LINHVUCs" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINHVUCs">
+              <PropertyRef Name="MALINHVUC" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MALINHVUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACHKHUYENMAI_SACH">
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="SACHKHUYENMAIs" Type="Self.SACHKHUYENMAIs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="SACHKHUYENMAIs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THONGTINXUATBAN_SACH">
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="THONGTINXUATBANs" Type="Self.THONGTINXUATBANs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="THONGTINXUATBANs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NhaSachModelStoreContainer">
+          <EntitySet Name="CHITIETHOADONs" EntityType="Self.CHITIETHOADONs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADONs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KHOes" EntityType="Self.KHOes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LINHVUCs" EntityType="Self.LINHVUCs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOAISACHes" EntityType="Self.LOAISACHes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHATKINHAPSACHes" EntityType="Self.NHATKINHAPSACHes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACHes" EntityType="Self.SACHes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAIs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TACGIAs" EntityType="Self.TACGIAs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOANs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="THONGTINXUATBANs" EntityType="Self.THONGTINXUATBANs" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CHITIETHOADON_HOADON" Association="Self.FK_CHITIETHOADON_HOADON">
+            <End Role="HOADONs" EntitySet="HOADONs" />
+            <End Role="CHITIETHOADONs" EntitySet="CHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETHOADON_SACH" Association="Self.FK_CHITIETHOADON_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="CHITIETHOADONs" EntitySet="CHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHO_SACH" Association="Self.FK_KHO_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="KHOes" EntitySet="KHOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHATKINHAPSACH_KHO" Association="Self.FK_NHATKINHAPSACH_KHO">
+            <End Role="KHOes" EntitySet="KHOes" />
+            <End Role="NHATKINHAPSACHes" EntitySet="NHATKINHAPSACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_LOAISACH" Association="Self.FK_SACH_LOAISACH">
+            <End Role="LOAISACHes" EntitySet="LOAISACHes" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_TACGIA" Association="Self.FK_SACH_TACGIA">
+            <End Role="TACGIAs" EntitySet="TACGIAs" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACHes_LINHVUCs" Association="Self.FK_SACHes_LINHVUCs">
+            <End Role="LINHVUCs" EntitySet="LINHVUCs" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACHKHUYENMAI_SACH" Association="Self.FK_SACHKHUYENMAI_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="SACHKHUYENMAIs" EntitySet="SACHKHUYENMAIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THONGTINXUATBAN_SACH" Association="Self.FK_THONGTINXUATBAN_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="THONGTINXUATBANs" EntitySet="THONGTINXUATBANs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NhaSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHITIETHOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="Int32" Nullable="false" />
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="MUCGIAMGIA" Type="Int32" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK_CHITIETHOADON_HOADON" FromRole="CHITIETHOADONs" ToRole="HOADONs" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_CHITIETHOADON_SACH" FromRole="CHITIETHOADONs" ToRole="SACHes" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="Int32" Nullable="false" />
+          <Property Name="TENKHACHHANG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYLAP" Type="DateTime" Precision="3" />
+          <Property Name="TONGTIEN" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="CHITIETHOADON" Relationship="Self.FK_CHITIETHOADON_HOADON" FromRole="HOADONs" ToRole="CHITIETHOADONs" />
+        </EntityType>
+        <EntityType Name="KHO">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TONGSOLUONG" Type="Int32" />
+          <Property Name="SOLUONGCON" Type="Int32" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_KHO_SACH" FromRole="KHOes" ToRole="SACHes" />
+          <NavigationProperty Name="NHATKINHAPSACHes" Relationship="Self.FK_NHATKINHAPSACH_KHO" FromRole="KHOes" ToRole="NHATKINHAPSACHes" />
+        </EntityType>
+        <EntityType Name="LINHVUC">
+          <Key>
+            <PropertyRef Name="MALINHVUC" />
+          </Key>
+          <Property Name="MALINHVUC" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENLINHVUC" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_SACHes_LINHVUCs" FromRole="LINHVUCs" ToRole="SACHes" />
+        </EntityType>
+        <EntityType Name="LOAISACH">
+          <Key>
+            <PropertyRef Name="MALOAISACH" />
+          </Key>
+          <Property Name="MALOAISACH" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENLOAISACH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_LOAISACH" FromRole="LOAISACHes" ToRole="SACHes" />
+        </EntityType>
+        <EntityType Name="NHATKINHAPSACH">
+          <Key>
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="STT" Type="Int32" Nullable="false" />
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="NGAYNHAP" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="KHO" Relationship="Self.FK_NHATKINHAPSACH_KHO" FromRole="NHATKINHAPSACHes" ToRole="KHOes" />
+        </EntityType>
+        <EntityType Name="SACH">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENSACH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MATG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MALOAISACH" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="MALINHVUC" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="GIAMUA" Type="Int32" />
+          <NavigationProperty Name="CHITIETHOADONs" Relationship="Self.FK_CHITIETHOADON_SACH" FromRole="SACHes" ToRole="CHITIETHOADONs" />
+          <NavigationProperty Name="KHO" Relationship="Self.FK_KHO_SACH" FromRole="SACHes" ToRole="KHOes" />
+          <NavigationProperty Name="LINHVUC" Relationship="Self.FK_SACHes_LINHVUCs" FromRole="SACHes" ToRole="LINHVUCs" />
+          <NavigationProperty Name="LOAISACH" Relationship="Self.FK_SACH_LOAISACH" FromRole="SACHes" ToRole="LOAISACHes" />
+          <NavigationProperty Name="TACGIA" Relationship="Self.FK_SACH_TACGIA" FromRole="SACHes" ToRole="TACGIAs" />
+          <NavigationProperty Name="SACHKHUYENMAI" Relationship="Self.FK_SACHKHUYENMAI_SACH" FromRole="SACHes" ToRole="SACHKHUYENMAIs" />
+          <NavigationProperty Name="THONGTINXUATBAN" Relationship="Self.FK_THONGTINXUATBAN_SACH" FromRole="SACHes" ToRole="THONGTINXUATBANs" />
+        </EntityType>
+        <EntityType Name="SACHKHUYENMAI">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MUCGIAMGIA" Type="Int32" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_SACHKHUYENMAI_SACH" FromRole="SACHKHUYENMAIs" ToRole="SACHes" />
+        </EntityType>
+        <EntityType Name="TACGIA">
+          <Key>
+            <PropertyRef Name="MATG" />
+          </Key>
+          <Property Name="MATG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENTG" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="NAMSINH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="NAMMAT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="QUEQUAN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_TACGIA" FromRole="TACGIAs" ToRole="SACHes" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="NGAYLAMVIEC" Type="DateTime" Precision="3" />
+          <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="THONGTINXUATBAN">
+          <Key>
+            <PropertyRef Name="MASACH" />
+          </Key>
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="LANTAIBAN" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="NAMXUATBAN" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="NHAXUATBAN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIABIA" Type="Int32" />
+          <NavigationProperty Name="SACH" Relationship="Self.FK_THONGTINXUATBAN_SACH" FromRole="THONGTINXUATBANs" ToRole="SACHes" />
+        </EntityType>
+        <Association Name="FK_CHITIETHOADON_HOADON">
+          <End Role="HOADONs" Type="Self.HOADON" Multiplicity="1" />
+          <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADON" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="HOADONs">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="CHITIETHOADONs">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETHOADON_SACH">
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="0..1" />
+          <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="CHITIETHOADONs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KHO_SACH">
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="1" />
+          <End Role="KHOes" Type="Self.KHO" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="KHOes">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NHATKINHAPSACH_KHO">
+          <End Role="KHOes" Type="Self.KHO" Multiplicity="0..1" />
+          <End Role="NHATKINHAPSACHes" Type="Self.NHATKINHAPSACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHOes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="NHATKINHAPSACHes">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACHes_LINHVUCs">
+          <End Role="LINHVUCs" Type="Self.LINHVUC" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINHVUCs">
+              <PropertyRef Name="MALINHVUC" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MALINHVUC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_LOAISACH">
+          <End Role="LOAISACHes" Type="Self.LOAISACH" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOAISACHes">
+              <PropertyRef Name="MALOAISACH" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MALOAISACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACH_TACGIA">
+          <End Role="TACGIAs" Type="Self.TACGIA" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TACGIAs">
+              <PropertyRef Name="MATG" />
+            </Principal>
+            <Dependent Role="SACHes">
+              <PropertyRef Name="MATG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SACHKHUYENMAI_SACH">
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="1" />
+          <End Role="SACHKHUYENMAIs" Type="Self.SACHKHUYENMAI" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="SACHKHUYENMAIs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_THONGTINXUATBAN_SACH">
+          <End Role="SACHes" Type="Self.SACH" Multiplicity="1" />
+          <End Role="THONGTINXUATBANs" Type="Self.THONGTINXUATBAN" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SACHes">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="THONGTINXUATBANs">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NhaSachEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHITIETHOADONs" EntityType="Self.CHITIETHOADON" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="KHOes" EntityType="Self.KHO" />
+          <EntitySet Name="LINHVUCs" EntityType="Self.LINHVUC" />
+          <EntitySet Name="LOAISACHes" EntityType="Self.LOAISACH" />
+          <EntitySet Name="NHATKINHAPSACHes" EntityType="Self.NHATKINHAPSACH" />
+          <EntitySet Name="SACHes" EntityType="Self.SACH" />
+          <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAI" />
+          <EntitySet Name="TACGIAs" EntityType="Self.TACGIA" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+          <EntitySet Name="THONGTINXUATBANs" EntityType="Self.THONGTINXUATBAN" />
+          <AssociationSet Name="FK_CHITIETHOADON_HOADON" Association="Self.FK_CHITIETHOADON_HOADON">
+            <End Role="HOADONs" EntitySet="HOADONs" />
+            <End Role="CHITIETHOADONs" EntitySet="CHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETHOADON_SACH" Association="Self.FK_CHITIETHOADON_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="CHITIETHOADONs" EntitySet="CHITIETHOADONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KHO_SACH" Association="Self.FK_KHO_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="KHOes" EntitySet="KHOes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NHATKINHAPSACH_KHO" Association="Self.FK_NHATKINHAPSACH_KHO">
+            <End Role="KHOes" EntitySet="KHOes" />
+            <End Role="NHATKINHAPSACHes" EntitySet="NHATKINHAPSACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACHes_LINHVUCs" Association="Self.FK_SACHes_LINHVUCs">
+            <End Role="LINHVUCs" EntitySet="LINHVUCs" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_LOAISACH" Association="Self.FK_SACH_LOAISACH">
+            <End Role="LOAISACHes" EntitySet="LOAISACHes" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACH_TACGIA" Association="Self.FK_SACH_TACGIA">
+            <End Role="TACGIAs" EntitySet="TACGIAs" />
+            <End Role="SACHes" EntitySet="SACHes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SACHKHUYENMAI_SACH" Association="Self.FK_SACHKHUYENMAI_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="SACHKHUYENMAIs" EntitySet="SACHKHUYENMAIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_THONGTINXUATBAN_SACH" Association="Self.FK_THONGTINXUATBAN_SACH">
+            <End Role="SACHes" EntitySet="SACHes" />
+            <End Role="THONGTINXUATBANs" EntitySet="THONGTINXUATBANs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NhaSachModelStoreContainer" CdmEntityContainer="NhaSachEntities">
+          <EntitySetMapping Name="CHITIETHOADONs">
+            <EntityTypeMapping TypeName="NhaSachModel.CHITIETHOADON">
+              <MappingFragment StoreEntitySet="CHITIETHOADONs">
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MUCGIAMGIA" ColumnName="MUCGIAMGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="NhaSachModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADONs">
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+                <ScalarProperty Name="TENKHACHHANG" ColumnName="TENKHACHHANG" />
+                <ScalarProperty Name="NGAYLAP" ColumnName="NGAYLAP" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KHOes">
+            <EntityTypeMapping TypeName="NhaSachModel.KHO">
+              <MappingFragment StoreEntitySet="KHOes">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="TONGSOLUONG" ColumnName="TONGSOLUONG" />
+                <ScalarProperty Name="SOLUONGCON" ColumnName="SOLUONGCON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LINHVUCs">
+            <EntityTypeMapping TypeName="NhaSachModel.LINHVUC">
+              <MappingFragment StoreEntitySet="LINHVUCs">
+                <ScalarProperty Name="MALINHVUC" ColumnName="MALINHVUC" />
+                <ScalarProperty Name="TENLINHVUC" ColumnName="TENLINHVUC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOAISACHes">
+            <EntityTypeMapping TypeName="NhaSachModel.LOAISACH">
+              <MappingFragment StoreEntitySet="LOAISACHes">
+                <ScalarProperty Name="MALOAISACH" ColumnName="MALOAISACH" />
+                <ScalarProperty Name="TENLOAISACH" ColumnName="TENLOAISACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHATKINHAPSACHes">
+            <EntityTypeMapping TypeName="NhaSachModel.NHATKINHAPSACH">
+              <MappingFragment StoreEntitySet="NHATKINHAPSACHes">
+                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SACHes">
+            <EntityTypeMapping TypeName="NhaSachModel.SACH">
+              <MappingFragment StoreEntitySet="SACHes">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="TENSACH" ColumnName="TENSACH" />
+                <ScalarProperty Name="MATG" ColumnName="MATG" />
+                <ScalarProperty Name="MALOAISACH" ColumnName="MALOAISACH" />
+                <ScalarProperty Name="MALINHVUC" ColumnName="MALINHVUC" />
+                <ScalarProperty Name="GIAMUA" ColumnName="GIAMUA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SACHKHUYENMAIs">
+            <EntityTypeMapping TypeName="NhaSachModel.SACHKHUYENMAI">
+              <MappingFragment StoreEntitySet="SACHKHUYENMAIs">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="MUCGIAMGIA" ColumnName="MUCGIAMGIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TACGIAs">
+            <EntityTypeMapping TypeName="NhaSachModel.TACGIA">
+              <MappingFragment StoreEntitySet="TACGIAs">
+                <ScalarProperty Name="MATG" ColumnName="MATG" />
+                <ScalarProperty Name="TENTG" ColumnName="TENTG" />
+                <ScalarProperty Name="NAMSINH" ColumnName="NAMSINH" />
+                <ScalarProperty Name="NAMMAT" ColumnName="NAMMAT" />
+                <ScalarProperty Name="QUEQUAN" ColumnName="QUEQUAN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="NhaSachModel.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOANs">
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="NGAYLAMVIEC" ColumnName="NGAYLAMVIEC" />
+                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THONGTINXUATBANs">
+            <EntityTypeMapping TypeName="NhaSachModel.THONGTINXUATBAN">
+              <MappingFragment StoreEntitySet="THONGTINXUATBANs">
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="LANTAIBAN" ColumnName="LANTAIBAN" />
+                <ScalarProperty Name="NAMXUATBAN" ColumnName="NAMXUATBAN" />
+                <ScalarProperty Name="NHAXUATBAN" ColumnName="NHAXUATBAN" />
+                <ScalarProperty Name="GIABIA" ColumnName="GIABIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
