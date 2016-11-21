@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NhaSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="NhaSachModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CHITIETHOADONs">
           <Key>
             <PropertyRef Name="MAHOADON" />
@@ -60,7 +60,7 @@
           </Key>
           <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
           <Property Name="TENSACH" Type="nvarchar" MaxLength="100" />
-          <Property Name="MATG" Type="char" MaxLength="4" />
+          <Property Name="MATG" Type="int" />
           <Property Name="MALOAISACH" Type="char" MaxLength="2" />
           <Property Name="MALINHVUC" Type="char" MaxLength="2" />
           <Property Name="GIAMUA" Type="int" />
@@ -72,14 +72,24 @@
           <Property Name="MASACH" Type="char" MaxLength="13" Nullable="false" />
           <Property Name="MUCGIAMGIA" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TACGIAs">
           <Key>
             <PropertyRef Name="MATG" />
           </Key>
-          <Property Name="MATG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MATG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENTG" Type="nvarchar" MaxLength="40" />
-          <Property Name="NAMSINH" Type="char" MaxLength="4" />
-          <Property Name="NAMMAT" Type="char" MaxLength="4" />
+          <Property Name="NAMSINH" Type="date" />
+          <Property Name="NAMMAT" Type="date" />
           <Property Name="QUEQUAN" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="TAIKHOANs">
@@ -220,6 +230,7 @@
           <EntitySet Name="NHATKINHAPSACHes" EntityType="Self.NHATKINHAPSACHes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACHes" EntityType="Self.SACHes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAIs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TACGIAs" EntityType="Self.TACGIAs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOANs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THONGTINXUATBANs" EntityType="Self.THONGTINXUATBANs" Schema="dbo" store:Type="Tables" />
@@ -260,8 +271,7 @@
             <End Role="THONGTINXUATBANs" EntitySet="THONGTINXUATBANs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NhaSachModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -328,7 +338,7 @@
           </Key>
           <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TENSACH" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MATG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MATG" Type="Int32" />
           <Property Name="MALOAISACH" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="MALINHVUC" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
           <Property Name="GIAMUA" Type="Int32" />
@@ -336,9 +346,9 @@
           <NavigationProperty Name="KHO" Relationship="Self.FK_KHO_SACH" FromRole="SACHes" ToRole="KHOes" />
           <NavigationProperty Name="LINHVUC" Relationship="Self.FK_SACHes_LINHVUCs" FromRole="SACHes" ToRole="LINHVUCs" />
           <NavigationProperty Name="LOAISACH" Relationship="Self.FK_SACH_LOAISACH" FromRole="SACHes" ToRole="LOAISACHes" />
-          <NavigationProperty Name="TACGIA" Relationship="Self.FK_SACH_TACGIA" FromRole="SACHes" ToRole="TACGIAs" />
           <NavigationProperty Name="SACHKHUYENMAI" Relationship="Self.FK_SACHKHUYENMAI_SACH" FromRole="SACHes" ToRole="SACHKHUYENMAIs" />
           <NavigationProperty Name="THONGTINXUATBAN" Relationship="Self.FK_THONGTINXUATBAN_SACH" FromRole="SACHes" ToRole="THONGTINXUATBANs" />
+          <NavigationProperty Name="TACGIA" Relationship="NhaSachModel.FK_SACH_TACGIA" FromRole="SACH" ToRole="TACGIA" />
         </EntityType>
         <EntityType Name="SACHKHUYENMAI">
           <Key>
@@ -347,17 +357,6 @@
           <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MUCGIAMGIA" Type="Int32" />
           <NavigationProperty Name="SACH" Relationship="Self.FK_SACHKHUYENMAI_SACH" FromRole="SACHKHUYENMAIs" ToRole="SACHes" />
-        </EntityType>
-        <EntityType Name="TACGIA">
-          <Key>
-            <PropertyRef Name="MATG" />
-          </Key>
-          <Property Name="MATG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="TENTG" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="NAMSINH" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="NAMMAT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="QUEQUAN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_TACGIA" FromRole="TACGIAs" ToRole="SACHes" />
         </EntityType>
         <EntityType Name="TAIKHOAN">
           <Key>
@@ -453,18 +452,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_SACH_TACGIA">
-          <End Role="TACGIAs" Type="Self.TACGIA" Multiplicity="0..1" />
-          <End Role="SACHes" Type="Self.SACH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TACGIAs">
-              <PropertyRef Name="MATG" />
-            </Principal>
-            <Dependent Role="SACHes">
-              <PropertyRef Name="MATG" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SACHKHUYENMAI_SACH">
           <End Role="SACHes" Type="Self.SACH" Multiplicity="1" />
           <End Role="SACHKHUYENMAIs" Type="Self.SACHKHUYENMAI" Multiplicity="0..1" />
@@ -498,7 +485,6 @@
           <EntitySet Name="NHATKINHAPSACHes" EntityType="Self.NHATKINHAPSACH" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
           <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAI" />
-          <EntitySet Name="TACGIAs" EntityType="Self.TACGIA" />
           <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
           <EntitySet Name="THONGTINXUATBANs" EntityType="Self.THONGTINXUATBAN" />
           <AssociationSet Name="FK_CHITIETHOADON_HOADON" Association="Self.FK_CHITIETHOADON_HOADON">
@@ -525,10 +511,6 @@
             <End Role="LOAISACHes" EntitySet="LOAISACHes" />
             <End Role="SACHes" EntitySet="SACHes" />
           </AssociationSet>
-          <AssociationSet Name="FK_SACH_TACGIA" Association="Self.FK_SACH_TACGIA">
-            <End Role="TACGIAs" EntitySet="TACGIAs" />
-            <End Role="SACHes" EntitySet="SACHes" />
-          </AssociationSet>
           <AssociationSet Name="FK_SACHKHUYENMAI_SACH" Association="Self.FK_SACHKHUYENMAI_SACH">
             <End Role="SACHes" EntitySet="SACHes" />
             <End Role="SACHKHUYENMAIs" EntitySet="SACHKHUYENMAIs" />
@@ -537,7 +519,46 @@
             <End Role="SACHes" EntitySet="SACHes" />
             <End Role="THONGTINXUATBANs" EntitySet="THONGTINXUATBANs" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="NhaSachModel.sysdiagram" />
+          <EntitySet Name="TACGIAs" EntityType="NhaSachModel.TACGIA" />
+          <AssociationSet Name="FK_SACH_TACGIA" Association="NhaSachModel.FK_SACH_TACGIA">
+            <End Role="TACGIA" EntitySet="TACGIAs" />
+            <End Role="SACH" EntitySet="SACHes" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TACGIA">
+          <Key>
+            <PropertyRef Name="MATG" />
+          </Key>
+          <Property Name="MATG" Type="Int32" Nullable="false" />
+          <Property Name="TENTG" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="NAMSINH" Type="DateTime" Precision="0" />
+          <Property Name="NAMMAT" Type="DateTime" Precision="0" />
+          <Property Name="QUEQUAN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SACHes" Relationship="NhaSachModel.FK_SACH_TACGIA" FromRole="TACGIA" ToRole="SACH" />
+        </EntityType>
+        <Association Name="FK_SACH_TACGIA">
+          <End Type="NhaSachModel.TACGIA" Role="TACGIA" Multiplicity="0..1" />
+          <End Type="NhaSachModel.SACH" Role="SACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TACGIA">
+              <PropertyRef Name="MATG" />
+            </Principal>
+            <Dependent Role="SACH">
+              <PropertyRef Name="MATG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -619,17 +640,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TACGIAs">
-            <EntityTypeMapping TypeName="NhaSachModel.TACGIA">
-              <MappingFragment StoreEntitySet="TACGIAs">
-                <ScalarProperty Name="MATG" ColumnName="MATG" />
-                <ScalarProperty Name="TENTG" ColumnName="TENTG" />
-                <ScalarProperty Name="NAMSINH" ColumnName="NAMSINH" />
-                <ScalarProperty Name="NAMMAT" ColumnName="NAMMAT" />
-                <ScalarProperty Name="QUEQUAN" ColumnName="QUEQUAN" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TAIKHOANs">
             <EntityTypeMapping TypeName="NhaSachModel.TAIKHOAN">
               <MappingFragment StoreEntitySet="TAIKHOANs">
@@ -650,6 +660,28 @@
                 <ScalarProperty Name="NAMXUATBAN" ColumnName="NAMXUATBAN" />
                 <ScalarProperty Name="NHAXUATBAN" ColumnName="NHAXUATBAN" />
                 <ScalarProperty Name="GIABIA" ColumnName="GIABIA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="NhaSachModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TACGIAs">
+            <EntityTypeMapping TypeName="NhaSachModel.TACGIA">
+              <MappingFragment StoreEntitySet="TACGIAs">
+                <ScalarProperty Name="QUEQUAN" ColumnName="QUEQUAN" />
+                <ScalarProperty Name="NAMMAT" ColumnName="NAMMAT" />
+                <ScalarProperty Name="NAMSINH" ColumnName="NAMSINH" />
+                <ScalarProperty Name="TENTG" ColumnName="TENTG" />
+                <ScalarProperty Name="MATG" ColumnName="MATG" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

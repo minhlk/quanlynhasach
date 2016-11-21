@@ -1,4 +1,8 @@
-﻿using System;
+﻿using QuanLyNhaSach.Model;
+using QuanLyNhaSach.Presenter;
+using QuanLyNhaSach.Validation;
+using QuanLyNhaSach.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +20,9 @@ namespace QuanLyNhaSach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            TacGiaForm TacGiaForm = new TacGiaForm();
+            
+            Application.Run(TacGiaForm);
         }
     }
 }

@@ -22,7 +22,7 @@ namespace QuanLyNhaSach.Model.AppData
     
         public string MASACH { get; set; }
         public string TENSACH { get; set; }
-        public string MATG { get; set; }
+        public Nullable<int> MATG { get; set; }
         public string MALOAISACH { get; set; }
         public string MALINHVUC { get; set; }
         public Nullable<int> GIAMUA { get; set; }
@@ -32,8 +32,8 @@ namespace QuanLyNhaSach.Model.AppData
         public virtual KHO KHO { get; set; }
         public virtual LINHVUC LINHVUC { get; set; }
         public virtual LOAISACH LOAISACH { get; set; }
-        public virtual TACGIA TACGIA { get; set; }
         public virtual SACHKHUYENMAI SACHKHUYENMAI { get; set; }
         public virtual THONGTINXUATBAN THONGTINXUATBAN { get; set; }
+        public virtual TACGIA TACGIA { get; set; }
     }
 }

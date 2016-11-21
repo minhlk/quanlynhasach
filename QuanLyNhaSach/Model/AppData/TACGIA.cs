@@ -20,10 +20,10 @@ namespace QuanLyNhaSach.Model.AppData
             this.SACHes = new HashSet<SACH>();
         }
     
-        public string MATG { get; set; }
+        public int MATG { get; set; }
         public string TENTG { get; set; }
-        public string NAMSINH { get; set; }
-        public string NAMMAT { get; set; }
+        public Nullable<System.DateTime> NAMSINH { get; set; }
+        public Nullable<System.DateTime> NAMMAT { get; set; }
         public string QUEQUAN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

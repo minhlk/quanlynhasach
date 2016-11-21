@@ -33,8 +33,9 @@ namespace QuanLyNhaSach.Model.AppData
         public virtual DbSet<NHATKINHAPSACH> NHATKINHAPSACHes { get; set; }
         public virtual DbSet<SACH> SACHes { get; set; }
         public virtual DbSet<SACHKHUYENMAI> SACHKHUYENMAIs { get; set; }
-        public virtual DbSet<TACGIA> TACGIAs { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
         public virtual DbSet<THONGTINXUATBAN> THONGTINXUATBANs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TACGIA> TACGIAs { get; set; }
     }
 }
