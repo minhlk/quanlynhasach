@@ -56,7 +56,14 @@ namespace QuanLyNhaSach.View
                
                 if (!CheckBox1.Checked) { hoadon.NGAYLAP = DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
                 else hoadon.NGAYLAP = null;
-                hoadon.TONGTIEN = int.Parse(TextField2.Text);
+                int a;
+                if (int.TryParse(TextField2.Text, out a))
+                {
+                    hoadon.TONGTIEN = int.Parse(TextField2.Text);
+                }
+
+                else
+                    hoadon.TONGTIEN = 0;
                 return hoadon;
             }
 
@@ -127,16 +134,19 @@ namespace QuanLyNhaSach.View
         private void Button1_Click(object sender, EventArgs e)
         {
             Presenter.saveHoaDon();
+            showError();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             Presenter.editHoaDon();
+
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             Presenter.deleteHoaDon();
+            showError();
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)

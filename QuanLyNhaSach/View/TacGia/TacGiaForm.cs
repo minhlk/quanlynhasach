@@ -166,6 +166,7 @@ namespace QuanLyNhaSach.View
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Presenter.showSelected();
+            
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
