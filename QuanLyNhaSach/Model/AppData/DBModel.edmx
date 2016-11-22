@@ -18,7 +18,7 @@
           <Key>
             <PropertyRef Name="MAHOADON" />
           </Key>
-          <Property Name="MAHOADON" Type="int" Nullable="false" />
+          <Property Name="MAHOADON" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TENKHACHHANG" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAYLAP" Type="datetime" />
           <Property Name="TONGTIEN" Type="decimal" Precision="10" Scale="2" />

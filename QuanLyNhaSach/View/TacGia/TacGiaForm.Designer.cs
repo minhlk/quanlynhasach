@@ -77,12 +77,12 @@
             // 
             this.Label1.AutoSize = true;
             this.Label1.Depth = 0;
-            this.Label1.Font = new System.Drawing.Font("Courier New", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label1.Font = new System.Drawing.Font("Roboto", 11F);
             this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label1.Location = new System.Drawing.Point(462, 74);
             this.Label1.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(107, 17);
+            this.Label1.Size = new System.Drawing.Size(89, 19);
             this.Label1.TabIndex = 3;
             this.Label1.Text = "Tên Tác Giả";
             // 
@@ -90,12 +90,12 @@
             // 
             this.Label2.AutoSize = true;
             this.Label2.Depth = 0;
-            this.Label2.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.Label2.Font = new System.Drawing.Font("Roboto", 11F);
             this.Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label2.Location = new System.Drawing.Point(462, 277);
             this.Label2.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(80, 17);
+            this.Label2.Size = new System.Drawing.Size(73, 19);
             this.Label2.TabIndex = 5;
             this.Label2.Text = "Quê Quán";
             // 
@@ -126,12 +126,12 @@
             // 
             this.Label3.AutoSize = true;
             this.Label3.Depth = 0;
-            this.Label3.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.Label3.Font = new System.Drawing.Font("Roboto", 11F);
             this.Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label3.Location = new System.Drawing.Point(462, 137);
             this.Label3.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label3.Name = "Label3";
-            this.Label3.Size = new System.Drawing.Size(89, 17);
+            this.Label3.Size = new System.Drawing.Size(76, 19);
             this.Label3.TabIndex = 7;
             this.Label3.Text = "Ngày Sinh";
             // 
@@ -139,12 +139,12 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Depth = 0;
-            this.Label4.Font = new System.Drawing.Font("Courier New", 11.25F);
+            this.Label4.Font = new System.Drawing.Font("Roboto", 11F);
             this.Label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label4.Location = new System.Drawing.Point(462, 212);
             this.Label4.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(80, 17);
+            this.Label4.Size = new System.Drawing.Size(73, 19);
             this.Label4.TabIndex = 9;
             this.Label4.Text = "Ngày Mất";
             // 

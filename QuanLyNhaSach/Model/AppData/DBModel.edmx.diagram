@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6780b6e3cb3d4b8797a174138aa245e7" Name="Diagram1">
-        <EntityTypeShape EntityType="NhaSachModel.CHITIETHOADON" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.HOADON" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.KHO" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.LINHVUC" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.LOAISACH" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.NHATKINHAPSACH" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.SACH" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.SACHKHUYENMAI" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.TAIKHOAN" Width="1.5" PointX="7.375" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NhaSachModel.THONGTINXUATBAN" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+      <Diagram DiagramId="6780b6e3cb3d4b8797a174138aa245e7" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="NhaSachModel.CHITIETHOADON" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.HOADON" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.KHO" Width="1.5" PointX="5.375" PointY="5.125" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.LINHVUC" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.LOAISACH" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.NHATKINHAPSACH" Width="1.5" PointX="7.625" PointY="4.875" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.SACH" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.SACHKHUYENMAI" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.TAIKHOAN" Width="1.5" PointX="7.375" PointY="7.75" IsExpanded="true" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.THONGTINXUATBAN" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_HOADON" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_SACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_KHO_SACH" ManuallyRouted="false" />
@@ -23,8 +23,8 @@
         <AssociationConnector Association="NhaSachModel.FK_SACH_LOAISACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_SACHKHUYENMAI_SACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_THONGTINXUATBAN_SACH" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NhaSachModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" />
-        <EntityTypeShape EntityType="NhaSachModel.TACGIA" Width="1.5" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="NhaSachModel.sysdiagram" Width="1.5" PointX="7.375" PointY="0.75" FillColor="Red" />
+        <EntityTypeShape EntityType="NhaSachModel.TACGIA" Width="1.5" PointX="0.75" PointY="8.625" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_SACH_TACGIA" />
       </Diagram>
     </edmx:Diagrams>
