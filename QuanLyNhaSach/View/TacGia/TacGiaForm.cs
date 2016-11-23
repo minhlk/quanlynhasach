@@ -19,7 +19,7 @@ namespace QuanLyNhaSach.View
     public partial class TacGiaForm : MaterialForm,ITacGiaForm
     {
         ModelState state;
-        public TACGIA tacgia=new TACGIA();
+        
         public TacGiaForm():this(new ModelState())
         {
             InitTheme();
@@ -61,47 +61,108 @@ namespace QuanLyNhaSach.View
             }
         }
 
-        public TACGIA TacGia
+        //public TACGIA TacGia
+        //{
+           
+
+        //    set
+        //    {
+        //        TACGIA tacgia = value;
+        //        TextField1.Text = tacgia.TENTG;
+        //        if (tacgia.NAMSINH == null)
+        //            CheckBox1.Checked = true;
+        //        else
+        //        {
+                    
+        //            dateTimePicker1.Text = tacgia.NAMSINH.ToString();
+        //            CheckBox1.Checked = false;
+        //        }
+        //        if (tacgia.NAMMAT == null)
+        //        {
+        //            CheckBox2.Checked = true;
+        //        }
+        //        else
+        //        {
+        //            dateTimePicker2.Text = tacgia.NAMMAT.ToString();
+        //            CheckBox2.Checked = false;
+        //        }
+        //        TextField2.Text = tacgia.QUEQUAN;
+                
+        //    }
+        //}
+
+       
+
+        public string TENTG
         {
             get
             {
-                
-                tacgia.TENTG = TextField1.Text;
-                if (!CheckBox2.Checked) { tacgia.NAMMAT = DateTime.Parse(dateTimePicker2.Value.ToShortDateString()); }
-                else tacgia.NAMMAT = null;
-                if (!CheckBox1.Checked) { tacgia.NAMSINH = DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
-                else tacgia.NAMSINH = null;
-                tacgia.QUEQUAN = TextField2.Text;
-                return tacgia;
+                 return TextField1.Text;
             }
 
             set
             {
-                TACGIA tacgia = value;
-                TextField1.Text = tacgia.TENTG;
-                if (tacgia.NAMSINH == null)
-                    CheckBox1.Checked = true;
-                else
-                {
-                    
-                    dateTimePicker1.Text = tacgia.NAMSINH.ToString();
-                    CheckBox1.Checked = false;
-                }
-                if (tacgia.NAMMAT == null)
-                {
-                    CheckBox2.Checked = true;
-                }
-                else
-                {
-                    dateTimePicker2.Text = tacgia.NAMMAT.ToString();
-                    CheckBox2.Checked = false;
-                }
-                TextField2.Text = tacgia.QUEQUAN;
-                
+                TextField1.Text=value;
             }
         }
 
-       
+        public DateTime? NAMSINH
+        {
+            get
+            {
+                if (!CheckBox1.Checked) { return DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
+                else return null;
+              
+            }
+
+            set
+            {
+                DateTime? time = value;
+                if (time == null)
+                    CheckBox1.Checked = true;
+                else
+                {
+
+                    dateTimePicker1.Text = time.ToString();
+                    CheckBox1.Checked = false;
+                }
+            }
+        }
+
+        public DateTime? NAMMAT
+        {
+            get
+            {
+                if (!CheckBox2.Checked) { return DateTime.Parse(dateTimePicker2.Value.ToShortDateString()); }
+                return null;
+            }
+
+            set
+            {
+                DateTime? time = value;
+                if (time == null)
+                    CheckBox2.Checked = true;
+                else
+                {
+
+                    dateTimePicker2.Text = time.ToString();
+                    CheckBox2.Checked = false;
+                }
+            }
+        }
+
+        public string QUEQUAN
+        {
+            get
+            {
+                return TextField2.Text;
+            }
+
+            set
+            {
+                TextField2.Text = value;
+            }
+        }
 
         public void Log(string mes)
         {

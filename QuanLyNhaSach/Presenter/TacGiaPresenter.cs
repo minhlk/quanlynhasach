@@ -29,7 +29,7 @@ namespace QuanLyNhaSach.Presenter
         }
         public void saveTacGia() {
             //TACGIA tg = repository.getTacGia(view.selectedTacGia);
-            TACGIA tg = view.TacGia;
+            TACGIA tg = ViewToModel();
 
             if (valid(tg)) { 
                 TACGIA kq = repository.saveTacGia(tg);
@@ -41,7 +41,7 @@ namespace QuanLyNhaSach.Presenter
         public void editTacGia()
         {
            
-            TACGIA tg_moi = view.TacGia;
+            TACGIA tg_moi = ViewToModel();
             int matg_cu = int.Parse(view.selectedTacGia);
 
             if (valid(tg_moi))
@@ -82,10 +82,29 @@ namespace QuanLyNhaSach.Presenter
 
         public void showSelected() {
             TACGIA tg = repository.getTacGia(int.Parse(view.selectedTacGia));
-            
-            view.TacGia = tg;
-        }
+            ModelToView(tg);
+            //view.TacGia = tg;
 
+        }
+        private void ModelToView(TACGIA tg)
+        {
+            view.TENTG = tg.TENTG;
+            view.NAMSINH = tg.NAMSINH;
+            view.NAMMAT = tg.NAMMAT;
+            view.QUEQUAN = tg.QUEQUAN;
+          
+
+        }
+        private TACGIA ViewToModel()
+        {
+            TACGIA tg = new TACGIA();
+            tg.TENTG=view.TENTG ;
+            tg.NAMSINH=view.NAMSINH ;
+            tg.NAMMAT= view.NAMMAT ;
+            tg.QUEQUAN= view.QUEQUAN ;
+            return tg;
+
+        }
 
     }
 }

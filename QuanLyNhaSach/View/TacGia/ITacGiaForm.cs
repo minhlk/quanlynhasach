@@ -11,7 +11,15 @@ namespace QuanLyNhaSach.View
     public interface ITacGiaForm
     {
 
-        TACGIA TacGia { get; set; }
+        
+
+         //int MATG { get; set; }
+         string TENTG { get; set; }
+         Nullable<System.DateTime> NAMSINH { get; set; }
+         Nullable<System.DateTime> NAMMAT { get; set; }
+         string QUEQUAN { get; set; }
+
+
         IEnumerable<TACGIA> getListTacGia { get; set; }
         Presenter.TacGiaPresenter Presenter { set; }
         string selectedTacGia { get; }
