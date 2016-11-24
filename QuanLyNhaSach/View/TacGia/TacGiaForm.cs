@@ -31,11 +31,12 @@ namespace QuanLyNhaSach.View
             new TacGiaPresenter(this, new TacGiaRepository(), new ModelStateWraper(state));
 
         }
-        public IEnumerable<TACGIA> getListTacGia
+        //public IEnumerable<TACGIA> getListTacGia
+        public object getListTacGia
         {
             get
             {
-                return dataGridView1.DataSource as IEnumerable<TACGIA>;
+                return dataGridView1.DataSource;
             }
 
             set

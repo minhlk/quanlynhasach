@@ -20,7 +20,8 @@ namespace QuanLyNhaSach.View
          string QUEQUAN { get; set; }
 
 
-        IEnumerable<TACGIA> getListTacGia { get; set; }
+        //IEnumerable<TACGIA> getListTacGia { get; set; }
+        object getListTacGia { get; set; }
         Presenter.TacGiaPresenter Presenter { set; }
         string selectedTacGia { get; }
         void Log(string mes);
