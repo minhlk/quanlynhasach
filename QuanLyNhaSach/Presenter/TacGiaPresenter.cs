@@ -15,12 +15,19 @@ namespace QuanLyNhaSach.Presenter
         ITacGiaRepository repository;
         ITacGiaForm view;
         IModelStateWraper state;
-        public TacGiaPresenter(ITacGiaForm _view,ITacGiaRepository _repository,IModelStateWraper _state)
+        public TacGiaPresenter(ITacGiaForm _view, IModelStateWraper _state):this(_view,new TacGiaRepository(),_state)
         {
             state = _state;
             view = _view;
-            repository = _repository;
+            //repository = _repository;
             _view.Presenter = this;
+        }
+        private TacGiaPresenter(ITacGiaForm _view,ITacGiaRepository _repository,IModelStateWraper _state)
+        {
+            //state = _state;
+            //view = _view;
+            repository = _repository;
+            //_view.Presenter = this;
         }
 
         public void getListTacGia() {

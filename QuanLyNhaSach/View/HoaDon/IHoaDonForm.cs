@@ -11,7 +11,8 @@ namespace QuanLyNhaSach.View.HoaDon
     {
         
         HOADON HoaDon { get; set; }
-        IEnumerable<HOADON> getListHoaDon { get; set; }
+        //IEnumerable<HOADON> getListHoaDon { get; set; }
+        object getListHoaDon { get; set; }
         Presenter.HoaDonPresenter Presenter { set; }
         string selectedHoaDon { get; }
         void Log(string mes);

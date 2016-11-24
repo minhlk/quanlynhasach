@@ -15,7 +15,13 @@ namespace QuanLyNhaSach.Presenter
         IHoaDonRepository repository;
         IHoaDonForm view;
         IModelStateWraper state;
-        public HoaDonPresenter(IHoaDonForm _view, IHoaDonRepository _repository, IModelStateWraper _state)
+        public HoaDonPresenter(IHoaDonForm _view, IModelStateWraper _state) : this(_view, new HoaDonRepository(), _state)
+        {
+            //view = _view;
+            //state = _state;
+            //_view.Presenter = this;
+        }
+        private HoaDonPresenter(IHoaDonForm _view, IHoaDonRepository _repository, IModelStateWraper _state)
         {
             state = _state;
             view = _view;

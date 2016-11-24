@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Model.AppData;
 using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
 using QuanLyNhaSach.Model;
@@ -28,7 +27,7 @@ namespace QuanLyNhaSach.View
         TacGiaForm(ModelState _state)
         {
             state = _state;
-            new TacGiaPresenter(this, new TacGiaRepository(), new ModelStateWraper(state));
+            new TacGiaPresenter(this, new ModelStateWraper(state));
 
         }
         //public IEnumerable<TACGIA> getListTacGia

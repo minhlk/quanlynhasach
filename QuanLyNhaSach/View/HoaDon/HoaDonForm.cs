@@ -29,14 +29,14 @@ namespace QuanLyNhaSach.View
          HoaDonForm(ModelState _state)
         {
             state = _state;
-            new HoaDonPresenter(this, new HoaDonRepository(), new ModelStateWraper(state));
+            new HoaDonPresenter(this, new ModelStateWraper(state));
 
         }
-        public IEnumerable<HOADON> getListHoaDon
+        public object getListHoaDon
         {
             get
             {
-                return dataGridView1.DataSource as List<HOADON>;
+                return dataGridView1.DataSource ;
             }
 
             set
