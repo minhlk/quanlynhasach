@@ -37,7 +37,8 @@ namespace QuanLyNhaSach.Presenter
         public void saveHoaDon()
         {
             //HOADON hd = repository.getHoaDon(view.selectedHoaDon);
-            HOADON hd = view.HoaDon;
+            //HOADON hd = view.HoaDon;
+            HOADON hd = viewtoModel();
 
             if (valid(hd))
             {
@@ -50,7 +51,8 @@ namespace QuanLyNhaSach.Presenter
         public void editHoaDon()
         {
 
-            HOADON hd_moi = view.HoaDon;
+            //HOADON hd_moi = view.HoaDon;
+            HOADON hd_moi = viewtoModel();
             int mahd_cu = int.Parse(view.selectedHoaDon);
 
             if (valid(hd_moi))
@@ -94,9 +96,26 @@ namespace QuanLyNhaSach.Presenter
         {
             HOADON hd = repository.getHoaDon(int.Parse(view.selectedHoaDon));
 
-            view.HoaDon = hd;
+            //view.HoaDon = hd;
+            modeltoView(hd);
         }
+        private HOADON viewtoModel()
+        {
+            HOADON temp = new HOADON();
+            temp.NGAYLAP = view.NGAYLAP;
+            temp.TENKHACHHANG = view.TENKHACHHANG;
+            temp.TONGTIEN = view.TONGTIEN;
+            
 
+            return temp;
+
+        }
+        private void modeltoView(HOADON hd)
+        {
+            view.NGAYLAP = hd.NGAYLAP;
+            view.TENKHACHHANG = hd.TENKHACHHANG;
+            view.TONGTIEN = hd.TONGTIEN;
+        }
 
     }
 }

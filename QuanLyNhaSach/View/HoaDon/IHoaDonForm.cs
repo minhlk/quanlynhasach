@@ -9,8 +9,12 @@ namespace QuanLyNhaSach.View.HoaDon
 {
     public interface IHoaDonForm
     {
-        
-        HOADON HoaDon { get; set; }
+
+        //public int MAHOADON { get; set; }
+         string TENKHACHHANG { get; set; }
+         Nullable<System.DateTime> NGAYLAP { get; set; }
+         Nullable<decimal> TONGTIEN { get; set; }
+        //HOADON HoaDon { get; set; }
         //IEnumerable<HOADON> getListHoaDon { get; set; }
         object getListHoaDon { get; set; }
         Presenter.HoaDonPresenter Presenter { set; }

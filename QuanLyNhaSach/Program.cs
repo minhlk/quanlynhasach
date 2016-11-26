@@ -22,8 +22,8 @@ namespace QuanLyNhaSach
             Application.SetCompatibleTextRenderingDefault(false);
             TacGiaForm TacGiaForm = new TacGiaForm();
             HoaDonForm HoaDonForm = new HoaDonForm();
-            //Application.Run(TacGiaForm);
-            Application.Run(HoaDonForm);
+            Application.Run(TacGiaForm);
+            //Application.Run(HoaDonForm);
         }
     }
 }

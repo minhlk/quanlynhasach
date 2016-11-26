@@ -47,43 +47,43 @@ namespace QuanLyNhaSach.View
             }
         }
 
-        public HOADON HoaDon
-        {
-            get
-            {
+        //public HOADON HoaDon
+        //{
+        //    get
+        //    {
 
-                hoadon.TENKHACHHANG = TextField1.Text;
+        //        hoadon.TENKHACHHANG = TextField1.Text;
                
-                if (!CheckBox1.Checked) { hoadon.NGAYLAP = DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
-                else hoadon.NGAYLAP = null;
-                int a;
-                if (int.TryParse(TextField2.Text, out a))
-                {
-                    hoadon.TONGTIEN = int.Parse(TextField2.Text);
-                }
+        //        if (!CheckBox1.Checked) { hoadon.NGAYLAP = DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
+        //        else hoadon.NGAYLAP = null;
+        //        int a;
+        //        if (int.TryParse(TextField2.Text, out a))
+        //        {
+        //            hoadon.TONGTIEN = int.Parse(TextField2.Text);
+        //        }
 
-                else
-                    hoadon.TONGTIEN = 0;
-                return hoadon;
-            }
+        //        else
+        //            hoadon.TONGTIEN = 0;
+        //        return hoadon;
+        //    }
 
-            set
-            {
-                HOADON hoadon = value;
-                TextField1.Text = hoadon.TENKHACHHANG;
-                if (hoadon.NGAYLAP == null)
-                    CheckBox1.Checked = true;
-                else
-                {
+        //    set
+        //    {
+        //        HOADON hoadon = value;
+        //        TextField1.Text = hoadon.TENKHACHHANG;
+        //        if (hoadon.NGAYLAP == null)
+        //            CheckBox1.Checked = true;
+        //        else
+        //        {
 
-                    dateTimePicker1.Text = hoadon.NGAYLAP.ToString();
-                    CheckBox1.Checked = false;
-                }
+        //            dateTimePicker1.Text = hoadon.NGAYLAP.ToString();
+        //            CheckBox1.Checked = false;
+        //        }
                
-                TextField2.Text = hoadon.TONGTIEN.ToString() ;
+        //        TextField2.Text = hoadon.TONGTIEN.ToString() ;
 
-            }
-        }
+        //    }
+        //}
 
         public HoaDonPresenter Presenter
         {
@@ -96,6 +96,61 @@ namespace QuanLyNhaSach.View
             {
                 int pos = dataGridView1.CurrentCell.RowIndex;
                 return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+            }
+        }
+
+        public string TENKHACHHANG
+        {
+            get
+            {
+               return TextField1.Text;
+            }
+
+            set
+            {
+                TextField1.Text = value;
+            }
+        }
+
+        public DateTime? NGAYLAP
+        {
+            get
+            {
+                if (!CheckBox1.Checked) { return DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
+                else return null;
+            }
+
+            set
+            {
+                DateTime? date = value;
+                if (date==null)
+                    CheckBox1.Checked = true;
+                else
+                {
+
+                    dateTimePicker1.Text = date.ToString();
+                    CheckBox1.Checked = false;
+                }
+            }
+        }
+
+        public decimal? TONGTIEN
+        {
+            get
+            {
+                int a;
+                if (int.TryParse(TextField2.Text, out a))
+                {
+                    return int.Parse(TextField2.Text);
+                }
+
+                else
+                    return  0;
+            }
+
+            set
+            {
+                TextField2.Text = value.ToString();
             }
         }
 
