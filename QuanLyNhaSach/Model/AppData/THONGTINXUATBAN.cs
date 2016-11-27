@@ -15,8 +15,8 @@ namespace QuanLyNhaSach.Model.AppData
     public partial class THONGTINXUATBAN
     {
         public string MASACH { get; set; }
-        public string LANTAIBAN { get; set; }
-        public string NAMXUATBAN { get; set; }
+        public Nullable<int> LANTAIBAN { get; set; }
+        public Nullable<System.DateTime> NAMXUATBAN { get; set; }
         public string NHAXUATBAN { get; set; }
         public Nullable<int> GIABIA { get; set; }
     

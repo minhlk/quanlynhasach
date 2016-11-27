@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Model.AppData
         public virtual LINHVUC LINHVUC { get; set; }
         public virtual LOAISACH LOAISACH { get; set; }
         public virtual SACHKHUYENMAI SACHKHUYENMAI { get; set; }
-        public virtual THONGTINXUATBAN THONGTINXUATBAN { get; set; }
         public virtual TACGIA TACGIA { get; set; }
+        public virtual THONGTINXUATBAN THONGTINXUATBAN { get; set; }
     }
 }
