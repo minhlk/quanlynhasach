@@ -3,6 +3,7 @@ using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
 using QuanLyNhaSach.View;
 using QuanLyNhaSach.View.Kho;
+using QuanLyNhaSach.View.LoaiSach;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,11 @@ namespace QuanLyNhaSach
             TacGiaForm TacGiaForm = new TacGiaForm();
             HoaDonForm HoaDonForm = new HoaDonForm();
             KhoForm KhoForm = new KhoForm();
+            LoaiSachForm LoaiSachForm = new LoaiSachForm();
             //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
-            Application.Run(KhoForm);
+            //Application.Run(KhoForm);
+            Application.Run(LoaiSachForm);
         }
     }
 }
