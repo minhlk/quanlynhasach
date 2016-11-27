@@ -82,6 +82,7 @@
     <Compile Include="Model\AppData\HOADON.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\IKhoRepository.cs" />
     <Compile Include="Model\AppData\KHO.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -115,8 +116,10 @@
     <Compile Include="Model\HoaDonRepository.cs" />
     <Compile Include="Model\IHoaDonRepository.cs" />
     <Compile Include="Model\ITacGiaRepository.cs" />
+    <Compile Include="Model\KhoRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
+    <Compile Include="Presenter\KhoPresenter.cs" />
     <Compile Include="Presenter\TacGiaPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +133,13 @@
       <DependentUpon>HoaDonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\HoaDon\IHoaDonForm.cs" />
+    <Compile Include="View\Kho\IKhoForm.cs" />
+    <Compile Include="View\Kho\KhoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Kho\KhoForm.Designer.cs">
+      <DependentUpon>KhoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TacGia\ITacGiaForm.cs" />
     <Compile Include="View\TacGia\TacGiaForm.cs">
       <SubType>Form</SubType>
@@ -148,6 +158,9 @@
     </Compile>
     <EmbeddedResource Include="View\HoaDon\HoaDonForm.resx">
       <DependentUpon>HoaDonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Kho\KhoForm.resx">
+      <DependentUpon>KhoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TacGia\TacGiaForm.resx">
       <DependentUpon>TacGiaForm.cs</DependentUpon>

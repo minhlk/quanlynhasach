@@ -2,6 +2,7 @@
 using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
 using QuanLyNhaSach.View;
+using QuanLyNhaSach.View.Kho;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +23,10 @@ namespace QuanLyNhaSach
             Application.SetCompatibleTextRenderingDefault(false);
             TacGiaForm TacGiaForm = new TacGiaForm();
             HoaDonForm HoaDonForm = new HoaDonForm();
-            Application.Run(TacGiaForm);
+            KhoForm KhoForm = new KhoForm();
+            //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
+            Application.Run(KhoForm);
         }
     }
 }
