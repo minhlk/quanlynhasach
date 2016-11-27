@@ -3,6 +3,7 @@ using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
 using QuanLyNhaSach.View;
 using QuanLyNhaSach.View.Kho;
+using QuanLyNhaSach.View.LinhVuc;
 using QuanLyNhaSach.View.LoaiSach;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,12 @@ namespace QuanLyNhaSach
             HoaDonForm HoaDonForm = new HoaDonForm();
             KhoForm KhoForm = new KhoForm();
             LoaiSachForm LoaiSachForm = new LoaiSachForm();
+            LinhVucForm LinhVucForm = new LinhVucForm();
             //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
             //Application.Run(KhoForm);
-            Application.Run(LoaiSachForm);
+            //Application.Run(LoaiSachForm);
+            Application.Run(LinhVucForm);
         }
     }
 }

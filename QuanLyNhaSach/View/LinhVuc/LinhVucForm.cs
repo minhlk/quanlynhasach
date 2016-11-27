@@ -1,4 +1,7 @@
-﻿using MaterialSkin.Controls;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using QuanLyNhaSach.Presenter;
+using QuanLyNhaSach.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,27 +11,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Presenter;
-using QuanLyNhaSach.Validation;
-using MaterialSkin;
 
-namespace QuanLyNhaSach.View.LoaiSach
+namespace QuanLyNhaSach.View.LinhVuc
 {
-    public partial class LoaiSachForm : MaterialForm,ILoaiSachForm
+    public partial class LinhVucForm : MaterialForm,ILinhVucForm
+   
     {
         ModelState state;
-        public LoaiSachForm():this(new ModelState())
+        public LinhVucForm():this(new ModelState())
         {
             InitTheme();
             InitializeComponent();
         }
-        LoaiSachForm(ModelState _state)
+        LinhVucForm(ModelState _state)
         {
             state = _state;
-            new LoaiSachPresenter(this, new ModelStateWraper(state));
+            new LinhVucPresenter(this, new ModelStateWraper(state));
 
         }
-        public object getListLoaiSach
+        public object getListLinhVuc
         {
             get
             {
@@ -42,7 +43,7 @@ namespace QuanLyNhaSach.View.LoaiSach
             }
         }
 
-        public string MALOAISACH
+        public string MALINHVUC
         {
             get
             {
@@ -55,12 +56,12 @@ namespace QuanLyNhaSach.View.LoaiSach
             }
         }
 
-        public LoaiSachPresenter Presenter
+        public LinhVucPresenter Presenter
         {
             get; set;
         }
 
-        public string selectedLoaiSach
+        public string selectedLinhVuc
         {
             get
             {
@@ -69,7 +70,7 @@ namespace QuanLyNhaSach.View.LoaiSach
             }
         }
 
-        public string TENLOAISACH
+        public string TENLINHVUC
         {
             get
             {
@@ -94,9 +95,10 @@ namespace QuanLyNhaSach.View.LoaiSach
             {
                 switch (err.Key)
                 {
-                    case "maloaisach": errorProvider1.SetError(TextField1, err.Value); break;
-                    case "maloaisach2": errorProvider1.SetError(TextField1, err.Value); break;
-                    case "maloaisach3": errorProvider1.SetError(TextField1, err.Value); break;
+                    case "malinhvuc": errorProvider1.SetError(TextField1, err.Value); break;
+                    case "malinhvuc2": errorProvider1.SetError(TextField1, err.Value); break;
+                    case "malinhvuc3": errorProvider1.SetError(TextField1, err.Value); break;
+
 
                 }
             }
@@ -109,26 +111,26 @@ namespace QuanLyNhaSach.View.LoaiSach
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
-        private void LoaiSachForm_Load(object sender, EventArgs e)
+        private void LinhVucForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListLoaiSach();
+            Presenter.getListLinhVuc();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Presenter.saveLoaiSach();
+            Presenter.saveLinhVuc();
             showError();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            Presenter.editLoaiSach();
+            Presenter.editLinhVuc();
             showError();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
-            Presenter.deleteLoaiSach();
+            Presenter.deleteLinhVuc();
             //showError();
         }
 
@@ -141,5 +143,8 @@ namespace QuanLyNhaSach.View.LoaiSach
         {
             Presenter.showSelected();
         }
+
+       
     }
 }
+

@@ -115,13 +115,16 @@
     </Compile>
     <Compile Include="Model\HoaDonRepository.cs" />
     <Compile Include="Model\IHoaDonRepository.cs" />
+    <Compile Include="Model\ILinhVucRepository.cs" />
     <Compile Include="Model\ILoaiSachRepository.cs" />
     <Compile Include="Model\ITacGiaRepository.cs" />
     <Compile Include="Model\KhoRepository.cs" />
+    <Compile Include="Model\LinhVucRepository.cs" />
     <Compile Include="Model\LoaiSachRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
     <Compile Include="Presenter\KhoPresenter.cs" />
+    <Compile Include="Presenter\LinhVucPresenter.cs" />
     <Compile Include="Presenter\LoaiSachPresenter.cs" />
     <Compile Include="Presenter\TacGiaPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -142,6 +145,13 @@
     </Compile>
     <Compile Include="View\Kho\KhoForm.Designer.cs">
       <DependentUpon>KhoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\LinhVuc\ILinhVucForm.cs" />
+    <Compile Include="View\LinhVuc\LinhVucForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\LinhVuc\LinhVucForm.Designer.cs">
+      <DependentUpon>LinhVucForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoaiSach\ILoaiSachForm.cs" />
     <Compile Include="View\LoaiSach\LoaiSachForm.cs">
@@ -171,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Kho\KhoForm.resx">
       <DependentUpon>KhoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LinhVuc\LinhVucForm.resx">
+      <DependentUpon>LinhVucForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoaiSach\LoaiSachForm.resx">
       <DependentUpon>LoaiSachForm.cs</DependentUpon>

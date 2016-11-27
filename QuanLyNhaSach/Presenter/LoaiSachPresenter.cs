@@ -41,7 +41,7 @@ namespace QuanLyNhaSach.Presenter
                 //LOAISACH ls = repository.getLoaiSach(view.selectedLoaiSach);
                 LOAISACH ls = ViewToModel();
 
-                if (valid(ls))
+                if (valid(ls)&& checkExist(ls,false))
                 {
                     LOAISACH kq = repository.saveLoaiSach(ls);
 
@@ -55,7 +55,7 @@ namespace QuanLyNhaSach.Presenter
                 LOAISACH ls_moi = ViewToModel();
                 string mals_cu = view.selectedLoaiSach;
 
-                if (valid(ls_moi))
+                if (valid(ls_moi)&& checkExist(ls_moi,mals_cu==ls_moi.MALOAISACH))
                 {
                     LOAISACH kq = repository.editLoaiSach(ls_moi, mals_cu);
 
@@ -78,8 +78,23 @@ namespace QuanLyNhaSach.Presenter
 
 
             }
+        private bool checkExist(LOAISACH ls, bool b)
+        {
+            if (b) { return true; }
+            foreach (LOAISACH i in repository.getListLoaiSach())
+            {
+                if (ls.MALOAISACH== i.MALOAISACH)
+                {
+                    state.addError("maloaisach3", "Mã sách đã tồn tại");
+                    return false;
+                }
 
-            public void deleteLoaiSach()
+            }
+
+
+            return true;
+        }
+        public void deleteLoaiSach()
             {
                 //LOAISACH ls = repository.getLoaiSach(view.selectedLoaiSach);
                 string mals = view.selectedLoaiSach;
