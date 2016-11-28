@@ -49,7 +49,7 @@
           <Key>
             <PropertyRef Name="STT" />
           </Key>
-          <Property Name="STT" Type="int" Nullable="false" />
+          <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MASACH" Type="char" MaxLength="13" />
           <Property Name="SOLUONG" Type="int" />
           <Property Name="NGAYNHAP" Type="datetime" />
@@ -304,7 +304,7 @@
           <Property Name="TONGSOLUONG" Type="Int32" />
           <Property Name="SOLUONGCON" Type="Int32" />
           <NavigationProperty Name="SACH" Relationship="Self.FK_KHO_SACH" FromRole="KHOes" ToRole="SACHes" />
-          <NavigationProperty Name="NHATKINHAPSACHes" Relationship="Self.FK_NHATKINHAPSACH_KHO" FromRole="KHOes" ToRole="NHATKINHAPSACHes" />
+          <NavigationProperty Name="NHATKINHAPSACHes" Relationship="NhaSachModel.FK_NHATKINHAPSACH_KHO" FromRole="KHO" ToRole="NHATKINHAPSACH" />
         </EntityType>
         <EntityType Name="LINHVUC">
           <Key>
@@ -321,16 +321,6 @@
           <Property Name="MALOAISACH" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TENLOAISACH" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="SACHes" Relationship="Self.FK_SACH_LOAISACH" FromRole="LOAISACHes" ToRole="SACHes" />
-        </EntityType>
-        <EntityType Name="NHATKINHAPSACH">
-          <Key>
-            <PropertyRef Name="STT" />
-          </Key>
-          <Property Name="STT" Type="Int32" Nullable="false" />
-          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
-          <Property Name="SOLUONG" Type="Int32" />
-          <Property Name="NGAYNHAP" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="KHO" Relationship="Self.FK_NHATKINHAPSACH_KHO" FromRole="NHATKINHAPSACHes" ToRole="KHOes" />
         </EntityType>
         <EntityType Name="SACH">
           <Key>
@@ -405,18 +395,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_NHATKINHAPSACH_KHO">
-          <End Role="KHOes" Type="Self.KHO" Multiplicity="0..1" />
-          <End Role="NHATKINHAPSACHes" Type="Self.NHATKINHAPSACH" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KHOes">
-              <PropertyRef Name="MASACH" />
-            </Principal>
-            <Dependent Role="NHATKINHAPSACHes">
-              <PropertyRef Name="MASACH" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SACHes_LINHVUCs">
           <End Role="LINHVUCs" Type="Self.LINHVUC" Multiplicity="0..1" />
           <End Role="SACHes" Type="Self.SACH" Multiplicity="*" />
@@ -459,7 +437,6 @@
           <EntitySet Name="KHOes" EntityType="Self.KHO" />
           <EntitySet Name="LINHVUCs" EntityType="Self.LINHVUC" />
           <EntitySet Name="LOAISACHes" EntityType="Self.LOAISACH" />
-          <EntitySet Name="NHATKINHAPSACHes" EntityType="Self.NHATKINHAPSACH" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
           <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAI" />
           <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
@@ -474,10 +451,6 @@
           <AssociationSet Name="FK_KHO_SACH" Association="Self.FK_KHO_SACH">
             <End Role="SACHes" EntitySet="SACHes" />
             <End Role="KHOes" EntitySet="KHOes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_NHATKINHAPSACH_KHO" Association="Self.FK_NHATKINHAPSACH_KHO">
-            <End Role="KHOes" EntitySet="KHOes" />
-            <End Role="NHATKINHAPSACHes" EntitySet="NHATKINHAPSACHes" />
           </AssociationSet>
           <AssociationSet Name="FK_SACHes_LINHVUCs" Association="Self.FK_SACHes_LINHVUCs">
             <End Role="LINHVUCs" EntitySet="LINHVUCs" />
@@ -501,6 +474,11 @@
           <AssociationSet Name="FK_THONGTINXUATBAN_SACH" Association="NhaSachModel.FK_THONGTINXUATBAN_SACH">
             <End Role="SACH" EntitySet="SACHes" />
             <End Role="THONGTINXUATBAN" EntitySet="THONGTINXUATBANs" />
+          </AssociationSet>
+          <EntitySet Name="NHATKINHAPSACHes" EntityType="NhaSachModel.NHATKINHAPSACH" />
+          <AssociationSet Name="FK_NHATKINHAPSACH_KHO" Association="NhaSachModel.FK_NHATKINHAPSACH_KHO">
+            <End Role="KHO" EntitySet="KHOes" />
+            <End Role="NHATKINHAPSACH" EntitySet="NHATKINHAPSACHes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagram">
@@ -559,6 +537,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NHATKINHAPSACH">
+          <Key>
+            <PropertyRef Name="STT" />
+          </Key>
+          <Property Name="STT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MASACH" Type="String" MaxLength="13" FixedLength="true" Unicode="false" />
+          <Property Name="SOLUONG" Type="Int32" />
+          <Property Name="NGAYNHAP" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="KHO" Relationship="NhaSachModel.FK_NHATKINHAPSACH_KHO" FromRole="NHATKINHAPSACH" ToRole="KHO" />
+        </EntityType>
+        <Association Name="FK_NHATKINHAPSACH_KHO">
+          <End Type="NhaSachModel.KHO" Role="KHO" Multiplicity="0..1" />
+          <End Type="NhaSachModel.NHATKINHAPSACH" Role="NHATKINHAPSACH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KHO">
+              <PropertyRef Name="MASACH" />
+            </Principal>
+            <Dependent Role="NHATKINHAPSACH">
+              <PropertyRef Name="MASACH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -607,16 +607,6 @@
               <MappingFragment StoreEntitySet="LOAISACHes">
                 <ScalarProperty Name="MALOAISACH" ColumnName="MALOAISACH" />
                 <ScalarProperty Name="TENLOAISACH" ColumnName="TENLOAISACH" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NHATKINHAPSACHes">
-            <EntityTypeMapping TypeName="NhaSachModel.NHATKINHAPSACH">
-              <MappingFragment StoreEntitySet="NHATKINHAPSACHes">
-                <ScalarProperty Name="STT" ColumnName="STT" />
-                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
-                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
-                <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -682,6 +672,16 @@
                 <ScalarProperty Name="NAMXUATBAN" ColumnName="NAMXUATBAN" />
                 <ScalarProperty Name="LANTAIBAN" ColumnName="LANTAIBAN" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHATKINHAPSACHes">
+            <EntityTypeMapping TypeName="NhaSachModel.NHATKINHAPSACH">
+              <MappingFragment StoreEntitySet="NHATKINHAPSACHes">
+                <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+                <ScalarProperty Name="MASACH" ColumnName="MASACH" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

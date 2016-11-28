@@ -117,17 +117,20 @@
     <Compile Include="Model\IHoaDonRepository.cs" />
     <Compile Include="Model\ILinhVucRepository.cs" />
     <Compile Include="Model\ILoaiSachRepository.cs" />
+    <Compile Include="Model\INhatKiNhapSachRepository.cs" />
     <Compile Include="Model\ITacGiaRepository.cs" />
     <Compile Include="Model\IThongTinXuatBanRepository.cs" />
     <Compile Include="Model\KhoRepository.cs" />
     <Compile Include="Model\LinhVucRepository.cs" />
     <Compile Include="Model\LoaiSachRepository.cs" />
+    <Compile Include="Model\NhatKiNhapSachRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Model\ThongTinXuatBanRepository.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
     <Compile Include="Presenter\KhoPresenter.cs" />
     <Compile Include="Presenter\LinhVucPresenter.cs" />
     <Compile Include="Presenter\LoaiSachPresenter.cs" />
+    <Compile Include="Presenter\NhatKiNhapSachPresenter.cs" />
     <Compile Include="Presenter\TacGiaPresenter.cs" />
     <Compile Include="Presenter\ThongTinXuatBanPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -163,6 +166,13 @@
     <Compile Include="View\LoaiSach\LoaiSachForm.Designer.cs">
       <DependentUpon>LoaiSachForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\NhatKiNhapSach\INhatKiNhapSachForm.cs" />
+    <Compile Include="View\NhatKiNhapSach\NhatKiNhapSachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\NhatKiNhapSach\NhatKiNhapSachForm.Designer.cs">
+      <DependentUpon>NhatKiNhapSachForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TacGia\ITacGiaForm.cs" />
     <Compile Include="View\TacGia\TacGiaForm.cs">
       <SubType>Form</SubType>
@@ -197,6 +207,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoaiSach\LoaiSachForm.resx">
       <DependentUpon>LoaiSachForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NhatKiNhapSach\NhatKiNhapSachForm.resx">
+      <DependentUpon>NhatKiNhapSachForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TacGia\TacGiaForm.resx">
       <DependentUpon>TacGiaForm.cs</DependentUpon>

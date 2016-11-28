@@ -10,14 +10,12 @@
         <EntityTypeShape EntityType="NhaSachModel.KHO" Width="1.5" PointX="5.375" PointY="5.125" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.LINHVUC" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.LOAISACH" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" FillColor="Red" />
-        <EntityTypeShape EntityType="NhaSachModel.NHATKINHAPSACH" Width="1.5" PointX="7.625" PointY="4.875" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.SACH" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.SACHKHUYENMAI" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.TAIKHOAN" Width="1.5" PointX="7.375" PointY="7.75" IsExpanded="true" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_HOADON" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_SACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_KHO_SACH" ManuallyRouted="false" />
-        <AssociationConnector Association="NhaSachModel.FK_NHATKINHAPSACH_KHO" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_SACHes_LINHVUCs" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_SACH_LOAISACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_SACHKHUYENMAI_SACH" ManuallyRouted="false" />
@@ -26,6 +24,8 @@
         <AssociationConnector Association="NhaSachModel.FK_SACH_TACGIA" />
         <EntityTypeShape EntityType="NhaSachModel.THONGTINXUATBAN" Width="1.5" PointX="4.125" PointY="10.25" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_THONGTINXUATBAN_SACH" />
+        <EntityTypeShape EntityType="NhaSachModel.NHATKINHAPSACH" Width="1.5" PointX="7.625" PointY="4.125" FillColor="Red" />
+        <AssociationConnector Association="NhaSachModel.FK_NHATKINHAPSACH_KHO" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
