@@ -188,7 +188,7 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(541, 308);
             this.dataGridView1.TabIndex = 28;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellContentClick);
             // 
             // comboBox1
             // 
@@ -267,12 +267,12 @@
             // 
             this.Label4.AutoSize = true;
             this.Label4.Depth = 0;
-            this.Label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Label4.Font = new System.Drawing.Font("Roboto", 11F);
             this.Label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label4.Location = new System.Drawing.Point(559, 113);
             this.Label4.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(40, 18);
+            this.Label4.Size = new System.Drawing.Size(41, 19);
             this.Label4.TabIndex = 46;
             this.Label4.Text = "Num";
             // 

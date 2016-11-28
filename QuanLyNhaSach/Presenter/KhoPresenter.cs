@@ -60,7 +60,7 @@ namespace QuanLyNhaSach.Presenter
 
             KHO kho_moi = ViewToModel();
             string makho_cu = view.selectedKho;
-
+            kho_moi.MASACH = makho_cu;
             if (valid(kho_moi))
             {
                 KHO kq = repository.editKho(kho_moi, makho_cu);
@@ -79,7 +79,8 @@ namespace QuanLyNhaSach.Presenter
                 state.addError("tongsoluong", "Tổng số lượng không được nhỏ hơn 0");
             if (kho.SOLUONGCON > kho.TONGSOLUONG)
                 state.addError("lonhon", "Số lượng còn không được lớn hơn tổng số lượng");
-
+            if (kho.MASACH == "")
+                state.addError("sach", "Không còn sách để thêm thông tin");
             return state.isValid();
 
 

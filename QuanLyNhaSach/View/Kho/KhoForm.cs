@@ -121,6 +121,7 @@ namespace QuanLyNhaSach.View.Kho
                 {
                     case "soluongcon": errorProvider1.SetError(numericUpDown1, err.Value); break;
                     case "tongsoluong": errorProvider1.SetError(numericUpDown2, err.Value); break;
+                    case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
                     case "lonhon":
                         errorProvider1.SetError(numericUpDown1, err.Value);
                         errorProvider1.SetError(numericUpDown2, err.Value);
@@ -156,6 +157,7 @@ namespace QuanLyNhaSach.View.Kho
         private void Button3_Click(object sender, EventArgs e)
         {
             Presenter.deleteKho();
+            showError();
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
@@ -166,6 +168,7 @@ namespace QuanLyNhaSach.View.Kho
         private void KhoForm_Load(object sender, EventArgs e)
         {
             Presenter.getListKho();
+            Presenter.showSelected();
             //Presenter.getListMasach();
         }
 

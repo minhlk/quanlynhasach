@@ -199,9 +199,11 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
             
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+       
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            Presenter.showSelected();
+                Presenter.showSelected();
         }
     }
 }

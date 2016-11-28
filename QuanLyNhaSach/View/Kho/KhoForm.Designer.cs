@@ -203,7 +203,7 @@
             this.Label2.AutoSize = true;
             this.Label2.Depth = 0;
             this.Label2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.Label2.ForeColor = System.Drawing.Color.Red;
+            this.Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.Label2.Location = new System.Drawing.Point(510, 70);
             this.Label2.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label2.Name = "Label2";
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 386);
+            this.ClientSize = new System.Drawing.Size(656, 386);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.numericUpDown2);

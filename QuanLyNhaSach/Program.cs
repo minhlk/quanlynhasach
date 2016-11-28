@@ -32,10 +32,10 @@ namespace QuanLyNhaSach
             ThongTinXuatBanForm ThongTinXuatBanForm = new ThongTinXuatBanForm();
             //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
-            //Application.Run(KhoForm);
+            Application.Run(KhoForm);
             //Application.Run(LoaiSachForm);
             //Application.Run(LinhVucForm);
-            Application.Run(ThongTinXuatBanForm);
+            //Application.Run(ThongTinXuatBanForm);
         }
     }
 }
