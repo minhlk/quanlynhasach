@@ -116,6 +116,7 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
             get
             {
                 int pos = dataGridView1.CurrentCell.RowIndex;
+                //Log(dataGridView1.Rows[pos].Cells[0].Value.ToString());
                 return dataGridView1.Rows[pos].Cells[0].Value.ToString();
             }
         }
@@ -172,16 +173,19 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
         private void Button1_Click(object sender, EventArgs e)
         {
             Presenter.saveThongTinXuatBan();
+            showError();
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             Presenter.editThongTinXuatBan();
+            showError();
         }
 
         private void Button3_Click(object sender, EventArgs e)
         {
             Presenter.deleteThongTinXuatBan();
+            showError();
         }
 
         private void materialFlatButton1_Click(object sender, EventArgs e)

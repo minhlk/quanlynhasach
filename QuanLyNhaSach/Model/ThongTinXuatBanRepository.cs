@@ -59,16 +59,12 @@ namespace QuanLyNhaSach.Model
 
         public THONGTINXUATBAN saveThongTinXuatBan(THONGTINXUATBAN ttxb)
         {
-            try
-            {
+           
+           
                 entity.THONGTINXUATBANs.Add(ttxb);
                 entity.SaveChanges();
                 return ttxb;
-            }
-            catch (DbUpdateException) // tranh loi update
-            {
-                return null;
-            }
+           
         }
     }
 }

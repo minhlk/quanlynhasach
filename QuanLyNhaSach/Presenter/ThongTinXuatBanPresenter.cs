@@ -61,20 +61,21 @@ namespace QuanLyNhaSach.Presenter
             THONGTINXUATBAN ttxb_moi = ViewToModel();
             string mattxb_cu = view.selectedThongTinXuatBan;
 
-            if (valid(ttxb_moi))
-            {
+            //if (valid(ttxb_moi))
+            //{
+            
                 THONGTINXUATBAN kq = repository.editThongTinXuatBan(ttxb_moi, mattxb_cu);
 
 
                 getListThongTinXuatBan();
-            }
+            //}
         }
         public bool valid(THONGTINXUATBAN ttxb)
         {
             //xet null
             
             state.Clear();
-            if (ttxb.MASACH == null)
+            if (ttxb.MASACH == "")
                 state.addError("sach", "Không còn sách để thêm thông tin");
 
             //if (ttxb.NAMSINH >= ttxb.NAMMAT)
