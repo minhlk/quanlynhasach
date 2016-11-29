@@ -2,6 +2,7 @@
 using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
 using QuanLyNhaSach.View;
+using QuanLyNhaSach.View.ChiTietHoaDon;
 using QuanLyNhaSach.View.Kho;
 using QuanLyNhaSach.View.LinhVuc;
 using QuanLyNhaSach.View.LoaiSach;
@@ -32,13 +33,15 @@ namespace QuanLyNhaSach
             LinhVucForm LinhVucForm = new LinhVucForm();
             ThongTinXuatBanForm ThongTinXuatBanForm = new ThongTinXuatBanForm();
             NhatKiNhapSachForm NhatKiNhapSachForm = new NhatKiNhapSachForm();
+            ChiTietHoaDonForm ChiTietHoaDonForm = new ChiTietHoaDonForm();
             //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
             //Application.Run(KhoForm);
             //Application.Run(LoaiSachForm);
             //Application.Run(LinhVucForm);
             //Application.Run(ThongTinXuatBanForm);
-            Application.Run(NhatKiNhapSachForm);
+            //Application.Run(NhatKiNhapSachForm);
+            Application.Run(ChiTietHoaDonForm);
         }
     }
 }

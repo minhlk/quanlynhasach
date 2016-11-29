@@ -82,6 +82,8 @@
     <Compile Include="Model\AppData\HOADON.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChiTietHoaDonRepository.cs" />
+    <Compile Include="Model\IChiTietHoaDonRepository.cs" />
     <Compile Include="Model\IKhoRepository.cs" />
     <Compile Include="Model\AppData\KHO.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -126,6 +128,7 @@
     <Compile Include="Model\NhatKiNhapSachRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Model\ThongTinXuatBanRepository.cs" />
+    <Compile Include="Presenter\ChiTietHoaDonPresenter.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
     <Compile Include="Presenter\KhoPresenter.cs" />
     <Compile Include="Presenter\LinhVucPresenter.cs" />
@@ -138,6 +141,13 @@
     <Compile Include="Validation\IModelStateWraper.cs" />
     <Compile Include="Validation\ModelState.cs" />
     <Compile Include="Validation\ModelStateWraper.cs" />
+    <Compile Include="View\ChiTietHoaDon\ChiTietHoaDonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ChiTietHoaDon\ChiTietHoaDonForm.Designer.cs">
+      <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChiTietHoaDon\IChiTietHoaDonForm.cs" />
     <Compile Include="View\HoaDon\HoaDonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +206,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ChiTietHoaDon\ChiTietHoaDonForm.resx">
+      <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\HoaDon\HoaDonForm.resx">
       <DependentUpon>HoaDonForm.cs</DependentUpon>
     </EmbeddedResource>
