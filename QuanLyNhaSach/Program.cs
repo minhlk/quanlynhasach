@@ -8,6 +8,7 @@ using QuanLyNhaSach.View.LinhVuc;
 using QuanLyNhaSach.View.LoaiSach;
 using QuanLyNhaSach.View.NhatKiNhapSach;
 using QuanLyNhaSach.View.SachKhuyenMai;
+using QuanLyNhaSach.View.TaiKhoan;
 using QuanLyNhaSach.View.ThongTinXuatBan;
 using System;
 using System.Collections.Generic;
@@ -36,6 +37,7 @@ namespace QuanLyNhaSach
             NhatKiNhapSachForm NhatKiNhapSachForm = new NhatKiNhapSachForm();
             ChiTietHoaDonForm ChiTietHoaDonForm = new ChiTietHoaDonForm();
             SachKhuyenMaiForm SachKhuyenMaiForm = new SachKhuyenMaiForm();
+            TaiKhoanForm TaiKhoanForm = new TaiKhoanForm();
             //Application.Run(TacGiaForm);
             //Application.Run(HoaDonForm);
             //Application.Run(KhoForm);
@@ -44,7 +46,8 @@ namespace QuanLyNhaSach
             //Application.Run(ThongTinXuatBanForm);
             //Application.Run(NhatKiNhapSachForm);
             //Application.Run(ChiTietHoaDonForm);
-            Application.Run(SachKhuyenMaiForm);
+            //Application.Run(SachKhuyenMaiForm);
+            Application.Run(TaiKhoanForm);
         }
     }
 }
