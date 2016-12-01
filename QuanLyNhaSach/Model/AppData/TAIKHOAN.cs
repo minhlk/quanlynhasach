@@ -17,7 +17,6 @@ namespace QuanLyNhaSach.Model.AppData
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
         public string TEN { get; set; }
-        public string ID { get; set; }
         public Nullable<System.DateTime> NGAYLAMVIEC { get; set; }
         public string CHUCVU { get; set; }
     }

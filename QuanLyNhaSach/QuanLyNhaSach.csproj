@@ -82,6 +82,7 @@
     <Compile Include="Model\AppData\HOADON.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ISachRepository.cs" />
     <Compile Include="Model\ITaiKhoanRepository.cs" />
     <Compile Include="Model\ChiTietHoaDonRepository.cs" />
     <Compile Include="Model\IChiTietHoaDonRepository.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Model\LoaiSachRepository.cs" />
     <Compile Include="Model\NhatKiNhapSachRepository.cs" />
     <Compile Include="Model\SachKhuyenMaiRepository.cs" />
+    <Compile Include="Model\SachRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Model\TaiKhoanRepository.cs" />
     <Compile Include="Model\ThongTinXuatBanRepository.cs" />
@@ -139,6 +141,7 @@
     <Compile Include="Presenter\LoaiSachPresenter.cs" />
     <Compile Include="Presenter\NhatKiNhapSachPresenter.cs" />
     <Compile Include="Presenter\SachKhuyenMaiPresenter.cs" />
+    <Compile Include="Presenter\SachPresenter.cs" />
     <Compile Include="Presenter\TacGiaPresenter.cs" />
     <Compile Include="Presenter\TaiKhoanPresenter.cs" />
     <Compile Include="Presenter\ThongTinXuatBanPresenter.cs" />
@@ -196,6 +199,13 @@
     <Compile Include="View\SachKhuyenMai\SachKhuyenMaiForm.Designer.cs">
       <DependentUpon>SachKhuyenMaiForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Sach\ISachForm.cs" />
+    <Compile Include="View\Sach\SachForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Sach\SachForm.Designer.cs">
+      <DependentUpon>SachForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TacGia\ITacGiaForm.cs" />
     <Compile Include="View\TacGia\TacGiaForm.cs">
       <SubType>Form</SubType>
@@ -246,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\SachKhuyenMai\SachKhuyenMaiForm.resx">
       <DependentUpon>SachKhuyenMaiForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Sach\SachForm.resx">
+      <DependentUpon>SachForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TacGia\TacGiaForm.resx">
       <DependentUpon>TacGiaForm.cs</DependentUpon>

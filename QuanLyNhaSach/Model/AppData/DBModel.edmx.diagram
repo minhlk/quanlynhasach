@@ -12,7 +12,6 @@
         <EntityTypeShape EntityType="NhaSachModel.LOAISACH" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.SACH" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" FillColor="Red" />
         <EntityTypeShape EntityType="NhaSachModel.SACHKHUYENMAI" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" FillColor="Red" />
-        <EntityTypeShape EntityType="NhaSachModel.TAIKHOAN" Width="1.5" PointX="7.375" PointY="7.75" IsExpanded="true" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_HOADON" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_CHITIETHOADON_SACH" ManuallyRouted="false" />
         <AssociationConnector Association="NhaSachModel.FK_KHO_SACH" ManuallyRouted="false" />
@@ -26,6 +25,7 @@
         <AssociationConnector Association="NhaSachModel.FK_THONGTINXUATBAN_SACH" />
         <EntityTypeShape EntityType="NhaSachModel.NHATKINHAPSACH" Width="1.5" PointX="7.625" PointY="4.125" FillColor="Red" />
         <AssociationConnector Association="NhaSachModel.FK_NHATKINHAPSACH_KHO" />
+        <EntityTypeShape EntityType="NhaSachModel.TAIKHOAN" Width="1.5" PointX="7.375" PointY="7.75" FillColor="Red" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

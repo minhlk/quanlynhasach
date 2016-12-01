@@ -99,7 +99,6 @@
           <Property Name="USERNAME" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PASSWORD" Type="nvarchar" MaxLength="100" />
           <Property Name="TEN" Type="nvarchar" MaxLength="50" />
-          <Property Name="ID" Type="char" MaxLength="8" />
           <Property Name="NGAYLAMVIEC" Type="datetime" />
           <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -348,17 +347,6 @@
           <Property Name="MUCGIAMGIA" Type="Int32" />
           <NavigationProperty Name="SACH" Relationship="Self.FK_SACHKHUYENMAI_SACH" FromRole="SACHKHUYENMAIs" ToRole="SACHes" />
         </EntityType>
-        <EntityType Name="TAIKHOAN">
-          <Key>
-            <PropertyRef Name="USERNAME" />
-          </Key>
-          <Property Name="USERNAME" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="TEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ID" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
-          <Property Name="NGAYLAMVIEC" Type="DateTime" Precision="3" />
-          <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <Association Name="FK_CHITIETHOADON_HOADON">
           <End Role="HOADONs" Type="Self.HOADON" Multiplicity="1" />
           <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADON" Multiplicity="0..1" />
@@ -439,7 +427,6 @@
           <EntitySet Name="LOAISACHes" EntityType="Self.LOAISACH" />
           <EntitySet Name="SACHes" EntityType="Self.SACH" />
           <EntitySet Name="SACHKHUYENMAIs" EntityType="Self.SACHKHUYENMAI" />
-          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
           <AssociationSet Name="FK_CHITIETHOADON_HOADON" Association="Self.FK_CHITIETHOADON_HOADON">
             <End Role="HOADONs" EntitySet="HOADONs" />
             <End Role="CHITIETHOADONs" EntitySet="CHITIETHOADONs" />
@@ -480,6 +467,7 @@
             <End Role="KHO" EntitySet="KHOes" />
             <End Role="NHATKINHAPSACH" EntitySet="NHATKINHAPSACHes" />
           </AssociationSet>
+          <EntitySet Name="TAIKHOANs" EntityType="NhaSachModel.TAIKHOAN" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -559,6 +547,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="USERNAME" />
+          </Key>
+          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PASSWORD" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYLAMVIEC" Type="DateTime" Precision="3" />
+          <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -630,18 +628,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TAIKHOANs">
-            <EntityTypeMapping TypeName="NhaSachModel.TAIKHOAN">
-              <MappingFragment StoreEntitySet="TAIKHOANs">
-                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
-                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-                <ScalarProperty Name="TEN" ColumnName="TEN" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NGAYLAMVIEC" ColumnName="NGAYLAMVIEC" />
-                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="NhaSachModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -682,6 +668,17 @@
                 <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
                 <ScalarProperty Name="MASACH" ColumnName="MASACH" />
                 <ScalarProperty Name="STT" ColumnName="STT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="NhaSachModel.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOANs">
+                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+                <ScalarProperty Name="NGAYLAMVIEC" ColumnName="NGAYLAMVIEC" />
+                <ScalarProperty Name="TEN" ColumnName="TEN" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
