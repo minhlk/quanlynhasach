@@ -11,6 +11,7 @@ using QuanLyNhaSach.View.Sach;
 using QuanLyNhaSach.View.SachKhuyenMai;
 using QuanLyNhaSach.View.TaiKhoan;
 using QuanLyNhaSach.View.ThongTinXuatBan;
+using QuanLyNhaSach.View.ViewTong;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +51,8 @@ namespace QuanLyNhaSach
             //Application.Run(ChiTietHoaDonForm);
             //Application.Run(SachKhuyenMaiForm);
             //Application.Run(TaiKhoanForm);
-            Application.Run(SachForm);
+            //Application.Run(SachForm);
+            Application.Run(new ViewTong());
         }
     }
 }

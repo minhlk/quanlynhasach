@@ -200,6 +200,12 @@
       <DependentUpon>SachKhuyenMaiForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Sach\ISachForm.cs" />
+    <Compile Include="View\Sach\SachControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Sach\SachControlForm.Designer.cs">
+      <DependentUpon>SachControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Sach\SachForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +232,12 @@
     </Compile>
     <Compile Include="View\ThongTinXuatBan\ThongTinXuatBanForm.Designer.cs">
       <DependentUpon>ThongTinXuatBanForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewTong\ViewTong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewTong\ViewTong.Designer.cs">
+      <DependentUpon>ViewTong.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -257,6 +269,9 @@
     <EmbeddedResource Include="View\SachKhuyenMai\SachKhuyenMaiForm.resx">
       <DependentUpon>SachKhuyenMaiForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Sach\SachControlForm.resx">
+      <DependentUpon>SachControlForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Sach\SachForm.resx">
       <DependentUpon>SachForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -268,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ThongTinXuatBan\ThongTinXuatBanForm.resx">
       <DependentUpon>ThongTinXuatBanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewTong\ViewTong.resx">
+      <DependentUpon>ViewTong.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\AppData\DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
