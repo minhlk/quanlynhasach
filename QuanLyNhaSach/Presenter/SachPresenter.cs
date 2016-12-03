@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Presenter
         public void getListSach()
         {
             view.getListSach= repository.getListSach();
-            getListTacGia();
+            //getListTacGia();
             getListLinhVuc();
             getListLoaiSach();
         }
@@ -90,9 +90,9 @@ namespace QuanLyNhaSach.Presenter
             //xet null
             state.Clear();
             if (sach.MASACH =="")
-                state.addError("masach", "Số lượng còn không được nhỏ hơn 0");
+                state.addError("masach", "Mã sách không được để trống");
             if (sach.TENSACH =="" )
-                state.addError("tensach", "Tổng số lượng không được nhỏ hơn 0");
+                state.addError("tensach", "Tên sách không được để trống");
             // can them ham xoa tat ca cac bang khac
             return state.isValid();
 
@@ -119,6 +119,23 @@ namespace QuanLyNhaSach.Presenter
             SACH sach = repository.getSach(view.selectedSach);
             ModelToView(sach);
             //view.Sach = sach;
+
+        }
+
+        public void showSelectedMaLoaiSach()
+        {
+            view.selectedLoaiSach = view.selectedLoaiSach;
+            
+
+        }
+        public void showSelectedMaTacGia()
+        {
+            view.selectedTacGia = view.selectedTacGia;
+
+        }
+        public void showSelectedMaLinhVuc()
+        {
+            view.selectedLinhVuc = view.selectedLinhVuc;
 
         }
         private void ModelToView(SACH sach)

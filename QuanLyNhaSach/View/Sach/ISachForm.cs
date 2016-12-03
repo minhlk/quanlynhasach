@@ -21,6 +21,9 @@ namespace QuanLyNhaSach.View.Sach
         object getListSach { get; set; }
         Presenter.SachPresenter Presenter { set; }
         string selectedSach { get; }
+        int selectedTacGia { get; set; }
+        string selectedLoaiSach { get; set; }
+        string selectedLinhVuc { get; set; }
         void Log(string mes);
         void showError();
 

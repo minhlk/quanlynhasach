@@ -10,7 +10,8 @@ namespace QuanLyNhaSach.Model
 {
     public class SachRepository : ISachRepository
     {
-        NhaSachEntities entity = new NhaSachEntities();
+        NhaSachEntities entity= new NhaSachEntities();
+     
         public SACH deleteSach(string MaSach)
         {
             SACH sach = (from c in entity.SACHes where c.MASACH == MaSach select c).FirstOrDefault();
@@ -33,24 +34,27 @@ namespace QuanLyNhaSach.Model
             return sach_re; //sach cu
         }
 
-        public IEnumerable<string> getListLinhVuc()
+        public IEnumerable<object> getListLinhVuc()
         {
-            return (from c in entity.LINHVUCs select c.MALINHVUC).ToList();
+            return entity.LINHVUCs.Select(c => new { c.MALINHVUC, c.TENLINHVUC }).ToList();
         }
 
-        public IEnumerable<string> getListLoaiSach()
+        public IEnumerable<object> getListLoaiSach()
         {
-            return (from c in entity.LOAISACHes select c.MALOAISACH).ToList();
+            return entity.LOAISACHes.Select(c => new { c.MALOAISACH, c.TENLOAISACH }).ToList();
         }
 
-        public IEnumerable<SACH> getListSach()
+        public IEnumerable<object> getListSach()
         {
-            return (from c in entity.SACHes select c).ToList();
+
+            return entity.SACHes.Select(c => new { c.MASACH, c.TENSACH, c.MATG, c.MALOAISACH, c.MALINHVUC,c.GIAMUA }).ToList();
         }
 
-        public IEnumerable<int> getListTacGia()
+        public IEnumerable<object> getListTacGia()
         {
-            return (from c in entity.TACGIAs select c.MATG).ToList();
+
+
+            return entity.TACGIAs.Select(c =>new { c.MATG,c.TENTG }).ToList();
         }
         
         public SACH getSach(string MaSach)

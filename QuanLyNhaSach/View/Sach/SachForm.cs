@@ -32,12 +32,12 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return comboBox4.DataSource;
+                return dataGridView4.DataSource;
             }
 
             set
             {
-                comboBox4.DataSource = value;
+                dataGridView4.DataSource = value;
             }
         }
 
@@ -45,12 +45,12 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return comboBox3.DataSource;
+                return dataGridView3.DataSource;
             }
 
             set
             {
-                comboBox3.DataSource = value;
+                dataGridView3.DataSource = value;
             }
         }
 
@@ -71,12 +71,13 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return comboBox2.DataSource;
+                return dataGridView2.DataSource;
             }
 
             set
-            {
-                comboBox2.DataSource = value;
+            { 
+                
+                dataGridView2.DataSource = value;
             }
         }
 
@@ -97,12 +98,12 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return comboBox4.Text;
+                return Label8.Text;
             }
 
             set
             {
-                comboBox4.Text = value;
+                Label8.Text = value;
             }
         }
 
@@ -110,13 +111,13 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return comboBox3.Text;
+                return Label7.Text;
 
             }
 
             set
             {
-                comboBox3.Text = value;
+                Label7.Text = value;
             }
         }
 
@@ -137,12 +138,13 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                return Convert.ToInt32(comboBox2.Text);
+                return Convert.ToInt32(Label6.Text);
+                //return 0;
             }
 
             set
             {
-                comboBox2.Text = value.ToString();
+                Label6.Text = value.ToString();
             }
         }
 
@@ -170,6 +172,44 @@ namespace QuanLyNhaSach.View.Sach
             set
             {
                 TextField2.Text = value;
+            }
+        }
+
+        public int selectedTacGia
+        {
+            get
+            {
+                int pos = dataGridView2.CurrentCell.RowIndex;
+                return Convert.ToInt32(dataGridView2.Rows[pos].Cells[0].Value.ToString());
+            }
+            set {
+                Label6.Text = value.ToString();
+            }
+        }
+
+        public string selectedLoaiSach
+        {
+            get
+            {
+                int pos = dataGridView3.CurrentCell.RowIndex;
+                return dataGridView3.Rows[pos].Cells[0].Value.ToString();
+            }
+            set
+            {
+                Label7.Text = value;
+            }
+        }
+
+        public string selectedLinhVuc
+        {
+            get
+            {
+                int pos = dataGridView4.CurrentCell.RowIndex;
+                return dataGridView4.Rows[pos].Cells[0].Value.ToString();
+            }
+            set
+            {
+                Label8.Text = value;
             }
         }
 
@@ -211,17 +251,20 @@ namespace QuanLyNhaSach.View.Sach
         private void SachForm_Load(object sender, EventArgs e)
         {
             Presenter.getListSach();
+            Presenter.showSelected();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
             Presenter.saveSach();
+            showError();
 
         }
 
         private void Button2_Click(object sender, EventArgs e)
         {
             Presenter.editSach();
+            showError();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -237,6 +280,91 @@ namespace QuanLyNhaSach.View.Sach
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Presenter.showSelected();
+        }
+        
+    
+            private void Button5_Click(object sender, EventArgs e)
+            {
+            if (dataGridView2.Visible)
+            {
+                dataGridView2.Visible = false;
+
+            }
+            else
+            {
+                dataGridView2.Visible = true;
+
+                Presenter.getListTacGia();
+
+
+
+
+
+            }
+
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            if (dataGridView3.Visible)
+            {
+                dataGridView3.Visible = false;
+
+            }
+            else
+            {
+                dataGridView3.Visible = true;
+
+                Presenter.getListLoaiSach();
+
+
+
+
+
+            }
+        }
+
+        private void materialRaisedButton2_Click(object sender, EventArgs e)
+        {
+            if (dataGridView4.Visible)
+            {
+                dataGridView4.Visible = false;
+
+            }
+            else
+            {
+                dataGridView4.Visible = true;
+
+                Presenter.getListLinhVuc();
+
+
+
+
+
+            }
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaTacGia();
+            ((DataGridView)sender).Visible = false;
+        }
+
+        private void dataGridView3_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaLoaiSach();
+            ((DataGridView)sender).Visible = false;
+        }
+
+        private void dataGridView4_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaLinhVuc();
+            ((DataGridView)sender).Visible = false;
+        }
+
+        private void materialLabel5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

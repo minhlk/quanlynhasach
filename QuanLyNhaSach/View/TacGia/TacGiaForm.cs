@@ -164,6 +164,19 @@ namespace QuanLyNhaSach.View
             }
         }
 
+        //public int MATG
+        //{
+        //    get
+        //    {
+        //        return Convert.ToInt32(materialSingleLineTextField1.Text);
+        //    }
+
+        //    set
+        //    {
+        //        materialSingleLineTextField1.Text = value.ToString();
+        //    }
+        //}
+
         public void Log(string mes)
         {
             MessageBox.Show(mes);

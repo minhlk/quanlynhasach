@@ -9,10 +9,10 @@ namespace QuanLyNhaSach.Model
 {
     public interface ISachRepository
     {
-        IEnumerable<string> getListLoaiSach();
-        IEnumerable<int> getListTacGia();
-        IEnumerable<string> getListLinhVuc();
-        IEnumerable<SACH> getListSach();
+        IEnumerable<object> getListLoaiSach();
+        IEnumerable<object> getListTacGia();
+        IEnumerable<object> getListLinhVuc();
+        IEnumerable<object> getListSach();
         SACH getSach(string MaSach);
         SACH saveSach(SACH sach);
         SACH editSach(SACH sach, string oldMaSach);

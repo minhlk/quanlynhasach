@@ -37,5 +37,10 @@ namespace QuanLyNhaSach.View.ViewTong
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
+
+        private void sachControlForm1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

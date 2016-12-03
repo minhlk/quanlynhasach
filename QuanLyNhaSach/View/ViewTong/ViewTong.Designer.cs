@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.sachControlForm1 = new QuanLyNhaSach.View.Sach.SachControlForm();
+            this.materialTabControl2 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialTabControl2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // sachControlForm1
@@ -38,29 +44,81 @@
             this.sachControlForm1.getListSach = null;
             this.sachControlForm1.getListTacGia = null;
             this.sachControlForm1.GIAMUA = 0;
-            this.sachControlForm1.Location = new System.Drawing.Point(12, 70);
-            this.sachControlForm1.MALINHVUC = "";
-            this.sachControlForm1.MALOAISACH = "";
+            this.sachControlForm1.Location = new System.Drawing.Point(3, 3);
+            this.sachControlForm1.MALINHVUC = "Mã Lĩnh Vực";
+            this.sachControlForm1.MALOAISACH = "Mã Loại Sách";
             this.sachControlForm1.MASACH = "";
             this.sachControlForm1.Name = "sachControlForm1";
-            this.sachControlForm1.Size = new System.Drawing.Size(792, 386);
+            this.sachControlForm1.Size = new System.Drawing.Size(993, 377);
             this.sachControlForm1.TabIndex = 0;
             this.sachControlForm1.TENSACH = "";
             // 
+            // materialTabControl2
+            // 
+            this.materialTabControl2.Controls.Add(this.tabPage3);
+            this.materialTabControl2.Controls.Add(this.tabPage4);
+            this.materialTabControl2.Depth = 0;
+            this.materialTabControl2.Location = new System.Drawing.Point(12, 67);
+            this.materialTabControl2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabControl2.Name = "materialTabControl2";
+            this.materialTabControl2.SelectedIndex = 0;
+            this.materialTabControl2.Size = new System.Drawing.Size(988, 378);
+            this.materialTabControl2.TabIndex = 1;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.sachControlForm1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(980, 352);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "tabPage3";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(192, 74);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "tabPage4";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // materialTabSelector2
+            // 
+            this.materialTabSelector2.BaseTabControl = this.materialTabControl2;
+            this.materialTabSelector2.Depth = 0;
+            this.materialTabSelector2.Location = new System.Drawing.Point(12, 38);
+            this.materialTabSelector2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector2.Name = "materialTabSelector2";
+            this.materialTabSelector2.Size = new System.Drawing.Size(988, 23);
+            this.materialTabSelector2.TabIndex = 2;
+            this.materialTabSelector2.Text = "materialTabSelector2";
+            // 
             // ViewTong
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(811, 468);
-            this.Controls.Add(this.sachControlForm1);
+            this.ClientSize = new System.Drawing.Size(1062, 521);
+            this.Controls.Add(this.materialTabSelector2);
+            this.Controls.Add(this.materialTabControl2);
             this.Name = "ViewTong";
-            this.Text = "ViewTong";
+            this.materialTabControl2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        public MaterialSkin.Controls.MaterialTabControl materialTabControl1;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector1;
         private Sach.SachControlForm sachControlForm1;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector2;
+        //private Sach.SachControlForm sachControlForm1;
     }
 }

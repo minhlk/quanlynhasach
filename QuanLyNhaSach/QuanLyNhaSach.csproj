@@ -219,6 +219,12 @@
     <Compile Include="View\TacGia\TacGiaForm.Designer.cs">
       <DependentUpon>TacGiaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TacGia\TacGiaUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TacGia\TacGiaUserControl.Designer.cs">
+      <DependentUpon>TacGiaUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TaiKhoan\ITaiKhoanForm.cs" />
     <Compile Include="View\TaiKhoan\TaiKhoanForm.cs">
       <SubType>Form</SubType>
@@ -277,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TacGia\TacGiaForm.resx">
       <DependentUpon>TacGiaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TacGia\TacGiaUserControl.resx">
+      <DependentUpon>TacGiaUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TaiKhoan\TaiKhoanForm.resx">
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>

@@ -11,10 +11,10 @@ namespace QuanLyNhaSach.View
     public interface ITacGiaForm
     {
 
-        
 
-         //int MATG { get; set; }
-         string TENTG { get; set; }
+
+        //int MATG { get; set; }
+        string TENTG { get; set; }
          Nullable<System.DateTime> NAMSINH { get; set; }
          Nullable<System.DateTime> NAMMAT { get; set; }
          string QUEQUAN { get; set; }
