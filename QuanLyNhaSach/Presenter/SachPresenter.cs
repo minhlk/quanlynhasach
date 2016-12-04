@@ -61,7 +61,7 @@ namespace QuanLyNhaSach.Presenter
             //SACH sach = repository.getSach(view.selectedSach);
             SACH sach = ViewToModel();
 
-            if (valid(sach))
+            if (valid(sach)&&checkExist(sach.MASACH))
             {
                 SACH kq = repository.saveSach(sach);
 
@@ -93,18 +93,29 @@ namespace QuanLyNhaSach.Presenter
                 state.addError("masach", "Mã sách không được để trống");
             if (sach.TENSACH =="" )
                 state.addError("tensach", "Tên sách không được để trống");
+            
             // can them ham xoa tat ca cac bang khac
             return state.isValid();
 
 
         }
-
+        public bool checkExist(string masach)
+        {
+            SACH sach = repository.getSach(masach);
+            if (sach != null)
+            {
+                state.addError("masach2", "Mã sách đã tồn tại");
+                //view.Log("sai r");
+                return false;
+            }
+            return true;
+        }
         public void deleteSach()
         {
             //SACH sach = repository.getSach(view.selectedSach);
             string masach = view.selectedSach;
             SACH sach = repository.getSach(masach);
-            view.Log(sach.MASACH);
+            //view.Log(sach.MASACH);
             if (valid(sach))
             {
                 SACH kq = repository.deleteSach(masach);

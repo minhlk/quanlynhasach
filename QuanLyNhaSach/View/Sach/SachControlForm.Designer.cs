@@ -45,7 +45,6 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
             this.Button3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.Button2 = new MaterialSkin.Controls.MaterialFlatButton();
             this.Button1 = new MaterialSkin.Controls.MaterialFlatButton();
@@ -255,21 +254,6 @@
             this.materialLabel1.TabIndex = 64;
             this.materialLabel1.Text = "Mã Sách";
             // 
-            // materialFlatButton1
-            // 
-            this.materialFlatButton1.AutoSize = true;
-            this.materialFlatButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.materialFlatButton1.Depth = 0;
-            this.materialFlatButton1.Location = new System.Drawing.Point(735, 311);
-            this.materialFlatButton1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.materialFlatButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialFlatButton1.Name = "materialFlatButton1";
-            this.materialFlatButton1.Primary = false;
-            this.materialFlatButton1.Size = new System.Drawing.Size(57, 36);
-            this.materialFlatButton1.TabIndex = 63;
-            this.materialFlatButton1.Text = "Thoát";
-            this.materialFlatButton1.UseVisualStyleBackColor = true;
-            // 
             // Button3
             // 
             this.Button3.AutoSize = true;
@@ -390,7 +374,6 @@
             this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
-            this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.Button3);
             this.Controls.Add(this.Button2);
             this.Controls.Add(this.Button1);
@@ -429,7 +412,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
         private MaterialSkin.Controls.MaterialFlatButton Button3;
         private MaterialSkin.Controls.MaterialFlatButton Button2;
         private MaterialSkin.Controls.MaterialFlatButton Button1;

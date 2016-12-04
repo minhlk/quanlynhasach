@@ -196,7 +196,10 @@ namespace QuanLyNhaSach.View.Sach
             get
             {
                 int pos = dataGridView2.CurrentCell.RowIndex;
-                return Convert.ToInt32(dataGridView2.Rows[pos].Cells[0].Value.ToString());
+                if (dataGridView2.Rows[pos].Cells[0].Value.ToString() != "")
+                    return Convert.ToInt32(dataGridView2.Rows[pos].Cells[0].Value.ToString());
+                else
+                    return 0;
             }
             set
             {
@@ -243,7 +246,8 @@ namespace QuanLyNhaSach.View.Sach
                 switch (err.Key)
                 {
                     case "masach": errorProvider1.SetError(TextField1, err.Value); break;
-                    case "tensach": errorProvider1.SetError(TextField1, err.Value); break;
+                    case "tensach": errorProvider1.SetError(TextField2, err.Value); break;
+                    case "masach2": errorProvider1.SetError(TextField1, err.Value); break;
                         //case "tongsoluong": errorProvider1.SetError(numericUpDown2, err.Value); break;
                         //case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
                         //case "lonhon":
@@ -314,6 +318,8 @@ namespace QuanLyNhaSach.View.Sach
             else
             {
                 dataGridView2.Visible = true;
+                dataGridView3.Visible = false;
+                dataGridView4.Visible = false;
 
                 Presenter.getListTacGia();
 
@@ -334,7 +340,8 @@ namespace QuanLyNhaSach.View.Sach
             else
             {
                 dataGridView3.Visible = true;
-
+                dataGridView4.Visible = false;
+                dataGridView2.Visible = false;
                 Presenter.getListLoaiSach();
 
 
@@ -354,7 +361,8 @@ namespace QuanLyNhaSach.View.Sach
             else
             {
                 dataGridView4.Visible = true;
-
+                dataGridView2.Visible = false;
+                dataGridView3.Visible = false;
                 Presenter.getListLinhVuc();
 
 
