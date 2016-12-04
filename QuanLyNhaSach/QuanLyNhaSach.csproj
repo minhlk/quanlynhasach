@@ -211,6 +211,12 @@
       <DependentUpon>NhatKiNhapSachForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\SachKhuyenMai\ISachKhuyenMaiForm.cs" />
+    <Compile Include="View\SachKhuyenMai\SachKhuyenMaiControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SachKhuyenMai\SachKhuyenMaiControlForm.Designer.cs">
+      <DependentUpon>SachKhuyenMaiControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\SachKhuyenMai\SachKhuyenMaiForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\NhatKiNhapSach\NhatKiNhapSachForm.resx">
       <DependentUpon>NhatKiNhapSachForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SachKhuyenMai\SachKhuyenMaiControlForm.resx">
+      <DependentUpon>SachKhuyenMaiControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\SachKhuyenMai\SachKhuyenMaiForm.resx">
       <DependentUpon>SachKhuyenMaiForm.cs</DependentUpon>

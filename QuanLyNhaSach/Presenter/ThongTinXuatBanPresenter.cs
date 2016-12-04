@@ -63,7 +63,7 @@ namespace QuanLyNhaSach.Presenter
             
             THONGTINXUATBAN ttxb_moi = ViewToModel();
             string mattxb_cu = view.selectedThongTinXuatBan;
-
+            if (mattxb_cu != "") { 
             //if (valid(ttxb_moi))
             //{
             
@@ -71,15 +71,15 @@ namespace QuanLyNhaSach.Presenter
 
 
                 getListThongTinXuatBan();
-            //}
+            }
         }
         public bool valid(THONGTINXUATBAN ttxb)
         {
             //xet null
             
             state.Clear();
-            if (ttxb.MASACH == "")
-                state.addError("sach", "Không còn sách để thêm thông tin");
+            if ( repository.getThongTinXuatBan(ttxb.MASACH)!=null)
+                state.addError("sach", "Chọn sách để thêm thông tin");
 
             //if (ttxb.NAMSINH >= ttxb.NAMMAT)
             //    state.addError("nam", "Năm sinh phải nhỏ hơn năm mất");
@@ -96,14 +96,13 @@ namespace QuanLyNhaSach.Presenter
             string mattxb = view.selectedThongTinXuatBan;
             if (mattxb != "")
             {
-                THONGTINXUATBAN tacgia = repository.getThongTinXuatBan(mattxb);
-                if (valid(tacgia))
-                {
+                //THONGTINXUATBAN tacgia = repository.getThongTinXuatBan(mattxb);
+                
                     THONGTINXUATBAN kq = repository.deleteThongTinXuatBan(mattxb);
 
                     //view.Log("Đã lưu thành công");
                     getListThongTinXuatBan();
-                }
+                
             }
         }
 
@@ -136,6 +135,12 @@ namespace QuanLyNhaSach.Presenter
             ttxb.NAMXUATBAN = view.NAMXUATBAN;
             ttxb.GIABIA = view.GIABIA;
             return ttxb;
+
+        }
+        public void showSelectedMaSach()
+        {
+            view.MASACH = view.selectedMaSach;
+
 
         }
 

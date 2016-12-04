@@ -12,6 +12,7 @@ namespace QuanLyNhaSach.View.SachKhuyenMai
         Nullable<int> MUCGIAMGIA { get; set; }
         object getListSachKhuyenMai { get; set; }
         object getListMasach { set; }
+        string selectedMaSach { get; }
         Presenter.SachKhuyenMaiPresenter Presenter { set; }
         string selectedSackKhuyenMai { get; }
         void Log(string mes);

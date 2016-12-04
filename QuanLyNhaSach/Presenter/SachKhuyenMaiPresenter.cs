@@ -37,7 +37,14 @@ namespace QuanLyNhaSach.Presenter
         }
         public void getListMasach()
         {
+            if (repository.getListMaSach()!=null)
             view.getListMasach = repository.getListMaSach();
+
+
+        }
+        public void showSelectedMaSach()
+        {
+            view.MASACH = view.selectedMaSach;
 
 
         }
@@ -60,10 +67,12 @@ namespace QuanLyNhaSach.Presenter
         {
 
             SACHKHUYENMAI kho_moi = ViewToModel();
-            string makho_cu = view.selectedSackKhuyenMai;
-            kho_moi.MASACH = makho_cu;
-            if (valid(kho_moi))
+           
+                string makho_cu = view.selectedSackKhuyenMai;
+            if (makho_cu!="")
             {
+                kho_moi.MASACH = makho_cu;
+           
                 SACHKHUYENMAI kq = repository.editSachKhuyenMai(kho_moi, makho_cu);
 
 
@@ -74,8 +83,8 @@ namespace QuanLyNhaSach.Presenter
         {
             //xet null
             state.Clear();
-            if (skm.MASACH == "")
-                state.addError("masach", "Không có sách được chọn");
+            if ( repository.getSachKhuyenMai(skm.MASACH)!=null)
+                state.addError("masach", "Mã Sách đã tồn tại được chọn");
             //if (kho.TONGSOLUONG < 0)
             //    state.addError("tongsoluong", "Tổng số lượng không được nhỏ hơn 0");
             //if (kho.SOLUONGCON > kho.TONGSOLUONG)
@@ -91,9 +100,10 @@ namespace QuanLyNhaSach.Presenter
         {
             //SACHKHUYENMAI kho = repository.getSachKhuyenMai(view.selectedSachKhuyenMai);
             string makho = view.selectedSackKhuyenMai;
-            SACHKHUYENMAI kho = repository.getSachKhuyenMai(makho);
-            if (valid(kho))
+            if (makho != "")
             {
+                SACHKHUYENMAI kho = repository.getSachKhuyenMai(makho);
+
                 SACHKHUYENMAI kq = repository.deleteSachKhuyenMai(makho);
 
                 //view.Log("Đã lưu thành công");
@@ -103,10 +113,12 @@ namespace QuanLyNhaSach.Presenter
 
         public void showSelected()
         {
-            SACHKHUYENMAI kho = repository.getSachKhuyenMai(view.selectedSackKhuyenMai);
-            ModelToView(kho);
-            //view.SachKhuyenMai = kho;
-
+            if (view.selectedSackKhuyenMai != "")
+            {
+                SACHKHUYENMAI kho = repository.getSachKhuyenMai(view.selectedSackKhuyenMai);
+                ModelToView(kho);
+                //view.SachKhuyenMai = kho;
+            }
         }
         private void ModelToView(SACHKHUYENMAI skm)
         {

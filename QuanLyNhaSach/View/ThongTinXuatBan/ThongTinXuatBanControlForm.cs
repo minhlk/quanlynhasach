@@ -31,7 +31,7 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
         {
             set
             {
-                comboBox1.DataSource = value;
+                dataGridView2.DataSource = value;
             }
         }
 
@@ -87,7 +87,7 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
         {
             get
             {
-                return comboBox1.Text;
+                return Label4.Text;
             }
 
             set
@@ -163,7 +163,7 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
             {
                 switch (err.Key)
                 {
-                    case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
+                    case "sach": errorProvider1.SetError(materialRaisedButton1, err.Value); break;
 
 
 
@@ -209,7 +209,18 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
         {
             Presenter.showSelected();
         }
-
+        public string selectedMaSach
+        {
+            get
+            {
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    int pos = dataGridView2.CurrentCell.RowIndex;
+                    return dataGridView2.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
+            }
+        }
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
             if (!DesignMode)
@@ -217,6 +228,23 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
                 Presenter.getListThongTinXuatBan();
                 Presenter.showSelected();
             }
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaSach();
+            dataGridView2.Visible = false;
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            if (!dataGridView2.Visible)
+            {
+                dataGridView2.Visible = true;
+                Presenter.getListMasach();
+
+            }
+            else dataGridView2.Visible = false;
         }
     }
 }

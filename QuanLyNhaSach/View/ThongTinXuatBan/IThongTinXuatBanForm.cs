@@ -14,6 +14,7 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
         string NHAXUATBAN { get; set; }
         Nullable<int> GIABIA { get; set; }
         object getListMasach { set; }
+        string selectedMaSach { get; }
         object getListThongTinXuatBan { get; set; }
         Presenter.ThongTinXuatBanPresenter Presenter { set; }
         string selectedThongTinXuatBan { get; }

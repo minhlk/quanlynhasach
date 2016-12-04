@@ -41,11 +41,12 @@ namespace QuanLyNhaSach.Model
             return thongtin_re; //linhvuc cu
         }
 
-        public IEnumerable<string> getListMaSach()
+        public IEnumerable<object> getListMaSach()
         {
-            return (from c in entity.SACHes
+            var a= (from c in entity.SACHes
                     where !(from d in entity.THONGTINXUATBANs select d.MASACH).Contains(c.MASACH)
-                    select c.MASACH).ToList();
+                    select c).ToList();
+            return a.Select(c => new { c.MASACH, c.TENSACH }).ToList();
         }
 
         public IEnumerable<THONGTINXUATBAN> getListThongTinXuatBan()

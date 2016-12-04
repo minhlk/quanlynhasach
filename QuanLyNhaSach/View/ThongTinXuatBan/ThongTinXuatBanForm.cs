@@ -141,6 +141,14 @@ namespace QuanLyNhaSach.View.ThongTinXuatBan
             }
         }
 
+        public string selectedMaSach
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Log(string mes)
         {
             MessageBox.Show(mes);

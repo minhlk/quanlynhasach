@@ -16,6 +16,6 @@ namespace QuanLyNhaSach.Model
         THONGTINXUATBAN saveThongTinXuatBan(THONGTINXUATBAN lv);
         THONGTINXUATBAN editThongTinXuatBan(THONGTINXUATBAN lv, string oldMaThongTinXuatBan);
         THONGTINXUATBAN deleteThongTinXuatBan(string MaThongTinXuatBan);
-        IEnumerable<string> getListMaSach();
+        IEnumerable<object> getListMaSach();
     }
 }

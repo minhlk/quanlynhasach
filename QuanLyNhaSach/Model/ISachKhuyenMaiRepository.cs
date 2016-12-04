@@ -14,6 +14,7 @@ namespace QuanLyNhaSach.Model
         SACHKHUYENMAI saveSachKhuyenMai(SACHKHUYENMAI sachkhuyenmai);
         SACHKHUYENMAI editSachKhuyenMai(SACHKHUYENMAI sachkhuyenmai, string oldMasach);
         SACHKHUYENMAI deleteSachKhuyenMai(string MaSachKhuyenMai);
-        IEnumerable<string> getListMaSach();
+        IEnumerable<object> getListMaSach();
+        
     }
 }

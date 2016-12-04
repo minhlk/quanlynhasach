@@ -35,7 +35,6 @@
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.CheckBox1 = new MaterialSkin.Controls.MaterialCheckBox();
             this.Button3 = new MaterialSkin.Controls.MaterialFlatButton();
             this.Button2 = new MaterialSkin.Controls.MaterialFlatButton();
@@ -47,10 +46,13 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.materialFlatButton1 = new MaterialSkin.Controls.MaterialFlatButton();
+            this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // Label4
@@ -62,9 +64,9 @@
             this.Label4.Location = new System.Drawing.Point(591, 38);
             this.Label4.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(41, 19);
+            this.Label4.Size = new System.Drawing.Size(67, 19);
             this.Label4.TabIndex = 63;
-            this.Label4.Text = "Num";
+            this.Label4.Text = "Mã Sách";
             // 
             // TextField1
             // 
@@ -125,15 +127,6 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 58;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(676, 39);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(81, 21);
-            this.comboBox1.TabIndex = 57;
             // 
             // CheckBox1
             // 
@@ -278,10 +271,36 @@
             this.materialFlatButton1.UseVisualStyleBackColor = true;
             this.materialFlatButton1.Click += new System.EventHandler(this.materialFlatButton1_Click);
             // 
+            // materialRaisedButton1
+            // 
+            this.materialRaisedButton1.Depth = 0;
+            this.materialRaisedButton1.Location = new System.Drawing.Point(682, 37);
+            this.materialRaisedButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialRaisedButton1.Name = "materialRaisedButton1";
+            this.materialRaisedButton1.Primary = true;
+            this.materialRaisedButton1.Size = new System.Drawing.Size(28, 23);
+            this.materialRaisedButton1.TabIndex = 65;
+            this.materialRaisedButton1.Text = "...";
+            this.materialRaisedButton1.UseVisualStyleBackColor = true;
+            this.materialRaisedButton1.Click += new System.EventHandler(this.materialRaisedButton1_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(3, 309);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(555, 150);
+            this.dataGridView2.TabIndex = 66;
+            this.dataGridView2.Visible = false;
+            this.dataGridView2.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView2_CellMouseClick);
+            // 
             // ThongTinXuatBanControlForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.materialRaisedButton1);
             this.Controls.Add(this.materialFlatButton1);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.TextField1);
@@ -289,7 +308,6 @@
             this.Controls.Add(this.numericUpDown2);
             this.Controls.Add(this.materialLabel1);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.CheckBox1);
             this.Controls.Add(this.Button3);
             this.Controls.Add(this.Button2);
@@ -300,12 +318,13 @@
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.dataGridView1);
             this.Name = "ThongTinXuatBanControlForm";
-            this.Size = new System.Drawing.Size(857, 325);
+            this.Size = new System.Drawing.Size(894, 462);
             this.Load += new System.EventHandler(this.ThongTinXuatBanForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +338,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialCheckBox CheckBox1;
         private MaterialSkin.Controls.MaterialFlatButton Button3;
         private MaterialSkin.Controls.MaterialFlatButton Button2;
@@ -331,5 +349,7 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private MaterialSkin.Controls.MaterialFlatButton materialFlatButton1;
+        private MaterialSkin.Controls.MaterialRaisedButton materialRaisedButton1;
+        private System.Windows.Forms.DataGridView dataGridView2;
     }
 }

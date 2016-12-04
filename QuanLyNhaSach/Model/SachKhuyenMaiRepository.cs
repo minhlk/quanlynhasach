@@ -23,21 +23,25 @@ namespace QuanLyNhaSach.Model
         {
             SACHKHUYENMAI skm = (from c in entity.SACHKHUYENMAIs where c.MASACH == oldMasach select c).FirstOrDefault();
             //kho_re.MASACH = kho.MASACH;
-            saveSachKhuyenMai(sachkhuyenmai);
-            deleteSachKhuyenMai(skm.MASACH);
+            //saveSachKhuyenMai(sachkhuyenmai);
+            //deleteSachKhuyenMai(skm.MASACH);
             //kho_re.SOLUONGCON = kho.SOLUONGCON;
             //kho_re.TONGSOLUONG = kho.TONGSOLUONG;
-
+            skm.MUCGIAMGIA = sachkhuyenmai.MUCGIAMGIA;
             entity.SaveChanges();
 
             return skm; //kho cu
         }
 
-        public IEnumerable<string> getListMaSach()
+        public IEnumerable<object> getListMaSach()
         {
-            return (from c in entity.SACHes
+            var a= (from c in entity.SACHes
                     where !(from d in entity.SACHKHUYENMAIs select d.MASACH).Contains(c.MASACH)
-                    select c.MASACH).ToList();
+                    select c).ToList();
+
+
+            return a.Select(c => new { c.MASACH, c.TENSACH }).ToList();
+           
         }
 
         public IEnumerable<SACHKHUYENMAI> getListSachKhuyenMai()
