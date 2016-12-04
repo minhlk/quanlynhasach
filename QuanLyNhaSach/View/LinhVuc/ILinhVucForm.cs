@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyNhaSach.View.LinhVuc
 {
@@ -16,7 +17,7 @@ namespace QuanLyNhaSach.View.LinhVuc
         object getListLinhVuc { get; set; }
         Presenter.LinhVucPresenter Presenter { set; }
         string selectedLinhVuc { get; }
-        void Log(string mes);
+        DialogResult Log(string mes);
         void showError();
     }
 }

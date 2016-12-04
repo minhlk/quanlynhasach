@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyNhaSach.View
 {
@@ -24,7 +25,7 @@ namespace QuanLyNhaSach.View
         object getListTacGia { get; set; }
         Presenter.TacGiaPresenter Presenter { set; }
         string selectedTacGia { get; }
-        void Log(string mes);
+        DialogResult Log(string mes);
         void showError();
 
     }

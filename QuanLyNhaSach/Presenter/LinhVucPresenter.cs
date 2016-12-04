@@ -92,26 +92,53 @@ namespace QuanLyNhaSach.Presenter
 
             return true;
         }
+
             public void deleteLinhVuc()
             {
                 //LINHVUC lv = repository.getLinhVuc(view.selectedLinhVuc);
                 string malv = view.selectedLinhVuc;
-                LINHVUC tacgia = repository.getLinhVuc(malv);
-                if (valid(tacgia))
-                {
-                    LINHVUC kq = repository.deleteLinhVuc(malv);
+            if (malv != "")
+            {
+                LINHVUC lv = repository.getLinhVuc(malv);
 
-                    //view.Log("Đã lưu thành công");
-                    getListLinhVuc();
+                if (valid(lv))
+                {
+                    if (checkExistInSach(lv.MALINHVUC))
+                    {
+
+                        //hien thong bao da ton tai xem co can xoa khong
+                        if (view.Log("Xóa Lĩnh Vực này và xóa các sách liên quan đến lĩnh vực này") == System.Windows.Forms.DialogResult.Yes)
+                        {
+                            repository.deleteSach(lv.MALINHVUC);
+                            LINHVUC kq = repository.deleteLinhVuc(malv);
+                            getListLinhVuc();
+                        }
+
+
+                    }
+                    else
+                    {
+                        LINHVUC kq = repository.deleteLinhVuc(malv);
+                        getListLinhVuc();
+                    }
+
                 }
             }
+            }
+        public bool checkExistInSach(string MaLinhVuc) {
+            return repository.checkExistInSach(MaLinhVuc);
 
+
+
+        }
             public void showSelected()
+            {
+            if (view.selectedLinhVuc != "")
             {
                 LINHVUC lv = repository.getLinhVuc(view.selectedLinhVuc);
                 ModelToView(lv);
                 //view.LinhVuc = lv;
-
+            }
             }
             private void ModelToView(LINHVUC lv)
             {

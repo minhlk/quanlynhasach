@@ -31,6 +31,7 @@ namespace QuanLyNhaSach.Presenter
         }
 
         public void getListTacGia() {
+            if (repository.getListTacGia()!=null)
             view.getListTacGia = repository.getListTacGia();
 
         }
@@ -49,14 +50,17 @@ namespace QuanLyNhaSach.Presenter
         {
            
             TACGIA tg_moi = ViewToModel();
-            int matg_cu = int.Parse(view.selectedTacGia);
-
-            if (valid(tg_moi))
+            if (view.selectedTacGia != "")
             {
-                TACGIA kq = repository.editTacGia(tg_moi, matg_cu);
+                int matg_cu = int.Parse(view.selectedTacGia);
 
-               
-                getListTacGia();
+                if (valid(tg_moi))
+                {
+                    TACGIA kq = repository.editTacGia(tg_moi, matg_cu);
+
+
+                    getListTacGia();
+                }
             }
         }
         public bool valid(TACGIA tg) {
@@ -76,20 +80,29 @@ namespace QuanLyNhaSach.Presenter
         public void deleteTacGia()
         {
             //TACGIA tg = repository.getTacGia(view.selectedTacGia);
-            int matg = int.Parse(view.selectedTacGia);
-            TACGIA tacgia = repository.getTacGia(matg);
-            if (valid(tacgia))
+            if (view.selectedTacGia != "")
             {
-                TACGIA kq = repository.deleteTacGia(matg);
+                int matg = int.Parse(view.selectedTacGia);
+                TACGIA tacgia = repository.getTacGia(matg);
+                if (valid(tacgia))
+                {
+                    if (view.Log("Xóa Tác Giả này và xóa các sách liên quan đến Tác Giả này") == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        TACGIA kq = repository.deleteTacGia(matg);
+                        getListTacGia();
+                    }
+                    //view.Log("Đã lưu thành công");
 
-                //view.Log("Đã lưu thành công");
-                getListTacGia();
+                }
             }
         }
 
         public void showSelected() {
-            TACGIA tg = repository.getTacGia(int.Parse(view.selectedTacGia));
-            ModelToView(tg);
+            if (view.selectedTacGia != "")
+            {
+                TACGIA tg = repository.getTacGia(int.Parse(view.selectedTacGia));
+                ModelToView(tg);
+            }
             //view.TacGia = tg;
 
         }

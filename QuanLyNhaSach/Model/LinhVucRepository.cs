@@ -24,10 +24,10 @@ namespace QuanLyNhaSach.Model
 
             LINHVUC linhvuc_re = (from c in entity.LINHVUCs where c.MALINHVUC == oldMaLinhVuc select c).FirstOrDefault();
             //linhvuc_re.MASACH = linhvuc.MASACH;
-            saveLinhVuc(lv);
-            deleteLinhVuc(linhvuc_re.MALINHVUC);
-            //linhvuc_re.SOLUONGCON = linhvuc.SOLUONGCON;
-            //linhvuc_re.TONGSOLUONG = linhvuc.TONGSOLUONG;
+
+
+            //linhvuc_re.MALINHVUC = lv.MALINHVUC;
+            linhvuc_re.TENLINHVUC = lv.TENLINHVUC;
 
             entity.SaveChanges();
 
@@ -56,6 +56,16 @@ namespace QuanLyNhaSach.Model
             {
                 return null;
             }
+        }
+
+        public bool checkExistInSach(string MaLinhVuc)
+        {
+           return entity.SACHes.Where(c => c.MALINHVUC == MaLinhVuc).FirstOrDefault()!=null;
+        }
+        public void deleteSach(string MaLinhVuc)
+        {
+            entity.SACHes.RemoveRange((entity.SACHes.Where(x => x.MALINHVUC == MaLinhVuc).ToList()));
+
         }
     }
 }

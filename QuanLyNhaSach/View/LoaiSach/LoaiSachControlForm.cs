@@ -1,28 +1,26 @@
-﻿using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
-using MaterialSkin;
+using QuanLyNhaSach.Presenter;
 
 namespace QuanLyNhaSach.View.LoaiSach
 {
-    public partial class LoaiSachForm : MaterialForm,ILoaiSachForm
+    public partial class LoaiSachControlForm : UserControl, ILoaiSachForm
     {
         ModelState state;
-        public LoaiSachForm():this(new ModelState())
+        public LoaiSachControlForm():this(new ModelState())
         {
-            InitTheme();
+            
             InitializeComponent();
         }
-        LoaiSachForm(ModelState _state)
+        LoaiSachControlForm(ModelState _state)
         {
             state = _state;
             new LoaiSachPresenter(this, new ModelStateWraper(state));
@@ -38,7 +36,12 @@ namespace QuanLyNhaSach.View.LoaiSach
             set
             {
                 dataGridView1.DataSource = value;
-                dataGridView1.Columns[2].Visible = false;
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = "Mã Loại Sách";
+                    dataGridView1.Columns[1].HeaderText = "Tên Loại Sách";
+                    dataGridView1.Columns[2].Visible = false;
+                }
             }
         }
 
@@ -64,8 +67,12 @@ namespace QuanLyNhaSach.View.LoaiSach
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
             }
         }
 
@@ -101,17 +108,16 @@ namespace QuanLyNhaSach.View.LoaiSach
                 }
             }
         }
-        private void InitTheme()
-        {
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
+    
 
         private void LoaiSachForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListLoaiSach();
+            if (!DesignMode)
+            {
+
+                Presenter.getListLoaiSach();
+                Presenter.showSelected();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -134,7 +140,11 @@ namespace QuanLyNhaSach.View.LoaiSach
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!DesignMode) {
+
+                Presenter.getListLoaiSach();
+                Presenter.showSelected();
+            }
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

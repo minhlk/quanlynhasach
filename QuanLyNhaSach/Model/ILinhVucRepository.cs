@@ -14,5 +14,7 @@ namespace QuanLyNhaSach.Model
         LINHVUC saveLinhVuc(LINHVUC lv);
         LINHVUC editLinhVuc(LINHVUC lv, string oldMaLinhVuc);
         LINHVUC deleteLinhVuc(string MaLinhVuc);
+        bool checkExistInSach(string MaLinhVuc);
+        void deleteSach(string MaLinhVuc);
     }
 }

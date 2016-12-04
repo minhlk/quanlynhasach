@@ -114,21 +114,27 @@ namespace QuanLyNhaSach.Presenter
         {
             //SACH sach = repository.getSach(view.selectedSach);
             string masach = view.selectedSach;
-            SACH sach = repository.getSach(masach);
-            //view.Log(sach.MASACH);
-            if (valid(sach))
+            if (masach != "")
             {
-                SACH kq = repository.deleteSach(masach);
+                SACH sach = repository.getSach(masach);
+                //view.Log(sach.MASACH);
+                if (valid(sach))
+                {
+                    SACH kq = repository.deleteSach(masach);
 
-                //view.Log("Đã lưu thành công");
-                getListSach();
+                    //view.Log("Đã lưu thành công");
+                    getListSach();
+                }
             }
         }
 
         public void showSelected()
         {
-            SACH sach = repository.getSach(view.selectedSach);
-            ModelToView(sach);
+            if (view.selectedSach != "")
+            {
+                SACH sach = repository.getSach(view.selectedSach);
+                ModelToView(sach);
+            }
             //view.Sach = sach;
 
         }

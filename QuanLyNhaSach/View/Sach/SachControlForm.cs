@@ -173,8 +173,12 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
             }
         }
 
@@ -195,9 +199,14 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                int pos = dataGridView2.CurrentCell.RowIndex;
-                if (dataGridView2.Rows[pos].Cells[0].Value.ToString() != "")
-                    return Convert.ToInt32(dataGridView2.Rows[pos].Cells[0].Value.ToString());
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    int pos = dataGridView2.CurrentCell.RowIndex;
+                    if (dataGridView2.Rows[pos].Cells[0].Value.ToString() != "")
+                        return Convert.ToInt32(dataGridView2.Rows[pos].Cells[0].Value.ToString());
+                    else
+                        return 0;
+                }
                 else
                     return 0;
             }
@@ -211,8 +220,13 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                int pos = dataGridView3.CurrentCell.RowIndex;
-                return dataGridView3.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView3.Rows.Count != 0)
+                {
+                    int pos = dataGridView3.CurrentCell.RowIndex;
+                    return dataGridView3.Rows[pos].Cells[0].Value.ToString();
+                   
+                }
+                return "";
             }
             set
             {
@@ -224,8 +238,12 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
-                int pos = dataGridView4.CurrentCell.RowIndex;
-                return dataGridView4.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView4.Rows.Count != 0)
+                {
+                    int pos = dataGridView4.CurrentCell.RowIndex;
+                    return dataGridView4.Rows[pos].Cells[0].Value.ToString();
+                }
+                else return "";
             }
             set
             {
@@ -388,6 +406,16 @@ namespace QuanLyNhaSach.View.Sach
         {
             Presenter.showSelectedMaLinhVuc();
             ((DataGridView)sender).Visible = false;
+        }
+
+        private void materialFlatButton1_Click_1(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+
+                Presenter.getListSach();
+                Presenter.showSelected();
+            }
         }
     }
 }

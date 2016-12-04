@@ -1,30 +1,27 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
-using QuanLyNhaSach.Model;
+using QuanLyNhaSach.Presenter;
 
-namespace QuanLyNhaSach.View
+namespace QuanLyNhaSach.View.TacGia
 {
-    public partial class TacGiaForm : MaterialForm,ITacGiaForm
+    public partial class TacGiaControlForm : UserControl, ITacGiaForm
     {
         ModelState state;
-        
-        public TacGiaForm():this(new ModelState())
+
+        public TacGiaControlForm() : this(new ModelState())
         {
-            InitTheme();
+            
             InitializeComponent();
         }
-        TacGiaForm(ModelState _state)
+        TacGiaControlForm(ModelState _state)
         {
             state = _state;
             new TacGiaPresenter(this, new ModelStateWraper(state));
@@ -41,9 +38,19 @@ namespace QuanLyNhaSach.View
             set
             {
                 dataGridView1.DataSource = value;
-                dataGridView1.Columns[0].Visible = false;
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = " Mã Tác Giả";
+                    dataGridView1.Columns[1].HeaderText = "Tên Tác Giả";
+                    dataGridView1.Columns[2].HeaderText = "Năm Sinh";
+                    dataGridView1.Columns[3].HeaderText =  "Năm Mất";
+                    dataGridView1.Columns[4].HeaderText ="Quê Quán";
+                    dataGridView1.Columns[5].Visible = false;
+
+                }
+                //dataGridView1.Columns[0].Visible = false;
                 //dataGridView1.Columns[3].Visible = false;
-                dataGridView1.Columns[5].Visible = false;
+                //dataGridView1.Columns[5].Visible = false;
             }
         }
 
@@ -56,14 +63,19 @@ namespace QuanLyNhaSach.View
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView1.Rows.Count != 0)
+                {
+
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
             }
         }
 
         //public TACGIA TacGia
         //{
-           
+
 
         //    set
         //    {
@@ -73,7 +85,7 @@ namespace QuanLyNhaSach.View
         //            CheckBox1.Checked = true;
         //        else
         //        {
-                    
+
         //            dateTimePicker1.Text = tacgia.NAMSINH.ToString();
         //            CheckBox1.Checked = false;
         //        }
@@ -87,22 +99,22 @@ namespace QuanLyNhaSach.View
         //            CheckBox2.Checked = false;
         //        }
         //        TextField2.Text = tacgia.QUEQUAN;
-                
+
         //    }
         //}
 
-       
+
 
         public string TENTG
         {
             get
             {
-                 return TextField1.Text;
+                return TextField1.Text;
             }
 
             set
             {
-                TextField1.Text=value;
+                TextField1.Text = value;
             }
         }
 
@@ -112,7 +124,7 @@ namespace QuanLyNhaSach.View
             {
                 if (!CheckBox1.Checked) { return DateTime.Parse(dateTimePicker1.Value.ToShortDateString()); }
                 else return null;
-              
+
             }
 
             set
@@ -179,20 +191,18 @@ namespace QuanLyNhaSach.View
 
         public DialogResult Log(string mes)
         {
-            return MessageBox.Show(mes, "Xác Nhận", MessageBoxButtons.YesNo);
+           return  MessageBox.Show(mes,"Xác Nhận",MessageBoxButtons.YesNo);
         }
 
-        private void InitTheme()
-        {
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
+      
 
         private void TacGiaForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListTacGia();
+            if (!DesignMode)
+            {
+                Presenter.getListTacGia();
+                Presenter.showSelected();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -207,11 +217,13 @@ namespace QuanLyNhaSach.View
         public void showError()
         {
             errorProvider1.Clear();
-            foreach (var err in state) {
+            foreach (var err in state)
+            {
                 switch (err.Key)
                 {
                     case "tentg": errorProvider1.SetError(TextField1, err.Value); break;
-                    case "nam": errorProvider1.SetError(dateTimePicker1, err.Value);
+                    case "nam":
+                        errorProvider1.SetError(dateTimePicker1, err.Value);
                         errorProvider1.SetError(dateTimePicker2, err.Value);
                         break;
 
@@ -226,7 +238,7 @@ namespace QuanLyNhaSach.View
         {
             Presenter.deleteTacGia();
 
-            
+
 
         }
 
@@ -240,12 +252,9 @@ namespace QuanLyNhaSach.View
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Presenter.showSelected();
-            
+
         }
 
-        private void materialFlatButton1_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+       
     }
 }

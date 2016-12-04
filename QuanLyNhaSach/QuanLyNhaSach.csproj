@@ -82,6 +82,12 @@
     <Compile Include="Model\AppData\HOADON.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\AppData\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AppData\sp_helpdiagrams_Result.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\ISachRepository.cs" />
     <Compile Include="Model\ITaiKhoanRepository.cs" />
     <Compile Include="Model\ChiTietHoaDonRepository.cs" />
@@ -172,6 +178,12 @@
       <DependentUpon>KhoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LinhVuc\ILinhVucForm.cs" />
+    <Compile Include="View\LinhVuc\LinhVucControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\LinhVuc\LinhVucControlForm.Designer.cs">
+      <DependentUpon>LinhVucControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LinhVuc\LinhVucForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +191,12 @@
       <DependentUpon>LinhVucForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\LoaiSach\ILoaiSachForm.cs" />
+    <Compile Include="View\LoaiSach\LoaiSachControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\LoaiSach\LoaiSachControlForm.Designer.cs">
+      <DependentUpon>LoaiSachControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoaiSach\LoaiSachForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -213,19 +231,25 @@
       <DependentUpon>SachForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TacGia\ITacGiaForm.cs" />
+    <Compile Include="View\TacGia\TacGiaControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\TacGia\TacGiaControlForm.Designer.cs">
+      <DependentUpon>TacGiaControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TacGia\TacGiaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\TacGia\TacGiaForm.Designer.cs">
       <DependentUpon>TacGiaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TacGia\TacGiaUserControl.cs">
+    <Compile Include="View\TaiKhoan\ITaiKhoanForm.cs" />
+    <Compile Include="View\TaiKhoan\TaiKhoanControlForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="View\TacGia\TacGiaUserControl.Designer.cs">
-      <DependentUpon>TacGiaUserControl.cs</DependentUpon>
+    <Compile Include="View\TaiKhoan\TaiKhoanControlForm.Designer.cs">
+      <DependentUpon>TaiKhoanControlForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TaiKhoan\ITaiKhoanForm.cs" />
     <Compile Include="View\TaiKhoan\TaiKhoanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +257,12 @@
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ThongTinXuatBan\IThongTinXuatBanForm.cs" />
+    <Compile Include="View\ThongTinXuatBan\ThongTinXuatBanControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ThongTinXuatBan\ThongTinXuatBanControlForm.Designer.cs">
+      <DependentUpon>ThongTinXuatBanControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ThongTinXuatBan\ThongTinXuatBanForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -263,8 +293,14 @@
     <EmbeddedResource Include="View\Kho\KhoForm.resx">
       <DependentUpon>KhoForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\LinhVuc\LinhVucControlForm.resx">
+      <DependentUpon>LinhVucControlForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LinhVuc\LinhVucForm.resx">
       <DependentUpon>LinhVucForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\LoaiSach\LoaiSachControlForm.resx">
+      <DependentUpon>LoaiSachControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoaiSach\LoaiSachForm.resx">
       <DependentUpon>LoaiSachForm.cs</DependentUpon>
@@ -281,14 +317,20 @@
     <EmbeddedResource Include="View\Sach\SachForm.resx">
       <DependentUpon>SachForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TacGia\TacGiaControlForm.resx">
+      <DependentUpon>TacGiaControlForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TacGia\TacGiaForm.resx">
       <DependentUpon>TacGiaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\TacGia\TacGiaUserControl.resx">
-      <DependentUpon>TacGiaUserControl.cs</DependentUpon>
+    <EmbeddedResource Include="View\TaiKhoan\TaiKhoanControlForm.resx">
+      <DependentUpon>TaiKhoanControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TaiKhoan\TaiKhoanForm.resx">
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ThongTinXuatBan\ThongTinXuatBanControlForm.resx">
+      <DependentUpon>ThongTinXuatBanControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ThongTinXuatBan\ThongTinXuatBanForm.resx">
       <DependentUpon>ThongTinXuatBanForm.cs</DependentUpon>

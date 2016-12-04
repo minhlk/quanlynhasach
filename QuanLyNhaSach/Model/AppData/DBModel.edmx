@@ -113,7 +113,9 @@
           <Property Name="GIABIA" Type="int" />
         </EntityType>
         <Association Name="FK_CHITIETHOADON_HOADON">
-          <End Role="HOADONs" Type="Self.HOADONs" Multiplicity="1" />
+          <End Role="HOADONs" Type="Self.HOADONs" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADONs" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="HOADONs">
@@ -125,7 +127,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CHITIETHOADON_SACH">
-          <End Role="SACHes" Type="Self.SACHes" Multiplicity="0..1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="CHITIETHOADONs" Type="Self.CHITIETHOADONs" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SACHes">
@@ -137,7 +141,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_KHO_SACH">
-          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="KHOes" Type="Self.KHOes" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="SACHes">
@@ -149,7 +155,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_NHATKINHAPSACH_KHO">
-          <End Role="KHOes" Type="Self.KHOes" Multiplicity="0..1" />
+          <End Role="KHOes" Type="Self.KHOes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="NHATKINHAPSACHes" Type="Self.NHATKINHAPSACHes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="KHOes">
@@ -161,7 +169,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SACH_LOAISACH">
-          <End Role="LOAISACHes" Type="Self.LOAISACHes" Multiplicity="0..1" />
+          <End Role="LOAISACHes" Type="Self.LOAISACHes" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LOAISACHes">
@@ -173,7 +183,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SACH_TACGIA">
-          <End Role="TACGIAs" Type="Self.TACGIAs" Multiplicity="0..1" />
+          <End Role="TACGIAs" Type="Self.TACGIAs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TACGIAs">
@@ -185,7 +197,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SACHes_LINHVUCs">
-          <End Role="LINHVUCs" Type="Self.LINHVUCs" Multiplicity="0..1" />
+          <End Role="LINHVUCs" Type="Self.LINHVUCs" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SACHes" Type="Self.SACHes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LINHVUCs">
@@ -197,7 +211,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SACHKHUYENMAI_SACH">
-          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="SACHKHUYENMAIs" Type="Self.SACHKHUYENMAIs" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="SACHes">
@@ -209,7 +225,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_THONGTINXUATBAN_SACH">
-          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1" />
+          <End Role="SACHes" Type="Self.SACHes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="THONGTINXUATBANs" Type="Self.THONGTINXUATBANs" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="SACHes">
@@ -220,6 +238,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NhaSachModelStoreContainer">
           <EntitySet Name="CHITIETHOADONs" EntityType="Self.CHITIETHOADONs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HOADONs" EntityType="Self.HOADONs" Schema="dbo" store:Type="Tables" />
@@ -468,6 +517,36 @@
             <End Role="NHATKINHAPSACH" EntitySet="NHATKINHAPSACHes" />
           </AssociationSet>
           <EntitySet Name="TAIKHOANs" EntityType="NhaSachModel.TAIKHOAN" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(NhaSachModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(NhaSachModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
         <EntityType Name="sysdiagram">
           <Key>
@@ -557,6 +636,17 @@
           <Property Name="NGAYLAMVIEC" Type="DateTime" Precision="3" />
           <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -682,6 +772,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="NhaSachModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="NhaSachModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="NhaSachModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="NhaSachModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NhaSachModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="NhaSachModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NhaSachModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="NhaSachModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="NhaSachModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -14,5 +14,6 @@ namespace QuanLyNhaSach.Model
         LOAISACH saveLoaiSach(LOAISACH ls);
         LOAISACH editLoaiSach(LOAISACH ls, string oldMaLoaiSach);
         LOAISACH deleteLoaiSach(string MaLoaiSach);
+        void deleteSach(string MaLoaiSach);
     }
 }

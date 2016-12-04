@@ -1,29 +1,27 @@
-﻿using MaterialSkin;
-using MaterialSkin.Controls;
-using QuanLyNhaSach.Presenter;
-using QuanLyNhaSach.Validation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyNhaSach.Validation;
+using QuanLyNhaSach.Presenter;
 
 namespace QuanLyNhaSach.View.LinhVuc
 {
-    public partial class LinhVucForm : MaterialForm,ILinhVucForm
-   
+    public partial class LinhVucControlForm : UserControl, ILinhVucForm
+
     {
         ModelState state;
-        public LinhVucForm():this(new ModelState())
+        public LinhVucControlForm():this(new ModelState())
         {
-            InitTheme();
+           
             InitializeComponent();
         }
-        LinhVucForm(ModelState _state)
+        LinhVucControlForm(ModelState _state)
         {
             state = _state;
             new LinhVucPresenter(this, new ModelStateWraper(state));
@@ -39,7 +37,14 @@ namespace QuanLyNhaSach.View.LinhVuc
             set
             {
                 dataGridView1.DataSource = value;
-                dataGridView1.Columns[2].Visible = false;
+                if (dataGridView1.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = "Mã Lĩnh Vực";
+                    dataGridView1.Columns[1].HeaderText = "Tên Lĩnh Vực";
+
+
+                    dataGridView1.Columns[2].Visible = false;
+                }
             }
         }
 
@@ -65,8 +70,13 @@ namespace QuanLyNhaSach.View.LinhVuc
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView1.Rows.Count != 0)
+                {
+
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                }
+                else return "";
             }
         }
 
@@ -85,7 +95,7 @@ namespace QuanLyNhaSach.View.LinhVuc
 
         public DialogResult Log(string mes)
         {
-           return MessageBox.Show(mes,"Xác Nhận",MessageBoxButtons.YesNo);
+          return  MessageBox.Show(mes, "Xác Nhận", MessageBoxButtons.YesNo);
         }
 
         public void showError()
@@ -103,17 +113,15 @@ namespace QuanLyNhaSach.View.LinhVuc
                 }
             }
         }
-        private void InitTheme()
-        {
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
+        
 
         private void LinhVucForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListLinhVuc();
+            if (!DesignMode)
+            {
+                Presenter.getListLinhVuc();
+                Presenter.showSelected();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -136,7 +144,11 @@ namespace QuanLyNhaSach.View.LinhVuc
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!DesignMode)
+            {
+                Presenter.getListLinhVuc();
+                Presenter.showSelected();
+            }
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -144,7 +156,6 @@ namespace QuanLyNhaSach.View.LinhVuc
             Presenter.showSelected();
         }
 
-       
+
     }
 }
-

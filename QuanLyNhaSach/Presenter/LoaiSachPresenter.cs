@@ -98,20 +98,30 @@ namespace QuanLyNhaSach.Presenter
             {
                 //LOAISACH ls = repository.getLoaiSach(view.selectedLoaiSach);
                 string mals = view.selectedLoaiSach;
+            if (mals != "")
+            {
                 LOAISACH tacgia = repository.getLoaiSach(mals);
+
                 if (valid(tacgia))
                 {
-                    LOAISACH kq = repository.deleteLoaiSach(mals);
+                    if (view.Log("Xóa Loại Sách này và xóa các sách liên quan đến Loại Sách này") == System.Windows.Forms.DialogResult.Yes)
+                    {
+                        LOAISACH kq = repository.deleteLoaiSach(mals);
 
-                    //view.Log("Đã lưu thành công");
-                    getListLoaiSach();
+                        //view.Log("Đã lưu thành công");
+                        getListLoaiSach();
+                    }
                 }
+            }
             }
 
             public void showSelected()
             {
+            if (view.selectedLoaiSach != "")
+            {
                 LOAISACH ls = repository.getLoaiSach(view.selectedLoaiSach);
                 ModelToView(ls);
+            }
                 //view.LoaiSach = ls;
 
             }

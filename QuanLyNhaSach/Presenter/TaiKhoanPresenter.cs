@@ -103,22 +103,27 @@ namespace QuanLyNhaSach.Presenter
         {
             //TAIKHOAN tk = repository.getTaiKhoan(view.selectedTaiKhoan);
             string matk = view.selectedTaiKhoan;
-            TAIKHOAN tk = repository.getTaiKhoan(matk);
-            if (valid(tk))
+            if (matk != "")
             {
-                TAIKHOAN kq = repository.deleteTaiKhoan(matk);
+                TAIKHOAN tk = repository.getTaiKhoan(matk);
+                if (valid(tk))
+                {
+                    TAIKHOAN kq = repository.deleteTaiKhoan(matk);
 
-                //view.Log("Đã lưu thành công");
-                getListTaiKhoan();
+                    //view.Log("Đã lưu thành công");
+                    getListTaiKhoan();
+                }
             }
         }
 
         public void showSelected()
         {
-            TAIKHOAN tk = repository.getTaiKhoan(view.selectedTaiKhoan);
-            ModelToView(tk);
-            //view.TaiKhoan = tk;
-
+            if (view.selectedTaiKhoan != "")
+            {
+                TAIKHOAN tk = repository.getTaiKhoan(view.selectedTaiKhoan);
+                ModelToView(tk);
+                //view.TaiKhoan = tk;
+            }
         }
         private void ModelToView(TAIKHOAN tk)
         {

@@ -28,15 +28,16 @@ namespace QuanLyNhaSach.Model
             //saveThongTinXuatBan(ttxb);
             //linhvuc_re.SOLUONGCON = linhvuc.SOLUONGCON;
             //linhvuc_re.TONGSOLUONG = linhvuc.TONGSOLUONG;
+            if (thongtin_re != null)
+            {
+                thongtin_re.NAMXUATBAN = ttxb.NAMXUATBAN;
+                thongtin_re.NHAXUATBAN = ttxb.NHAXUATBAN;
+                thongtin_re.GIABIA = ttxb.GIABIA;
+                thongtin_re.LANTAIBAN = ttxb.LANTAIBAN;
 
-            thongtin_re.NAMXUATBAN = ttxb.NAMXUATBAN;
-            thongtin_re.NHAXUATBAN = ttxb.NHAXUATBAN;
-            thongtin_re.GIABIA = ttxb.GIABIA;
-            thongtin_re.LANTAIBAN= ttxb.LANTAIBAN;
 
-
-            entity.SaveChanges();
-
+                entity.SaveChanges();
+            }
             return thongtin_re; //linhvuc cu
         }
 

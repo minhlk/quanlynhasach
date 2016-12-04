@@ -104,7 +104,7 @@
             // 
             this.TextField2.Depth = 0;
             this.TextField2.Hint = "";
-            this.TextField2.Location = new System.Drawing.Point(465, 368);
+            this.TextField2.Location = new System.Drawing.Point(462, 319);
             this.TextField2.MouseState = MaterialSkin.MouseState.HOVER;
             this.TextField2.Name = "TextField2";
             this.TextField2.PasswordChar = '\0';

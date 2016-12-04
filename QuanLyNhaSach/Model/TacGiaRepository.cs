@@ -11,6 +11,12 @@ namespace QuanLyNhaSach.Model
     class TacGiaRepository : ITacGiaRepository
     {
         NhaSachEntities entity=new NhaSachEntities();
+
+        public void deleteSach(int MaTacGia)
+        {
+            entity.SACHes.RemoveRange((entity.SACHes.Where(x => x.MATG == MaTacGia).ToList()));
+        }
+
         public TACGIA deleteTacGia(int MaTacGia)
         {
             TACGIA tg = (from c in entity.TACGIAs where c.MATG == MaTacGia select c).FirstOrDefault();

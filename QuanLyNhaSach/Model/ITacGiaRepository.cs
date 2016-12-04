@@ -14,7 +14,7 @@ namespace QuanLyNhaSach.Model
         TACGIA saveTacGia(TACGIA tg);
         TACGIA editTacGia(TACGIA tg, int oldMaTacGia);
         TACGIA deleteTacGia(int MaTacGia);
-
+        void deleteSach(int MaTacGia);
 
     }
 }

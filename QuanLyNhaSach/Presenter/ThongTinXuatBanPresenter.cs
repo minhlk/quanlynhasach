@@ -32,8 +32,11 @@ namespace QuanLyNhaSach.Presenter
 
         public void getListThongTinXuatBan()
         {
-            view.getListThongTinXuatBan = repository.getListThongTinXuatBan();
-            getListMasach();
+            if (repository.getListThongTinXuatBan() != null)
+            {
+                view.getListThongTinXuatBan = repository.getListThongTinXuatBan();
+                getListMasach();
+            }
         }
         public void getListMasach()
         {
@@ -91,20 +94,27 @@ namespace QuanLyNhaSach.Presenter
             
             //THONGTINXUATBAN ttxb = repository.getThongTinXuatBan(view.selectedThongTinXuatBan);
             string mattxb = view.selectedThongTinXuatBan;
-            THONGTINXUATBAN tacgia = repository.getThongTinXuatBan(mattxb);
-            if (valid(tacgia))
+            if (mattxb != "")
             {
-                THONGTINXUATBAN kq = repository.deleteThongTinXuatBan(mattxb);
+                THONGTINXUATBAN tacgia = repository.getThongTinXuatBan(mattxb);
+                if (valid(tacgia))
+                {
+                    THONGTINXUATBAN kq = repository.deleteThongTinXuatBan(mattxb);
 
-                //view.Log("Đã lưu thành công");
-                getListThongTinXuatBan();
+                    //view.Log("Đã lưu thành công");
+                    getListThongTinXuatBan();
+                }
             }
         }
 
         public void showSelected()
         {
-            THONGTINXUATBAN ttxb = repository.getThongTinXuatBan(view.selectedThongTinXuatBan);
-            ModelToView(ttxb);
+            if (view.selectedThongTinXuatBan != "")
+            {
+                THONGTINXUATBAN ttxb = repository.getThongTinXuatBan(view.selectedThongTinXuatBan);
+
+                ModelToView(ttxb);
+            }
             //view.ThongTinXuatBan = ttxb;
 
         }

@@ -57,5 +57,10 @@ namespace QuanLyNhaSach.Model
                 return null;
             }
         }
+        public void deleteSach(string MaLoaiSach)
+        {
+            entity.SACHes.RemoveRange((entity.SACHes.Where(x => x.MALOAISACH == MaLoaiSach).ToList()));
+
+        }
     }
 }

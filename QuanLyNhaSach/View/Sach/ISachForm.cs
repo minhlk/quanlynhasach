@@ -11,7 +11,7 @@ namespace QuanLyNhaSach.View.Sach
 
         string MASACH { get; set; }
         string TENSACH { get; set; }
-        Nullable<int> MATG { get; set; }
+        int? MATG { get; set; }
         string MALOAISACH { get; set; }
         string MALINHVUC { get; set; }
         Nullable<int> GIAMUA { get; set; }

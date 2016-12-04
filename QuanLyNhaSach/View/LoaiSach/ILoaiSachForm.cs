@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace QuanLyNhaSach.View.LoaiSach
 {
@@ -16,7 +17,7 @@ namespace QuanLyNhaSach.View.LoaiSach
         object getListLoaiSach{ get; set; }
         Presenter.LoaiSachPresenter Presenter { set; }
         string selectedLoaiSach { get; }
-        void Log(string mes);
+        DialogResult Log(string mes);
         void showError();
     }
 }
