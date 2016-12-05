@@ -43,7 +43,14 @@
             this.taiKhoanControlForm1 = new QuanLyNhaSach.View.TaiKhoan.TaiKhoanControlForm();
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.sachKhuyenMaiControlForm1 = new QuanLyNhaSach.View.SachKhuyenMai.SachKhuyenMaiControlForm();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.materialTabControl3 = new MaterialSkin.Controls.MaterialTabControl();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.khoControlForm1 = new QuanLyNhaSach.View.Kho.KhoControlForm();
+            this.tabPage12 = new System.Windows.Forms.TabPage();
             this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.materialTabSelector3 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.nhatKiNhapSachControlForm1 = new QuanLyNhaSach.View.NhatKiNhapSach.NhatKiNhapSachControlForm();
             this.materialTabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -52,6 +59,10 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            this.tabPage10.SuspendLayout();
+            this.materialTabControl3.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.tabPage12.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialTabControl2
@@ -63,6 +74,7 @@
             this.materialTabControl2.Controls.Add(this.tabPage7);
             this.materialTabControl2.Controls.Add(this.tabPage8);
             this.materialTabControl2.Controls.Add(this.tabPage9);
+            this.materialTabControl2.Controls.Add(this.tabPage10);
             this.materialTabControl2.Depth = 0;
             this.materialTabControl2.Location = new System.Drawing.Point(28, 111);
             this.materialTabControl2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -133,7 +145,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(973, 393);
+            this.tabPage5.Size = new System.Drawing.Size(192, 74);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Thông tin xuất bản";
             // 
@@ -236,6 +248,62 @@
             this.sachKhuyenMaiControlForm1.Size = new System.Drawing.Size(876, 346);
             this.sachKhuyenMaiControlForm1.TabIndex = 0;
             // 
+            // tabPage10
+            // 
+            this.tabPage10.BackColor = System.Drawing.Color.White;
+            this.tabPage10.Controls.Add(this.materialTabControl3);
+            this.tabPage10.Location = new System.Drawing.Point(4, 22);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(973, 393);
+            this.tabPage10.TabIndex = 7;
+            this.tabPage10.Text = "Kho";
+            // 
+            // materialTabControl3
+            // 
+            this.materialTabControl3.Controls.Add(this.tabPage11);
+            this.materialTabControl3.Controls.Add(this.tabPage12);
+            this.materialTabControl3.Depth = 0;
+            this.materialTabControl3.Location = new System.Drawing.Point(6, 6);
+            this.materialTabControl3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabControl3.Name = "materialTabControl3";
+            this.materialTabControl3.SelectedIndex = 0;
+            this.materialTabControl3.Size = new System.Drawing.Size(961, 381);
+            this.materialTabControl3.TabIndex = 0;
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.BackColor = System.Drawing.Color.White;
+            this.tabPage11.Controls.Add(this.khoControlForm1);
+            this.tabPage11.Location = new System.Drawing.Point(4, 22);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(953, 355);
+            this.tabPage11.TabIndex = 0;
+            this.tabPage11.Text = "Kho";
+            // 
+            // khoControlForm1
+            // 
+            this.khoControlForm1.getListKho = null;
+            this.khoControlForm1.Location = new System.Drawing.Point(7, 4);
+            this.khoControlForm1.MASACH = "a";
+            this.khoControlForm1.Name = "khoControlForm1";
+            this.khoControlForm1.Size = new System.Drawing.Size(885, 326);
+            this.khoControlForm1.SOLUONGCON = 0;
+            this.khoControlForm1.TabIndex = 0;
+            this.khoControlForm1.TONGSOLUONG = 0;
+            // 
+            // tabPage12
+            // 
+            this.tabPage12.BackColor = System.Drawing.Color.White;
+            this.tabPage12.Controls.Add(this.nhatKiNhapSachControlForm1);
+            this.tabPage12.Location = new System.Drawing.Point(4, 22);
+            this.tabPage12.Name = "tabPage12";
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Size = new System.Drawing.Size(953, 355);
+            this.tabPage12.TabIndex = 1;
+            this.tabPage12.Text = "Nhật kí nhập";
+            // 
             // materialTabSelector2
             // 
             this.materialTabSelector2.BaseTabControl = this.materialTabControl2;
@@ -247,9 +315,32 @@
             this.materialTabSelector2.TabIndex = 1;
             this.materialTabSelector2.Text = "materialTabSelector2";
             // 
+            // materialTabSelector3
+            // 
+            this.materialTabSelector3.BaseTabControl = this.materialTabControl3;
+            this.materialTabSelector3.Depth = 0;
+            this.materialTabSelector3.Location = new System.Drawing.Point(28, 77);
+            this.materialTabSelector3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialTabSelector3.Name = "materialTabSelector3";
+            this.materialTabSelector3.Size = new System.Drawing.Size(977, 24);
+            this.materialTabSelector3.TabIndex = 2;
+            this.materialTabSelector3.Text = "materialTabSelector3";
+            // 
+            // nhatKiNhapSachControlForm1
+            // 
+            this.nhatKiNhapSachControlForm1.getListNhatKiNhapSach = null;
+            this.nhatKiNhapSachControlForm1.Location = new System.Drawing.Point(7, 7);
+            this.nhatKiNhapSachControlForm1.MASACH = "a";
+            this.nhatKiNhapSachControlForm1.Name = "nhatKiNhapSachControlForm1";
+            this.nhatKiNhapSachControlForm1.NGAYNHAP = new System.DateTime(2016, 12, 5, 0, 0, 0, 0);
+            this.nhatKiNhapSachControlForm1.Size = new System.Drawing.Size(853, 321);
+            this.nhatKiNhapSachControlForm1.SOLUONG = 0;
+            this.nhatKiNhapSachControlForm1.TabIndex = 0;
+            // 
             // ViewTong
             // 
             this.ClientSize = new System.Drawing.Size(1062, 542);
+            this.Controls.Add(this.materialTabSelector3);
             this.Controls.Add(this.materialTabSelector2);
             this.Controls.Add(this.materialTabControl2);
             this.Name = "ViewTong";
@@ -261,6 +352,10 @@
             this.tabPage7.ResumeLayout(false);
             this.tabPage8.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
+            this.materialTabControl3.ResumeLayout(false);
+            this.tabPage11.ResumeLayout(false);
+            this.tabPage12.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -274,7 +369,6 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector2;
-        private Sach.SachControlForm sachControlForm1;
         private TacGia.TacGiaControlForm tacGiaControlForm1;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabPage tabPage6;
@@ -286,6 +380,14 @@
         private TaiKhoan.TaiKhoanControlForm taiKhoanControlForm1;
         private System.Windows.Forms.TabPage tabPage9;
         private SachKhuyenMai.SachKhuyenMaiControlForm sachKhuyenMaiControlForm1;
+        private System.Windows.Forms.TabPage tabPage10;
+        private MaterialSkin.Controls.MaterialTabControl materialTabControl3;
+        private System.Windows.Forms.TabPage tabPage11;
+        private System.Windows.Forms.TabPage tabPage12;
+        private MaterialSkin.Controls.MaterialTabSelector materialTabSelector3;
+        private Kho.KhoControlForm khoControlForm1;
+        private Sach.SachControlForm sachControlForm1;
+        private NhatKiNhapSach.NhatKiNhapSachControlForm nhatKiNhapSachControlForm1;
         //private Sach.SachControlForm sachControlForm1;
     }
 }

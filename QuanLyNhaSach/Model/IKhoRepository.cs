@@ -13,6 +13,6 @@ namespace QuanLyNhaSach.Model.AppData
         KHO saveKho(KHO kho);
         KHO editKho(KHO kho, string oldMasach);
         KHO deleteKho(string MaKho);
-        IEnumerable<string> getListMaSach();
+        IEnumerable<object> getListMaSach();
     }
 }

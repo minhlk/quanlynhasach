@@ -31,11 +31,15 @@ namespace QuanLyNhaSach.Presenter
         }
         public void getListKho()
         {
-            view.getListKho = repository.getListKho();
-            getListMasach();
+            if (repository.getListKho() != null)
+            {
+                view.getListKho = repository.getListKho();
+                getListMasach();
+            }
         }
         public void getListMasach()
         {
+            if(repository.getListMaSach()!=null)
             view.getListMasach = repository.getListMaSach();
             
 
@@ -44,8 +48,8 @@ namespace QuanLyNhaSach.Presenter
         {
             //KHO kho = repository.getKho(view.selectedKho);
             KHO kho = ViewToModel();
-
-            if (valid(kho))
+          
+            if (valid(kho)&& checkExists(kho.MASACH))
             {
                 KHO kq = repository.saveKho(kho);
 
@@ -57,17 +61,30 @@ namespace QuanLyNhaSach.Presenter
 }
         public void editKho()
         {
-
+            
             KHO kho_moi = ViewToModel();
-            string makho_cu = view.selectedKho;
-            kho_moi.MASACH = makho_cu;
-            if (valid(kho_moi))
+         
+                string makho_cu = view.selectedKho;
+            if (makho_cu!="")
             {
-                KHO kq = repository.editKho(kho_moi, makho_cu);
+                kho_moi.MASACH = makho_cu;
+                if (valid(kho_moi))
+                {
+                    KHO kq = repository.editKho(kho_moi, makho_cu);
 
 
-                getListKho();
+                    getListKho();
+                }
             }
+        }
+        public bool checkExists(string masach)
+        {
+            if (repository.getKho(masach) != null)
+            {
+                state.addError("sach", "Chọn sách để thêm thông tin");
+                return false;
+            }
+            return true;
         }
         public bool valid(KHO kho)
         {
@@ -79,8 +96,9 @@ namespace QuanLyNhaSach.Presenter
                 state.addError("tongsoluong", "Tổng số lượng không được nhỏ hơn 0");
             if (kho.SOLUONGCON > kho.TONGSOLUONG)
                 state.addError("lonhon", "Số lượng còn không được lớn hơn tổng số lượng");
-            if (kho.MASACH == "")
-                state.addError("sach", "Không còn sách để thêm thông tin");
+            if(kho.MASACH=="a")
+            state.addError("sach", "Chọn sách để thêm thông tin");
+
             return state.isValid();
 
 
@@ -90,21 +108,31 @@ namespace QuanLyNhaSach.Presenter
         {
             //KHO kho = repository.getKho(view.selectedKho);
             string makho = view.selectedKho;
-            KHO kho = repository.getKho(makho);
-            if (valid(kho))
+            if (makho != "")
             {
-                KHO kq = repository.deleteKho(makho);
+                KHO kho = repository.getKho(makho);
+                if (valid(kho))
+                {
+                    KHO kq = repository.deleteKho(makho);
 
-                //view.Log("Đã lưu thành công");
-                getListKho();
+                    //view.Log("Đã lưu thành công");
+                    getListKho();
+                }
             }
         }
+        public void showSelectedMaSach() {
 
+            view.MASACH = view.selectedMaSach;
+
+        }
         public void showSelected()
         {
-            KHO kho = repository.getKho(view.selectedKho);
-            ModelToView(kho);
-            //view.Kho = kho;
+            if (view.selectedKho != "")
+            {
+                KHO kho = repository.getKho(view.selectedKho);
+                ModelToView(kho);
+                //view.Kho = kho;
+            }
 
         }
         private void ModelToView(KHO kho)

@@ -12,7 +12,7 @@ namespace QuanLyNhaSach.Model
         IEnumerable<NHATKINHAPSACH> getListNhatKiNhapSach();
         NHATKINHAPSACH getNhatKiNhapSach(int MaNhatKiNhapSach);
         NHATKINHAPSACH saveNhatKiNhapSach(NHATKINHAPSACH nkns);
-        IEnumerable<string> getListMaSach();
+        IEnumerable<object> getListMaSach();
         NHATKINHAPSACH editNhatKiNhapSach(NHATKINHAPSACH nkns, int oldMaNhatKiNhapSach);
         NHATKINHAPSACH deleteNhatKiNhapSach(int MaNhatKiNhapSach);
         NHATKINHAPSACH checkRepeat(NHATKINHAPSACH nkns);

@@ -17,6 +17,7 @@ namespace QuanLyNhaSach.View.Kho
         object getListMasach {  set; }
         Presenter.KhoPresenter Presenter { set; }
         string selectedKho { get; }
+        string selectedMaSach { get; }
         void Log(string mes);
         void showError();
     }

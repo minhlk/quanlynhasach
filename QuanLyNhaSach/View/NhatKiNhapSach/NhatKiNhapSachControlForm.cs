@@ -1,28 +1,26 @@
-﻿using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
-using MaterialSkin;
+using QuanLyNhaSach.Presenter;
 
 namespace QuanLyNhaSach.View.NhatKiNhapSach
 {
-    public partial class NhatKiNhapSachForm : MaterialForm,INhatKiNhapSachForm
+    public partial class NhatKiNhapSachControlForm : UserControl, INhatKiNhapSachForm
     {
         ModelState state;
-        public NhatKiNhapSachForm():this(new ModelState())
+        public NhatKiNhapSachControlForm():this(new ModelState())
         {
             InitializeComponent();
-            InitTheme();
+          
         }
-        NhatKiNhapSachForm(ModelState _state)
+        NhatKiNhapSachControlForm(ModelState _state)
         {
             state = _state;
             new NhatKiNhapSachPresenter(this, new ModelStateWraper(state));
@@ -38,8 +36,15 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
             set
             {
                 dataGridView1.DataSource = value;
-                dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
+                if (dataGridView1.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView1.Columns[0].Visible = false;
+                    //dataGridView1.Columns[0].HeaderText = "Số thứ tự";
+                    dataGridView1.Columns[1].HeaderText = "Mã Sách";
+                    dataGridView1.Columns[2].HeaderText = "Số lượng";
+                    dataGridView1.Columns[3].HeaderText = "Ngày nhập";
+                    dataGridView1.Columns[4].Visible = false;
+                }
             }
         }
 
@@ -47,7 +52,7 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
         {
             set
             {
-                comboBox1.DataSource = value;
+                dataGridView2.DataSource = value;
             }
         }
 
@@ -55,12 +60,12 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
         {
             get
             {
-                return comboBox1.Text;
+                return Label2.Text;
             }
 
             set
             {
-                comboBox1.Text = value;
+                Label2.Text = value;
             }
         }
 
@@ -79,15 +84,19 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
 
         public NhatKiNhapSachPresenter Presenter
         {
-            get;set;
+            get; set;
         }
 
         public int selectedNhatKiNhapSach
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return Convert.ToInt32(dataGridView1.Rows[pos].Cells[0].Value.ToString());
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return Convert.ToInt32(dataGridView1.Rows[pos].Cells[0].Value.ToString());
+                }
+                return 0;
             }
         }
 
@@ -108,13 +117,19 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
         {
             get
             {
-                throw new NotImplementedException();
+
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    int pos = dataGridView2.CurrentCell.RowIndex;
+                    return dataGridView2.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
             }
         }
 
         public DialogResult Log(string mes)
         {
-            return MessageBox.Show(mes,"Giá trị trùng lặp", MessageBoxButtons.YesNo);
+            return MessageBox.Show(mes, "Giá trị trùng lặp", MessageBoxButtons.YesNo);
         }
 
         public void showError()
@@ -126,11 +141,11 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
                 {
                     //case "soluongcon": errorProvider1.SetError(numericUpDown1, err.Value); break;
                     //case "tongsoluong": errorProvider1.SetError(numericUpDown2, err.Value); break;
-                    //case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
-                    //case "lonhon":
-                    //    errorProvider1.SetError(numericUpDown1, err.Value);
-                    //    errorProvider1.SetError(numericUpDown2, err.Value);
-                    //    break;
+                    case "sach": errorProvider1.SetError(materialRaisedButton1, err.Value); break;
+                        //case "lonhon":
+                        //    errorProvider1.SetError(numericUpDown1, err.Value);
+                        //    errorProvider1.SetError(numericUpDown2, err.Value);
+                        //    break;
 
 
                 }
@@ -141,15 +156,14 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
 
         private void NhatKiNhapSachForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListNhatKiNhapSach();
+            if (!DesignMode)
+            {
+
+                Presenter.getListNhatKiNhapSach();
+                Presenter.getListMasach();
+            }
         }
-        private void InitTheme()
-        {
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
+      
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -170,12 +184,34 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!DesignMode)
+            {
+
+                Presenter.getListNhatKiNhapSach();
+                Presenter.getListMasach();
+            }
         }
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Presenter.showSelected();
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            if (!dataGridView2.Visible)
+            {
+                dataGridView2.Visible = true;
+                Presenter.getListMasach();
+
+            }
+            else dataGridView2.Visible = false;
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaSach();
+            dataGridView2.Visible = false;
         }
     }
 }

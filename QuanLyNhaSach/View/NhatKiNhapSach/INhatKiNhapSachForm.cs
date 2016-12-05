@@ -16,6 +16,7 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
         object getListMasach { set; }
         Presenter.NhatKiNhapSachPresenter Presenter { set; }
         int selectedNhatKiNhapSach { get; }
+        string selectedMaSach { get; }
         DialogResult Log(string mes);
         void showError();
     }

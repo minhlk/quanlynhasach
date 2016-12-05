@@ -42,9 +42,11 @@ namespace QuanLyNhaSach.Model
         {
             return (from c in entity.NHATKINHAPSACHes where c.STT == MaNhatKiNhapSach select c).FirstOrDefault();
         }
-        public IEnumerable<string> getListMaSach()
+        public IEnumerable<object> getListMaSach()
         {
-            return (from d in entity.SACHes select d.MASACH).ToList();
+            return (from d in entity.SACHes join  c in entity.KHOes 
+                    on d.MASACH equals c.MASACH
+                    select d).ToList().Select(c => new { c.MASACH, c.TENSACH }).ToList();
         }
         public NHATKINHAPSACH saveNhatKiNhapSach(NHATKINHAPSACH nkns)
         {
@@ -67,6 +69,7 @@ namespace QuanLyNhaSach.Model
             NHATKINHAPSACH repeat_item = (from c in entity.NHATKINHAPSACHes
                                           where nkns.MASACH == c.MASACH
                                                 && nkns.NGAYNHAP == c.NGAYNHAP
+                                                && nkns.STT!=c.STT
                                           select c).FirstOrDefault();
             if(repeat_item==null)
             return null;

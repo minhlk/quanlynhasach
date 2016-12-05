@@ -33,13 +33,23 @@ namespace QuanLyNhaSach.Presenter
         }
         public void getListNhatKiNhapSach()
         {
-            view.getListNhatKiNhapSach = repository.getListNhatKiNhapSach();
-            getListMasach();
+            if (repository.getListNhatKiNhapSach() != null)
+            {
+                view.getListNhatKiNhapSach = repository.getListNhatKiNhapSach();
+                getListMasach();
+            }
         }
         public void getListMasach()
         {
-            view.getListMasach = repository.getListMaSach();
+            if (repository.getListMaSach() != null)
+                view.getListMasach = repository.getListMaSach();
 
+
+        }
+        public void showSelectedMaSach()
+        {
+
+            view.MASACH = view.selectedMaSach;
 
         }
         public void saveNhatKiNhapSach()
@@ -57,7 +67,7 @@ namespace QuanLyNhaSach.Presenter
 
 
             }
-            else if (!valid(nhatkinhapsach) || repository.checkRepeat(nhatkinhapsach)!=null)
+            else if ( repository.checkRepeat(nhatkinhapsach)!=null)
             {
                 NHATKINHAPSACH temp = repository.checkRepeat(nhatkinhapsach);
 
@@ -74,29 +84,33 @@ namespace QuanLyNhaSach.Presenter
         {
 
             NHATKINHAPSACH nhatkinhapsach_moi = ViewToModel();
-            int manhatkinhapsach_cu = Convert.ToInt32(view.selectedNhatKiNhapSach);
-            nhatkinhapsach_moi.STT = manhatkinhapsach_cu;
-            if (valid(nhatkinhapsach_moi) && repository.checkRepeat(nhatkinhapsach_moi) == null)
+            if (view.selectedNhatKiNhapSach != 0)
             {
-                NHATKINHAPSACH kq = repository.editNhatKiNhapSach(nhatkinhapsach_moi, manhatkinhapsach_cu);
-
-
-                getListNhatKiNhapSach();
-            }
-            else if (!valid(nhatkinhapsach_moi) || repository.checkRepeat(nhatkinhapsach_moi) != null)
-            {
-                NHATKINHAPSACH temp = repository.checkRepeat(nhatkinhapsach_moi);
-                
-                if (view.Log("Mã sách và thời gian trùng lặp,bạn có muốn cộng dồn vào số lượng cũ") == DialogResult.Yes)
+                int manhatkinhapsach_cu = Convert.ToInt32(view.selectedNhatKiNhapSach);
+                nhatkinhapsach_moi.STT = manhatkinhapsach_cu;
+                if (valid(nhatkinhapsach_moi) && repository.checkRepeat(nhatkinhapsach_moi) == null)
                 {
-                    temp.SOLUONG = temp.SOLUONG + nhatkinhapsach_moi.SOLUONG;
-                    repository.editNhatKiNhapSach(temp, temp.STT);
-                    repository.deleteNhatKiNhapSach(manhatkinhapsach_cu);
-                    
+                    NHATKINHAPSACH kq = repository.editNhatKiNhapSach(nhatkinhapsach_moi, manhatkinhapsach_cu);
+
+
+                    getListNhatKiNhapSach();
+                }
+                else
+                if (valid(nhatkinhapsach_moi) && repository.checkRepeat(nhatkinhapsach_moi) != null)
+                {
+                    NHATKINHAPSACH temp = repository.checkRepeat(nhatkinhapsach_moi);
+
+                    if (view.Log("Mã sách và thời gian trùng lặp,bạn có muốn cộng dồn vào số lượng cũ") == DialogResult.Yes)
+                    {
+                        temp.SOLUONG = temp.SOLUONG + nhatkinhapsach_moi.SOLUONG;
+                        repository.editNhatKiNhapSach(temp, temp.STT);
+                        repository.deleteNhatKiNhapSach(manhatkinhapsach_cu);
+
+
+                    }
+                    getListNhatKiNhapSach();
 
                 }
-                getListNhatKiNhapSach();
-
             }
         }
         public bool valid(NHATKINHAPSACH nhatkinhapsach)
@@ -111,6 +125,8 @@ namespace QuanLyNhaSach.Presenter
             //    state.addError("lonhon", "Số lượng còn không được lớn hơn tổng số lượng");
             //if (nhatkinhapsach.MASACH == "")
             //    state.addError("sach", "Không còn sách để thêm thông tin");
+            if (nhatkinhapsach.MASACH == "a")
+                state.addError("sach", "Chọn sách để thêm thông tin");
             return state.isValid();
 
 
@@ -119,23 +135,28 @@ namespace QuanLyNhaSach.Presenter
         public void deleteNhatKiNhapSach()
         {
             //NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(view.selectedNhatKiNhapSach);
-            int manhatkinhapsach = Convert.ToInt32(view.selectedNhatKiNhapSach);
-            NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(manhatkinhapsach);
-            if (valid(nhatkinhapsach))
+            if (view.selectedNhatKiNhapSach != 0)
             {
-                NHATKINHAPSACH kq = repository.deleteNhatKiNhapSach(manhatkinhapsach);
+                int manhatkinhapsach = Convert.ToInt32(view.selectedNhatKiNhapSach);
+                NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(manhatkinhapsach);
+                if (valid(nhatkinhapsach))
+                {
+                    NHATKINHAPSACH kq = repository.deleteNhatKiNhapSach(manhatkinhapsach);
 
-                //view.Log("Đã lưu thành công");
-                getListNhatKiNhapSach();
+                    //view.Log("Đã lưu thành công");
+                    getListNhatKiNhapSach();
+                }
             }
         }
 
         public void showSelected()
         {
-            NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(view.selectedNhatKiNhapSach);
-            ModelToView(nhatkinhapsach);
-            //view.NhatKiNhapSach = nhatkinhapsach;
-
+            if (view.selectedNhatKiNhapSach != 0)
+            {
+                NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(view.selectedNhatKiNhapSach);
+                ModelToView(nhatkinhapsach);
+                //view.NhatKiNhapSach = nhatkinhapsach;
+            }
         }
         private void ModelToView(NHATKINHAPSACH nhatkinhapsach)
         {

@@ -1,28 +1,26 @@
-﻿using MaterialSkin.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyNhaSach.Presenter;
 using QuanLyNhaSach.Validation;
-using MaterialSkin;
+using QuanLyNhaSach.Presenter;
 
 namespace QuanLyNhaSach.View.Kho
 {
-    public partial class KhoForm : MaterialForm,IKhoForm
+    public partial class KhoControlForm : UserControl, IKhoForm
     {
         ModelState state;
-        public KhoForm():this(new ModelState())
+        public KhoControlForm():this(new ModelState())
         {
             InitializeComponent();
-            InitTheme();
+          
         }
-        KhoForm(ModelState _state)
+        KhoControlForm(ModelState _state)
         {
             state = _state;
             new KhoPresenter(this, new ModelStateWraper(state));
@@ -32,15 +30,23 @@ namespace QuanLyNhaSach.View.Kho
         {
             get
             {
-                return dataGridView1.DataSource; 
+                return dataGridView1.DataSource;
             }
 
             set
             {
                 dataGridView1.DataSource = value;
+                if (dataGridView1.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView1.Columns[0].HeaderText = "Mã Sách";
+                    dataGridView1.Columns[1].HeaderText = "Tổng số lượng";
+                    dataGridView1.Columns[2].HeaderText = "Số lượng còn";
+                    dataGridView1.Columns[3].Visible = false;
+                    dataGridView1.Columns[4].Visible = false;
+                }
+               
                 //dataGridView1.Columns[0].Visible = false;
-                dataGridView1.Columns[3].Visible = false;
-                dataGridView1.Columns[4].Visible = false;
+               
             }
         }
 
@@ -48,7 +54,7 @@ namespace QuanLyNhaSach.View.Kho
         {
             get
             {
-                return comboBox1.Text;
+                return Label2.Text;
             }
 
             set
@@ -66,8 +72,12 @@ namespace QuanLyNhaSach.View.Kho
         {
             get
             {
-                int pos = dataGridView1.CurrentCell.RowIndex;
-                return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                if (dataGridView1.Rows.Count != 0)
+                {
+                    int pos = dataGridView1.CurrentCell.RowIndex;
+                    return dataGridView1.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
             }
         }
 
@@ -99,19 +109,11 @@ namespace QuanLyNhaSach.View.Kho
 
         public object getListMasach
         {
-           
+
 
             set
             {
-                comboBox1.DataSource = value;
-            }
-        }
-
-        public string selectedMaSach
-        {
-            get
-            {
-                throw new NotImplementedException();
+                dataGridView2.DataSource = value;
             }
         }
 
@@ -129,7 +131,7 @@ namespace QuanLyNhaSach.View.Kho
                 {
                     case "soluongcon": errorProvider1.SetError(numericUpDown1, err.Value); break;
                     case "tongsoluong": errorProvider1.SetError(numericUpDown2, err.Value); break;
-                    case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
+                    case "sach": errorProvider1.SetError(materialRaisedButton1, err.Value); break;
                     case "lonhon":
                         errorProvider1.SetError(numericUpDown1, err.Value);
                         errorProvider1.SetError(numericUpDown2, err.Value);
@@ -141,13 +143,7 @@ namespace QuanLyNhaSach.View.Kho
 
             }
         }
-        private void InitTheme()
-        {
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Purple400, Primary.Purple700, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-        }
+       
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -170,19 +166,52 @@ namespace QuanLyNhaSach.View.Kho
 
         private void materialFlatButton1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            if (!DesignMode) {
+                Presenter.getListKho();
+                Presenter.showSelected();
+            }
         }
 
         private void KhoForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListKho();
-            Presenter.showSelected();
-            //Presenter.getListMasach();
+            if (!DesignMode)
+            {
+                Presenter.getListKho();
+                Presenter.showSelected();
+            }
         }
-
+        public string selectedMaSach
+        {
+            get
+            {
+                if (dataGridView2.Rows.Count != 0)
+                {
+                    int pos = dataGridView2.CurrentCell.RowIndex;
+                    return dataGridView2.Rows[pos].Cells[0].Value.ToString();
+                }
+                return "";
+            }
+        }
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Presenter.showSelected();
+        }
+
+        private void materialRaisedButton1_Click(object sender, EventArgs e)
+        {
+            if (!dataGridView2.Visible)
+            {
+                dataGridView2.Visible = true;
+                Presenter.getListMasach();
+
+            }
+            else dataGridView2.Visible = false;
+        }
+
+        private void dataGridView2_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Presenter.showSelectedMaSach();
+            dataGridView2.Visible = false;
         }
     }
 }

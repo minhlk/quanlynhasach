@@ -23,11 +23,11 @@ namespace QuanLyNhaSach.Model
         {
             KHO kho_re = (from c in entity.KHOes where c.MASACH == oldMasach select c).FirstOrDefault();
             //kho_re.MASACH = kho.MASACH;
-            saveKho(kho);
-            deleteKho(kho_re.MASACH);
-            //kho_re.SOLUONGCON = kho.SOLUONGCON;
-            //kho_re.TONGSOLUONG = kho.TONGSOLUONG;
-           
+            //saveKho(kho);
+            //deleteKho(kho_re.MASACH);
+            kho_re.SOLUONGCON = kho.SOLUONGCON;
+            kho_re.TONGSOLUONG = kho.TONGSOLUONG;
+
             entity.SaveChanges();
 
             return kho_re; //kho cu
@@ -43,11 +43,12 @@ namespace QuanLyNhaSach.Model
             return entity.KHOes.ToList();
         }
 
-        public IEnumerable<string> getListMaSach()
+        public IEnumerable<object> getListMaSach()
         {
-            return (from c in entity.SACHes
+            var a=(from c in entity.SACHes
                     where !(from d in entity.KHOes select d.MASACH).Contains(c.MASACH)
-                    select c.MASACH).ToList();
+                    select c).ToList();
+            return a.Select(c => new { c.MASACH, c.TENSACH }).ToList();
         }
 
         public KHO saveKho(KHO kho)

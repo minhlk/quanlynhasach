@@ -171,6 +171,12 @@
     </Compile>
     <Compile Include="View\HoaDon\IHoaDonForm.cs" />
     <Compile Include="View\Kho\IKhoForm.cs" />
+    <Compile Include="View\Kho\KhoControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Kho\KhoControlForm.Designer.cs">
+      <DependentUpon>KhoControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Kho\KhoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +210,12 @@
       <DependentUpon>LoaiSachForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\NhatKiNhapSach\INhatKiNhapSachForm.cs" />
+    <Compile Include="View\NhatKiNhapSach\NhatKiNhapSachControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\NhatKiNhapSach\NhatKiNhapSachControlForm.Designer.cs">
+      <DependentUpon>NhatKiNhapSachControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\NhatKiNhapSach\NhatKiNhapSachForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -296,6 +308,9 @@
     <EmbeddedResource Include="View\HoaDon\HoaDonForm.resx">
       <DependentUpon>HoaDonForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Kho\KhoControlForm.resx">
+      <DependentUpon>KhoControlForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Kho\KhoForm.resx">
       <DependentUpon>KhoForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\LoaiSach\LoaiSachForm.resx">
       <DependentUpon>LoaiSachForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\NhatKiNhapSach\NhatKiNhapSachControlForm.resx">
+      <DependentUpon>NhatKiNhapSachControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\NhatKiNhapSach\NhatKiNhapSachForm.resx">
       <DependentUpon>NhatKiNhapSachForm.cs</DependentUpon>
