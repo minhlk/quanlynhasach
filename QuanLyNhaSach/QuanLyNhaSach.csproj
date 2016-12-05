@@ -156,6 +156,12 @@
     <Compile Include="Validation\IModelStateWraper.cs" />
     <Compile Include="Validation\ModelState.cs" />
     <Compile Include="Validation\ModelStateWraper.cs" />
+    <Compile Include="View\ChiTietHoaDon\ChiTietHoaDonControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChiTietHoaDon\ChiTietHoaDonControlForm.Designer.cs">
+      <DependentUpon>ChiTietHoaDonControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ChiTietHoaDon\ChiTietHoaDonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,12 @@
       <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChiTietHoaDon\IChiTietHoaDonForm.cs" />
+    <Compile Include="View\HoaDon\HoaDonControlForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\HoaDon\HoaDonControlForm.Designer.cs">
+      <DependentUpon>HoaDonControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\HoaDon\HoaDonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,8 +314,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ChiTietHoaDon\ChiTietHoaDonControlForm.resx">
+      <DependentUpon>ChiTietHoaDonControlForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChiTietHoaDon\ChiTietHoaDonForm.resx">
       <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\HoaDon\HoaDonControlForm.resx">
+      <DependentUpon>HoaDonControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HoaDon\HoaDonForm.resx">
       <DependentUpon>HoaDonForm.cs</DependentUpon>

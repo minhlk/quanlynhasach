@@ -10,8 +10,8 @@ namespace QuanLyNhaSach.Model
     public interface IChiTietHoaDonRepository
     {
         IEnumerable<CHITIETHOADON> getListHoaDon();
-        IEnumerable<int> getListMaHoaDon();
-        IEnumerable<string> getListSach();
+        IEnumerable<object> getListMaHoaDon();
+        IEnumerable<object> getListSach();
         CHITIETHOADON getHoaDon(int MaHoaDon);
         CHITIETHOADON saveHoaDon(CHITIETHOADON hd);
         CHITIETHOADON editHoaDon(CHITIETHOADON hd, int oldMaHoaDon);

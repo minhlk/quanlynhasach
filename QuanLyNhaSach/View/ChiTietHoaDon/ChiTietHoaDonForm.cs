@@ -139,6 +139,22 @@ namespace QuanLyNhaSach.View.ChiTietHoaDon
             }
         }
 
+        public string selectedMaSach
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        public int selectedMaHoaDon
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Log(string mes)
         {
             MessageBox.Show(mes);

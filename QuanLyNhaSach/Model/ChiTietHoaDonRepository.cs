@@ -41,17 +41,18 @@ namespace QuanLyNhaSach.Model
             return entity.CHITIETHOADONs.ToList();
         }
 
-        public IEnumerable<int> getListMaHoaDon()
+        public IEnumerable<object> getListMaHoaDon()
         {
             return (from c in entity.HOADONs
                     where !(from d in entity.CHITIETHOADONs select d.MAHOADON).Contains(c.MAHOADON)
-                    select c.MAHOADON
-                    ).ToList();
+                    select c
+                    ).ToList().Select(c=>new { c.MAHOADON,c.TENKHACHHANG,c.NGAYLAP}).ToList();
         }
 
-        public IEnumerable<string> getListSach()
+        public IEnumerable<object> getListSach()
         {
-            return (from c in entity.SACHes select c.MASACH).ToList();
+            return entity.SACHes.Select(c => new { c.MASACH, c.TENSACH }).ToList();
+            //return (from c in entity.SACHes select c).ToList();
         }
 
         public CHITIETHOADON saveHoaDon(CHITIETHOADON hd)

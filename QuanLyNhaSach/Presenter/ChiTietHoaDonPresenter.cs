@@ -33,21 +33,41 @@ namespace QuanLyNhaSach.Presenter
         }
         public void getListChiTietHoaDon()
         {
-            view.getListHoaDon = repository.getListHoaDon();
+            if (repository.getListHoaDon() != null)
+            {
+                view.getListHoaDon = repository.getListHoaDon();
+                //view.Log("in");
+            }
+            //view.Log("out");
             getListMasach();
             getListMaHoaDon();
         }
         public void getListMasach()
         {
-            view.getListSach = repository.getListSach();
+            if (repository.getListSach() != null)
+                view.getListSach = repository.getListSach();
+
+
+        }
+        public void showSelectedMaSach()
+        {
+            view.MASACH = view.selectedMaSach;
+
+
+        }
+        public void showSelectedMaHoaDon()
+        {
+            view.MAHOADON = view.selectedMaHoaDon;
 
 
         }
         public void getListMaHoaDon()
         {
-            
-            view.getListMaHoaDon = repository.getListMaHoaDon();
-
+            if (repository.getListMaHoaDon() != null)
+            {
+                //view.Log("in");
+                view.getListMaHoaDon = repository.getListMaHoaDon();
+            }
 
         }
         public void saveChiTietHoaDon()
@@ -56,7 +76,7 @@ namespace QuanLyNhaSach.Presenter
             CHITIETHOADON chitiethoadon = ViewToModel();
 
 
-            if (valid(chitiethoadon))
+            if (valid(chitiethoadon)&&checkExists(chitiethoadon.MAHOADON))
             {
                 CHITIETHOADON kq = repository.saveHoaDon(chitiethoadon);
 
@@ -84,14 +104,24 @@ namespace QuanLyNhaSach.Presenter
 
             
         }
+        public bool checkExists(int mahd) {
+
+            if (repository.getHoaDon(mahd) != null)
+            {
+                state.addError("mahoadon2", "Mã hóa đơn đã tồn tại,chọn mã khác");
+                return false;
+            }
+            return true;
+        }
         public bool valid(CHITIETHOADON chitiethoadon)
         {
             //xet null
             state.Clear();
             if (chitiethoadon.MAHOADON == -1)
                 state.addError("mahoadon", "Cần thêm hóa đơn mới");
-            if (chitiethoadon.MASACH ==null)
+            if (chitiethoadon.MASACH =="a")
                 state.addError("masach", "Vui lòng thêm sách để thực hiện");
+           
             //if (chitiethoadon.SOLUONGCON > chitiethoadon.TONGSOLUONG)
             //    state.addError("lonhon", "Số lượng còn không được lớn hơn tổng số lượng");
             //if (chitiethoadon.MASACH == "")
@@ -104,23 +134,29 @@ namespace QuanLyNhaSach.Presenter
         public void deleteChiTietHoaDon()
         {
             //CHITIETHOADON chitiethoadon = repository.getChiTietHoaDon(view.selectedChiTietHoaDon);
-            int machitiethoadon = Convert.ToInt32(view.selectedHoaDon);
-            CHITIETHOADON chitiethoadon = repository.getHoaDon(machitiethoadon);
-            if (valid(chitiethoadon))
+            if (view.selectedHoaDon != -1)
             {
-                CHITIETHOADON kq = repository.deleteHoaDon(machitiethoadon);
+                int machitiethoadon = Convert.ToInt32(view.selectedHoaDon);
+                CHITIETHOADON chitiethoadon = repository.getHoaDon(machitiethoadon);
+                if (valid(chitiethoadon))
+                {
+                    CHITIETHOADON kq = repository.deleteHoaDon(machitiethoadon);
 
-                //view.Log("Đã lưu thành công");
-                getListChiTietHoaDon();
+                    //view.Log("Đã lưu thành công");
+                    getListChiTietHoaDon();
+                }
             }
         }
 
         public void showSelected()
         {
-            CHITIETHOADON chitiethoadon = repository.getHoaDon(view.selectedHoaDon);
-            ModelToView(chitiethoadon);
-            //view.ChiTietHoaDon = chitiethoadon;
-
+            if (view.selectedHoaDon != -1)
+            {
+                //view.Log("showselected");
+                CHITIETHOADON chitiethoadon = repository.getHoaDon(view.selectedHoaDon);
+                ModelToView(chitiethoadon);
+                //view.ChiTietHoaDon = chitiethoadon;
+            }
         }
         private void ModelToView(CHITIETHOADON chitiethoadon)
         {

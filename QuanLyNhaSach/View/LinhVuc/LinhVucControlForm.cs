@@ -41,8 +41,6 @@ namespace QuanLyNhaSach.View.LinhVuc
                 {
                     dataGridView1.Columns[0].HeaderText = "Mã Lĩnh Vực";
                     dataGridView1.Columns[1].HeaderText = "Tên Lĩnh Vực";
-
-
                     dataGridView1.Columns[2].Visible = false;
                 }
             }

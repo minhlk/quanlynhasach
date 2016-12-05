@@ -15,6 +15,8 @@ namespace QuanLyNhaSach.View.ChiTietHoaDon
         object getListHoaDon { get; set; }
         object getListSach { get; set; }
         object getListMaHoaDon { get; set; }
+        string selectedMaSach { get; }
+        int selectedMaHoaDon { get; }
         Presenter.ChiTietHoaDonPresenter Presenter { set; }
         int selectedHoaDon { get; }
         void Log(string mes);

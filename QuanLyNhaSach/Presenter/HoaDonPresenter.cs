@@ -31,6 +31,7 @@ namespace QuanLyNhaSach.Presenter
 
         public void getListHoaDon()
         {
+            if(repository.getListHoaDon()!=null)
             view.getListHoaDon = repository.getListHoaDon();
 
         }
@@ -53,14 +54,17 @@ namespace QuanLyNhaSach.Presenter
 
             //HOADON hd_moi = view.HoaDon;
             HOADON hd_moi = viewtoModel();
-            int mahd_cu = int.Parse(view.selectedHoaDon);
-
-            if (valid(hd_moi))
+            if (view.selectedHoaDon != "")
             {
-                HOADON kq = repository.editHoaDon(hd_moi, mahd_cu);
+                int mahd_cu = int.Parse(view.selectedHoaDon);
+
+                if (valid(hd_moi))
+                {
+                    HOADON kq = repository.editHoaDon(hd_moi, mahd_cu);
 
 
-                getListHoaDon();
+                    getListHoaDon();
+                }
             }
         }
         public bool valid(HOADON hd)
@@ -81,23 +85,29 @@ namespace QuanLyNhaSach.Presenter
         public void deleteHoaDon()
         {
             //HOADON hd = repository.getHoaDon(view.selectedHoaDon);
-            int mahd = int.Parse(view.selectedHoaDon);
-            HOADON hoadon = repository.getHoaDon(mahd);
-            if (valid(hoadon))
+            if (view.selectedHoaDon != "")
             {
-                HOADON kq = repository.deleteHoaDon(mahd);
+                int mahd = int.Parse(view.selectedHoaDon);
+                HOADON hoadon = repository.getHoaDon(mahd);
+                if (valid(hoadon))
+                {
+                    HOADON kq = repository.deleteHoaDon(mahd);
 
-                //view.Log("Đã lưu thành công");
-                getListHoaDon();
+                    //view.Log("Đã lưu thành công");
+                    getListHoaDon();
+                }
             }
         }
 
         public void showSelected()
         {
-            HOADON hd = repository.getHoaDon(int.Parse(view.selectedHoaDon));
+            if (view.selectedHoaDon != "")
+            {
+                HOADON hd = repository.getHoaDon(int.Parse(view.selectedHoaDon));
 
-            //view.HoaDon = hd;
-            modeltoView(hd);
+                //view.HoaDon = hd;
+                modeltoView(hd);
+            }
         }
         private HOADON viewtoModel()
         {
