@@ -130,6 +130,7 @@
     <Compile Include="Model\INhatKiNhapSachRepository.cs" />
     <Compile Include="Model\ISachKhuyenMaiRepository.cs" />
     <Compile Include="Model\ITacGiaRepository.cs" />
+    <Compile Include="Model\IThongKeRepository.cs" />
     <Compile Include="Model\IThongTinXuatBanRepository.cs" />
     <Compile Include="Model\KhoRepository.cs" />
     <Compile Include="Model\LinhVucRepository.cs" />
@@ -139,6 +140,7 @@
     <Compile Include="Model\SachRepository.cs" />
     <Compile Include="Model\TacGiaRepository.cs" />
     <Compile Include="Model\TaiKhoanRepository.cs" />
+    <Compile Include="Model\ThongKeRepository.cs" />
     <Compile Include="Model\ThongTinXuatBanRepository.cs" />
     <Compile Include="Presenter\ChiTietHoaDonPresenter.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="Presenter\SachPresenter.cs" />
     <Compile Include="Presenter\TacGiaPresenter.cs" />
     <Compile Include="Presenter\TaiKhoanPresenter.cs" />
+    <Compile Include="Presenter\ThongKePresenter.cs" />
     <Compile Include="Presenter\ThongTinXuatBanPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -286,6 +289,13 @@
     <Compile Include="View\TaiKhoan\TaiKhoanForm.Designer.cs">
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ThongKe\IThongKe.cs" />
+    <Compile Include="View\ThongKe\ThongKeControlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ThongKe\ThongKeControlForm.Designer.cs">
+      <DependentUpon>ThongKeControlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ThongTinXuatBan\IThongTinXuatBanForm.cs" />
     <Compile Include="View\ThongTinXuatBan\ThongTinXuatBanControlForm.cs">
       <SubType>UserControl</SubType>
@@ -373,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TaiKhoan\TaiKhoanForm.resx">
       <DependentUpon>TaiKhoanForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ThongKe\ThongKeControlForm.resx">
+      <DependentUpon>ThongKeControlForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ThongTinXuatBan\ThongTinXuatBanControlForm.resx">
       <DependentUpon>ThongTinXuatBanControlForm.cs</DependentUpon>

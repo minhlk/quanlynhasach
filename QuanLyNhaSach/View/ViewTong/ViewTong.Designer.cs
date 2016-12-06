@@ -58,6 +58,7 @@
             this.tabPage15 = new System.Windows.Forms.TabPage();
             this.chiTietHoaDonControlForm1 = new QuanLyNhaSach.View.ChiTietHoaDon.ChiTietHoaDonControlForm();
             this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
+            this.tabPage16 = new System.Windows.Forms.TabPage();
             this.materialTabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -87,6 +88,7 @@
             this.materialTabControl2.Controls.Add(this.tabPage9);
             this.materialTabControl2.Controls.Add(this.tabPage10);
             this.materialTabControl2.Controls.Add(this.tabPage13);
+            this.materialTabControl2.Controls.Add(this.tabPage16);
             this.materialTabControl2.Depth = 0;
             this.materialTabControl2.Location = new System.Drawing.Point(0, 77);
             this.materialTabControl2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -268,7 +270,7 @@
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(1058, 427);
+            this.tabPage10.Size = new System.Drawing.Size(192, 74);
             this.tabPage10.TabIndex = 7;
             this.tabPage10.Text = "Kho";
             // 
@@ -347,7 +349,7 @@
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
             this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage13.Size = new System.Drawing.Size(192, 74);
+            this.tabPage13.Size = new System.Drawing.Size(1058, 427);
             this.tabPage13.TabIndex = 8;
             this.tabPage13.Text = "Hóa Đơn";
             // 
@@ -436,6 +438,16 @@
             this.materialTabSelector2.TabIndex = 1;
             this.materialTabSelector2.Text = "materialTabSelector2";
             // 
+            // tabPage16
+            // 
+            this.tabPage16.BackColor = System.Drawing.Color.White;
+            this.tabPage16.Location = new System.Drawing.Point(4, 22);
+            this.tabPage16.Name = "tabPage16";
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage16.Size = new System.Drawing.Size(1058, 427);
+            this.tabPage16.TabIndex = 9;
+            this.tabPage16.Text = "tabPage16";
+            // 
             // ViewTong
             // 
             this.ClientSize = new System.Drawing.Size(1062, 542);
@@ -497,6 +509,7 @@
         private MaterialSkin.Controls.MaterialTabSelector materialTabSelector4;
         private HoaDon.HoaDonControlForm hoaDonControlForm1;
         private ChiTietHoaDon.ChiTietHoaDonControlForm chiTietHoaDonControlForm1;
+        private System.Windows.Forms.TabPage tabPage16;
         //private Sach.SachControlForm sachControlForm1;
     }
 }
