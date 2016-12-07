@@ -16,5 +16,7 @@ namespace QuanLyNhaSach.Model
         IEnumerable<object> getListSach(string MaSach);
         IEnumerable<object> getListSachName(string TenSach);
         IEnumerable<object> getListSach(DateTime start, DateTime end);
+        int getTongChi();
+        int getTongThu();
     }
 }

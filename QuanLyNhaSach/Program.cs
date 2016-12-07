@@ -54,8 +54,8 @@ namespace QuanLyNhaSach
             //Application.Run(SachKhuyenMaiForm);
             //Application.Run(TaiKhoanForm);
             //Application.Run(SachForm);
-            //Application.Run(new ViewTong());
-            Application.Run(new ThongKeControlForm());
+            Application.Run(new ViewTong());
+            //Application.Run(new ThongKeControlForm());
         }
     }
 }

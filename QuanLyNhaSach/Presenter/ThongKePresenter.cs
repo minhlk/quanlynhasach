@@ -21,6 +21,28 @@ namespace QuanLyNhaSach.Presenter
             repository = _repository;
             _view.Presenter = this;
         }
+        public void getListHoaDon() {
+
+            if (view.MaHoaDon && view.GiaTriTimKiem != "")
+            {
+                if (repository.getListHoaDon(Convert.ToInt32(view.GiaTriTimKiem)) != null)
+                    view.getListHoaDon = repository.getListHoaDon(Convert.ToInt32(view.GiaTriTimKiem));
+            }
+            else if (view.MaSach2 && view.GiaTriTimKiem != "") {
+                if (repository.getListHoaDon(view.GiaTriTimKiem) != null)
+                    view.getListHoaDon = repository.getListHoaDon(view.GiaTriTimKiem);
+            }
+            else if (!view.MaHoaDon && !view.MaSach2 || view.GiaTriTimKiem == "")
+            {
+                if(repository.getListHoaDon()!=null)
+                view.getListHoaDon = repository.getListHoaDon();
+            }
+        }
+        public void getListHoaDonTime() {
+            if (repository.getListHoaDon(view.NgayBatDau, view.NgayKetThuc) != null)
+                view.getListHoaDon = repository.getListHoaDon(view.NgayBatDau, view.NgayKetThuc);
+
+        }
         public void getListSach() {
             if (view.MaSach&& view.GiaTriTimKiem != "") {
                 if (repository.getListSach(view.GiaTriTimKiem) != null)
@@ -48,6 +70,17 @@ namespace QuanLyNhaSach.Presenter
             view.getListSach = repository.getListSach(view.NgayBatDau,view.NgayKetThuc);
 
 
+        }
+        public void getTongChi()
+        {
+           
+           view.TongChi= repository.getTongChi();
+
+        }
+        public void getTongThu()
+        {
+
+            view.TongThu= repository.getTongThu();
         }
     }
 }

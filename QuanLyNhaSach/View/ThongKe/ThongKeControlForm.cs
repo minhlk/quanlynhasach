@@ -11,7 +11,7 @@ using QuanLyNhaSach.Presenter;
 
 namespace QuanLyNhaSach.View.ThongKe
 {
-    public partial class ThongKeControlForm : Form,IThongKe
+    public partial class ThongKeControlForm : UserControl,IThongKe
     {
         public ThongKeControlForm()
         {
@@ -24,6 +24,18 @@ namespace QuanLyNhaSach.View.ThongKe
             set
             {
                 dataGridView1.DataSource = value;
+                if (dataGridView1.Rows.Count != 0) {
+
+                    dataGridView1.Columns[0].HeaderText = "Mã hóa đơn";
+                    dataGridView1.Columns[1].HeaderText = "Tên khách";
+                    dataGridView1.Columns[2].HeaderText = "Ngày lập";
+                    dataGridView1.Columns[3].HeaderText = "Tổng tiền";
+                    dataGridView1.Columns[4].HeaderText = "Mã sách";
+                    dataGridView1.Columns[5].HeaderText = "Tên sách";
+                    dataGridView1.Columns[6].HeaderText = "Số lượng";
+                    dataGridView1.Columns[7].HeaderText = "Giá mua";
+                    dataGridView1.Columns[8].HeaderText = "Mức giảm giá";
+                }
             }
         }
 
@@ -31,7 +43,22 @@ namespace QuanLyNhaSach.View.ThongKe
         {
             set
             {
+                //c.MASACH, c.TENSACH, c.GIAMUA, d.TONGSOLUONG, d.SOLUONGCON, e.NGAYNHAP, e.SOLUONG ,f.GIABIA}
+                  
                 dataGridView1.DataSource = value;
+                if (dataGridView1.Rows.Count != 0)
+                {
+
+                    dataGridView1.Columns[0].HeaderText = "Mã sách";
+                    dataGridView1.Columns[1].HeaderText = "Tên sách";
+                    dataGridView1.Columns[2].HeaderText = "Giá mua";
+                    dataGridView1.Columns[3].HeaderText = "Tổng số lượng";
+                    dataGridView1.Columns[4].HeaderText = "Số lượng còn";
+                    dataGridView1.Columns[5].HeaderText = "Ngày nhập";
+                    dataGridView1.Columns[6].HeaderText = "Số lượng";
+                    dataGridView1.Columns[7].HeaderText = "Giá bìa";
+                   
+                }
             }
         }
 
@@ -116,17 +143,37 @@ namespace QuanLyNhaSach.View.ThongKe
 
         private void ThongKeControlForm_Load(object sender, EventArgs e)
         {
-            Presenter.getListSach();
+            if (!DesignMode)
+            {
+                Presenter.getListSach();
+                Presenter.getTongChi();
+                Presenter.getTongThu();
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Presenter.getListSach();
+            if (materialTabControl1.SelectedTab == tabPage1)
+                Presenter.getListSach();
+            else
+                Presenter.getListHoaDon();
         }
 
         private void materialRaisedButton1_Click(object sender, EventArgs e)
         {
-            Presenter.getListSachTime();
+            if (materialTabControl1.SelectedTab == tabPage1)
+                Presenter.getListSachTime();
+            else
+                Presenter.getListHoaDonTime();
+            
+        }
+
+        private void materialTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (materialTabControl1.SelectedTab == tabPage1)
+                Presenter.getListSach();
+            else
+                Presenter.getListHoaDon();
         }
     }
 }

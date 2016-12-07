@@ -35,7 +35,13 @@
             this.TextField1 = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.RadioButton();
+            this.checkBox1 = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox3 = new System.Windows.Forms.RadioButton();
+            this.checkBox4 = new System.Windows.Forms.RadioButton();
             this.materialTabSelector1 = new MaterialSkin.Controls.MaterialTabSelector();
             this.Label1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
@@ -44,19 +50,13 @@
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.checkBox3 = new System.Windows.Forms.RadioButton();
-            this.checkBox4 = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.RadioButton();
-            this.checkBox1 = new System.Windows.Forms.RadioButton();
             this.materialRaisedButton1 = new MaterialSkin.Controls.MaterialRaisedButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.materialTabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -125,6 +125,7 @@
             this.materialTabControl1.SelectedIndex = 0;
             this.materialTabControl1.Size = new System.Drawing.Size(216, 118);
             this.materialTabControl1.TabIndex = 5;
+            this.materialTabControl1.SelectedIndexChanged += new System.EventHandler(this.materialTabControl1_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -137,6 +138,38 @@
             this.tabPage1.Text = "Sách";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox2);
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Location = new System.Drawing.Point(2, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(203, 92);
+            this.groupBox2.TabIndex = 17;
+            this.groupBox2.TabStop = false;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(6, 19);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(72, 17);
+            this.checkBox2.TabIndex = 14;
+            this.checkBox2.TabStop = true;
+            this.checkBox2.Text = "Tên Sách";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(6, 43);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(68, 17);
+            this.checkBox1.TabIndex = 15;
+            this.checkBox1.TabStop = true;
+            this.checkBox1.Text = "Mã Sách";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -147,6 +180,38 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Hóa Đơn";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.checkBox3);
+            this.groupBox1.Controls.Add(this.checkBox4);
+            this.groupBox1.Location = new System.Drawing.Point(3, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(209, 92);
+            this.groupBox1.TabIndex = 16;
+            this.groupBox1.TabStop = false;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(6, 19);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(86, 17);
+            this.checkBox3.TabIndex = 14;
+            this.checkBox3.TabStop = true;
+            this.checkBox3.Text = "Mã Hóa Đơn";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(6, 43);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(68, 17);
+            this.checkBox4.TabIndex = 15;
+            this.checkBox4.TabStop = true;
+            this.checkBox4.Text = "Mã Sách";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
             // materialTabSelector1
             // 
@@ -250,70 +315,6 @@
             this.materialLabel6.TabIndex = 13;
             this.materialLabel6.Text = "Value";
             // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(6, 19);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(86, 17);
-            this.checkBox3.TabIndex = 14;
-            this.checkBox3.TabStop = true;
-            this.checkBox3.Text = "Mã Hóa Đơn";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(6, 43);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(68, 17);
-            this.checkBox4.TabIndex = 15;
-            this.checkBox4.TabStop = true;
-            this.checkBox4.Text = "Mã Sách";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.checkBox3);
-            this.groupBox1.Controls.Add(this.checkBox4);
-            this.groupBox1.Location = new System.Drawing.Point(3, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(209, 92);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.checkBox2);
-            this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Location = new System.Drawing.Point(2, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(203, 92);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(6, 19);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(72, 17);
-            this.checkBox2.TabIndex = 14;
-            this.checkBox2.TabStop = true;
-            this.checkBox2.Text = "Tên Sách";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(6, 43);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(68, 17);
-            this.checkBox1.TabIndex = 15;
-            this.checkBox1.TabStop = true;
-            this.checkBox1.Text = "Mã Sách";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
             // materialRaisedButton1
             // 
             this.materialRaisedButton1.Depth = 0;
@@ -353,11 +354,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.materialTabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
