@@ -58,8 +58,8 @@
             this.tabPage15 = new System.Windows.Forms.TabPage();
             this.chiTietHoaDonControlForm1 = new QuanLyNhaSach.View.ChiTietHoaDon.ChiTietHoaDonControlForm();
             this.tabPage16 = new System.Windows.Forms.TabPage();
-            this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
             this.thongKeControlForm1 = new QuanLyNhaSach.View.ThongKe.ThongKeControlForm();
+            this.materialTabSelector2 = new MaterialSkin.Controls.MaterialTabSelector();
             this.materialTabControl2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -138,7 +138,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(192, 74);
+            this.tabPage4.Size = new System.Drawing.Size(1058, 427);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Tác Giả";
             // 
@@ -161,7 +161,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(192, 74);
+            this.tabPage5.Size = new System.Drawing.Size(1058, 427);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Thông tin xuất bản";
             // 
@@ -436,9 +436,16 @@
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
             this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage16.Size = new System.Drawing.Size(1058, 427);
+            this.tabPage16.Size = new System.Drawing.Size(192, 74);
             this.tabPage16.TabIndex = 9;
             this.tabPage16.Text = "Thống kê";
+            // 
+            // thongKeControlForm1
+            // 
+            this.thongKeControlForm1.Location = new System.Drawing.Point(8, 6);
+            this.thongKeControlForm1.Name = "thongKeControlForm1";
+            this.thongKeControlForm1.Size = new System.Drawing.Size(752, 408);
+            this.thongKeControlForm1.TabIndex = 0;
             // 
             // materialTabSelector2
             // 
@@ -451,19 +458,13 @@
             this.materialTabSelector2.TabIndex = 1;
             this.materialTabSelector2.Text = "materialTabSelector2";
             // 
-            // thongKeControlForm1
-            // 
-            this.thongKeControlForm1.Location = new System.Drawing.Point(8, 6);
-            this.thongKeControlForm1.Name = "thongKeControlForm1";
-            this.thongKeControlForm1.Size = new System.Drawing.Size(752, 408);
-            this.thongKeControlForm1.TabIndex = 0;
-            // 
             // ViewTong
             // 
             this.ClientSize = new System.Drawing.Size(1141, 542);
             this.Controls.Add(this.materialTabSelector2);
             this.Controls.Add(this.materialTabControl2);
             this.Name = "ViewTong";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ViewTong_FormClosing);
             this.materialTabControl2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);

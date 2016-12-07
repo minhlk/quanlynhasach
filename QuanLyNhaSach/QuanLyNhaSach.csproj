@@ -88,6 +88,8 @@
     <Compile Include="Model\AppData\sp_helpdiagrams_Result.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DangNhapRepository.cs" />
+    <Compile Include="Model\IDangNhapRepository.cs" />
     <Compile Include="Model\ISachRepository.cs" />
     <Compile Include="Model\ITaiKhoanRepository.cs" />
     <Compile Include="Model\ChiTietHoaDonRepository.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="Model\ThongKeRepository.cs" />
     <Compile Include="Model\ThongTinXuatBanRepository.cs" />
     <Compile Include="Presenter\ChiTietHoaDonPresenter.cs" />
+    <Compile Include="Presenter\DangNhapPresenter.cs" />
     <Compile Include="Presenter\HoaDonPresenter.cs" />
     <Compile Include="Presenter\KhoPresenter.cs" />
     <Compile Include="Presenter\LinhVucPresenter.cs" />
@@ -172,6 +175,13 @@
       <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChiTietHoaDon\IChiTietHoaDonForm.cs" />
+    <Compile Include="View\DangNhap\DangNhapForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\DangNhap\DangNhapForm.Designer.cs">
+      <DependentUpon>DangNhapForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\DangNhap\IDangNhapForm.cs" />
     <Compile Include="View\HoaDon\HoaDonControlForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -291,7 +301,7 @@
     </Compile>
     <Compile Include="View\ThongKe\IThongKe.cs" />
     <Compile Include="View\ThongKe\ThongKeControlForm.cs">
-      <SubType>Form</SubType>
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\ThongKe\ThongKeControlForm.Designer.cs">
       <DependentUpon>ThongKeControlForm.cs</DependentUpon>
@@ -329,6 +339,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ChiTietHoaDon\ChiTietHoaDonForm.resx">
       <DependentUpon>ChiTietHoaDonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\DangNhap\DangNhapForm.resx">
+      <DependentUpon>DangNhapForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\HoaDon\HoaDonControlForm.resx">
       <DependentUpon>HoaDonControlForm.cs</DependentUpon>
