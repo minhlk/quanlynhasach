@@ -25,7 +25,7 @@ namespace QuanLyNhaSach.Model
             LINHVUC linhvuc_re = (from c in entity.LINHVUCs where c.MALINHVUC == oldMaLinhVuc select c).FirstOrDefault();
             //linhvuc_re.MASACH = linhvuc.MASACH;
 
-
+            if(linhvuc_re!=null)
             //linhvuc_re.MALINHVUC = lv.MALINHVUC;
             linhvuc_re.TENLINHVUC = lv.TENLINHVUC;
 

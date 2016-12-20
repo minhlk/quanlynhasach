@@ -14,10 +14,18 @@ namespace QuanLyNhaSach.Model
      
         public SACH deleteSach(string MaSach)
         {
-            SACH sach = (from c in entity.SACHes where c.MASACH == MaSach select c).FirstOrDefault();
+            try
+               {
+             SACH sach = (from c in entity.SACHes where c.MASACH == MaSach select c).FirstOrDefault();
             entity.SACHes.Remove(sach);
             entity.SaveChanges();
             return sach;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+           
         }
 
         public SACH editSach(SACH sach, string oldMaSach)
@@ -70,7 +78,7 @@ namespace QuanLyNhaSach.Model
                 entity.SaveChanges();
                 return sach;
             }
-            catch (DbUpdateException) // tranh loi update
+            catch (Exception ) // tranh loi update
             {
                 return null;
             }

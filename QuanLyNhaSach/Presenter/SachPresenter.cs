@@ -33,7 +33,7 @@ namespace QuanLyNhaSach.Presenter
         public void getListSach()
         {
             view.getListSach= repository.getListSach();
-            //getListTacGia();
+            getListTacGia();
             getListLinhVuc();
             getListLoaiSach();
         }
@@ -93,7 +93,8 @@ namespace QuanLyNhaSach.Presenter
                 state.addError("masach", "Mã sách không được để trống");
             if (sach.TENSACH =="" )
                 state.addError("tensach", "Tên sách không được để trống");
-            
+            //if (sach.MATG == 0)
+                //state.addError("matg", "Mã tác giả không được để trống");
             // can them ham xoa tat ca cac bang khac
             return state.isValid();
 
@@ -135,6 +136,15 @@ namespace QuanLyNhaSach.Presenter
                 SACH sach = repository.getSach(view.selectedSach);
                 ModelToView(sach);
             }
+            else
+            {
+                view.MASACH = "";
+                view.MALINHVUC = "";
+                view.MALOAISACH = null;
+                view.MATG = -1;
+                view.GIAMUA = 0;
+                view.TENSACH =null;
+            }
             //view.Sach = sach;
 
         }
@@ -170,9 +180,10 @@ namespace QuanLyNhaSach.Presenter
         {
             SACH sach = new SACH();
             sach.MASACH = view.MASACH;
-            sach.MALINHVUC = view.MALINHVUC;
-            sach.MALOAISACH = view.MALOAISACH;
-            sach.MATG = view.MATG;
+            sach.MALINHVUC = sach.MALINHVUC == "" ? null : view.MALINHVUC;
+            sach.MALOAISACH = view.MALOAISACH == "" ? null : view.MALOAISACH;
+            sach.MATG = view.MATG != -1 ? view.MATG : null;
+            
             sach.GIAMUA = view.GIAMUA;
             sach.TENSACH = view.TENSACH;
             return sach;

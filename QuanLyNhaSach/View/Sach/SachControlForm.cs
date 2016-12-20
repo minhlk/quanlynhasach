@@ -154,13 +154,20 @@ namespace QuanLyNhaSach.View.Sach
         {
             get
             {
+                int i;
+                if(int.TryParse(Label6.Text,out i))
                 return Convert.ToInt32(Label6.Text);
-                //return 0;
+                return -1;
             }
 
             set
             {
+                if(value!=-1)
                 Label6.Text = value.ToString();
+                else
+                {
+                    Label6.Text = "";
+                }
             }
         }
 
@@ -266,6 +273,7 @@ namespace QuanLyNhaSach.View.Sach
                     case "masach": errorProvider1.SetError(TextField1, err.Value); break;
                     case "tensach": errorProvider1.SetError(TextField2, err.Value); break;
                     case "masach2": errorProvider1.SetError(TextField1, err.Value); break;
+                    //case "matg": errorProvider1.SetError(materialLabel2, err.Value); break;
                         //case "tongsoluong": errorProvider1.SetError(numericUpDown2, err.Value); break;
                         //case "sach": errorProvider1.SetError(comboBox1, err.Value); break;
                         //case "lonhon":
