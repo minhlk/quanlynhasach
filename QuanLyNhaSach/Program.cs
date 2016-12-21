@@ -55,11 +55,11 @@ namespace QuanLyNhaSach
             //Application.Run(SachKhuyenMaiForm);
             //Application.Run(TaiKhoanForm);
             //Application.Run(SachForm);
-            Application.Run(new ViewTong());
+            //Application.Run(new ViewTong());
             //Application.Run(new ThongKeControlForm());
-            //DangNhapForm DangNhap =new DangNhapForm();
-            //DangNhap.Show();
-            //Application.Run();
+            DangNhapForm DangNhap = new DangNhapForm();
+            DangNhap.Show();
+            Application.Run();
         }
     }
 }

@@ -65,5 +65,7 @@ namespace QuanLyNhaSach.View.DangNhap
         {
             Environment.Exit(0);
         }
+
+      
     }
 }
