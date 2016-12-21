@@ -61,7 +61,7 @@
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(505, 64);
             this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
+            100000,
             0,
             0,
             0});
@@ -217,9 +217,9 @@
             this.Label2.Location = new System.Drawing.Point(501, 15);
             this.Label2.MouseState = MaterialSkin.MouseState.HOVER;
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(17, 19);
+            this.Label2.Size = new System.Drawing.Size(67, 19);
             this.Label2.TabIndex = 69;
-            this.Label2.Text = "a";
+            this.Label2.Text = "Mã Sách";
             // 
             // errorProvider1
             // 

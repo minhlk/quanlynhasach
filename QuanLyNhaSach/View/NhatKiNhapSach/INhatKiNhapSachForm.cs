@@ -9,6 +9,7 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
 {
     public interface INhatKiNhapSachForm
     {
+        
         string MASACH { get; set; }
         Nullable<int> SOLUONG { get; set; }
         Nullable<System.DateTime> NGAYNHAP { get; set; }

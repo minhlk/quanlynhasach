@@ -84,12 +84,13 @@ namespace QuanLyNhaSach.Presenter
         {
 
             NHATKINHAPSACH nhatkinhapsach_moi = ViewToModel();
-            if (view.selectedNhatKiNhapSach != 0)
+            if (view.selectedNhatKiNhapSach != -1)
             {
                 int manhatkinhapsach_cu = Convert.ToInt32(view.selectedNhatKiNhapSach);
                 nhatkinhapsach_moi.STT = manhatkinhapsach_cu;
                 if (valid(nhatkinhapsach_moi) && repository.checkRepeat(nhatkinhapsach_moi) == null)
                 {
+                    nhatkinhapsach_moi.SOLUONG = nhatkinhapsach_moi.SOLUONG;
                     NHATKINHAPSACH kq = repository.editNhatKiNhapSach(nhatkinhapsach_moi, manhatkinhapsach_cu);
 
 
@@ -135,7 +136,7 @@ namespace QuanLyNhaSach.Presenter
         public void deleteNhatKiNhapSach()
         {
             //NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(view.selectedNhatKiNhapSach);
-            if (view.selectedNhatKiNhapSach != 0)
+            if (view.selectedNhatKiNhapSach != -1)
             {
                 int manhatkinhapsach = Convert.ToInt32(view.selectedNhatKiNhapSach);
                 NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(manhatkinhapsach);
@@ -151,7 +152,7 @@ namespace QuanLyNhaSach.Presenter
 
         public void showSelected()
         {
-            if (view.selectedNhatKiNhapSach != 0)
+            if (view.selectedNhatKiNhapSach != -1)
             {
                 NHATKINHAPSACH nhatkinhapsach = repository.getNhatKiNhapSach(view.selectedNhatKiNhapSach);
                 ModelToView(nhatkinhapsach);
@@ -160,6 +161,7 @@ namespace QuanLyNhaSach.Presenter
         }
         private void ModelToView(NHATKINHAPSACH nhatkinhapsach)
         {
+            //view.STT=nhatkinhapsach.STT;
             view.MASACH = nhatkinhapsach.MASACH;
             view.NGAYNHAP = nhatkinhapsach.NGAYNHAP;
             view.SOLUONG = nhatkinhapsach.SOLUONG;

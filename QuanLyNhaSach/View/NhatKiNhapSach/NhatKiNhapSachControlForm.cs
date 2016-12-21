@@ -96,7 +96,7 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
                     int pos = dataGridView1.CurrentCell.RowIndex;
                     return Convert.ToInt32(dataGridView1.Rows[pos].Cells[0].Value.ToString());
                 }
-                return 0;
+                return -1;
             }
         }
 
@@ -161,6 +161,7 @@ namespace QuanLyNhaSach.View.NhatKiNhapSach
 
                 Presenter.getListNhatKiNhapSach();
                 Presenter.getListMasach();
+                //Presenter.showSelected();
             }
         }
       

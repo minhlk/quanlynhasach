@@ -40,6 +40,7 @@ namespace QuanLyNhaSach.Model
 
         public IEnumerable<KHO> getListKho()
         {
+            this.entity=new NhaSachEntities();
             return entity.KHOes.ToList();
         }
 

@@ -14,14 +14,45 @@ namespace QuanLyNhaSach.Model
         public NHATKINHAPSACH deleteNhatKiNhapSach(int MaNhatKiNhapSach)
         {
             NHATKINHAPSACH nhatkinhapsach = (from c in entity.NHATKINHAPSACHes where c.STT == MaNhatKiNhapSach select c).FirstOrDefault();
+
+            //entity.SaveChanges();
+            KHO kho = (from c in entity.KHOes
+                       where c.MASACH == nhatkinhapsach.MASACH
+                       select c).FirstOrDefault();
+            kho.TONGSOLUONG = kho.TONGSOLUONG - nhatkinhapsach.SOLUONG;
+            if (kho.SOLUONGCON > kho.TONGSOLUONG)
+                kho.SOLUONGCON = kho.TONGSOLUONG;
             entity.NHATKINHAPSACHes.Remove(nhatkinhapsach);
             entity.SaveChanges();
+
+
+
             return nhatkinhapsach;
         }
 
         public NHATKINHAPSACH editNhatKiNhapSach(NHATKINHAPSACH nkns, int oldMaNhatKiNhapSach)
         {
             NHATKINHAPSACH nhatkinhapsach_re = (from c in entity.NHATKINHAPSACHes where c.STT == oldMaNhatKiNhapSach select c).FirstOrDefault();
+            int change;
+            if (nhatkinhapsach_re.SOLUONG > nkns.SOLUONG)
+            {
+                change = (int) (nhatkinhapsach_re.SOLUONG - nkns.SOLUONG);
+                KHO kho = (from c in entity.KHOes
+                           where c.MASACH == nhatkinhapsach_re.MASACH
+                           select c).FirstOrDefault();
+                kho.TONGSOLUONG = kho.TONGSOLUONG - change;
+               
+            }
+            else
+            {
+                change = (int) (nkns.SOLUONG - nhatkinhapsach_re.SOLUONG);
+                KHO kho = (from c in entity.KHOes
+                           where c.MASACH == nhatkinhapsach_re.MASACH
+                           select c).FirstOrDefault();
+                kho.TONGSOLUONG = kho.TONGSOLUONG + change;
+            }
+
+
             nhatkinhapsach_re.MASACH = nkns.MASACH;
             //saveNhatKiNhapSach(nkns);
             //deleteNhatKiNhapSach(nhatkinhapsach_re.STT);
@@ -53,7 +84,11 @@ namespace QuanLyNhaSach.Model
             try
             {
                 
-                    entity.NHATKINHAPSACHes.Add(nkns);
+                    entity.NHATKINHAPSACHes.Add(nkns); entity.SaveChanges();
+                    KHO kho= (from c in entity.KHOes
+                    where c.MASACH == nkns.MASACH
+                    select c).FirstOrDefault();
+                    kho.TONGSOLUONG = kho.TONGSOLUONG + nkns.SOLUONG;
                     entity.SaveChanges();
                     return nkns;
                 
