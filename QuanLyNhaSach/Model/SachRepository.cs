@@ -54,7 +54,7 @@ namespace QuanLyNhaSach.Model
 
         public IEnumerable<object> getListSach()
         {
-
+            this.entity=new NhaSachEntities();
             return entity.SACHes.Select(c => new { c.MASACH, c.TENSACH, c.MATG, c.MALOAISACH, c.MALINHVUC,c.GIAMUA }).ToList();
         }
 

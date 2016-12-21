@@ -38,6 +38,11 @@ namespace QuanLyNhaSach.View.Sach
             set
             {
                 dataGridView4.DataSource = value;
+                if (dataGridView4.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView4.Columns[0].HeaderText = "Mã Lĩnh Vực";
+                    dataGridView4.Columns[1].HeaderText = "Tên Lĩnh Vực";
+                }
             }
         }
 
@@ -51,6 +56,11 @@ namespace QuanLyNhaSach.View.Sach
             set
             {
                 dataGridView3.DataSource = value;
+                if (dataGridView3.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView3.Columns[0].HeaderText = "Mã Loại Sách";
+                    dataGridView3.Columns[1].HeaderText = "Tên Loại Sách";
+                }
             }
         }
 
@@ -85,15 +95,17 @@ namespace QuanLyNhaSach.View.Sach
 
         public object getListTacGia
         {
-            get
-            {
-                return dataGridView2.DataSource;
-            }
+            get { return dataGridView2.DataSource; }
 
             set
             {
 
                 dataGridView2.DataSource = value;
+                if (dataGridView2.DisplayedRowCount(true) != 0)
+                {
+                    dataGridView2.Columns[0].HeaderText = "Mã Tác Giả";
+                    dataGridView2.Columns[1].HeaderText = "Tên Tác Giả";
+                }
             }
         }
 
